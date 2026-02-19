@@ -167,6 +167,23 @@ The blueprint must:
 -   Prefer precision over verbosity
 -   Explicitly note uncertainty where patterns are weak
 
+## Pattern Block Format (Required)
+
+Inside each section (e.g. "Vocabulary & Word Choice"), you will state multiple concrete patterns. For EACH pattern you include (each pattern should be a `###` heading), you MUST include these three components, in this order:
+
+1) **Summary paragraph (required)**
+   - A short paragraph (2--4 sentences) describing what the pattern is, when it appears, and any scope notes/uncertainty.
+
+2) **Rules list (required)**
+   - A bullet list of operational rules that belong to that pattern, structured into two labeled subsections:
+     - `Dos:` (up to 5 bullets) (or a clear language-appropriate equivalent, e.g. `Gjør:`)
+     - `Don'ts:` (up to 5 bullets) (or a clear language-appropriate equivalent, e.g. `Unngå:`)
+   - These must be deterministic enough that another system can follow them.
+
+3) **Evidence/examples (required)**
+   - A 3--5 item list of verbatim snippets/quotes supporting that specific pattern and its rules (see Evidence Requirements).
+   - Label each snippet with minimal source reference (platform/source id or filename; include date if available).
+
 ## Evidence Requirements (Verbatim Snippets)
 
 For every non-trivial pattern, rule, or stylistic claim you state (including the rules in "Mimicry Blueprint"), you must provide supporting verbatim evidence:
