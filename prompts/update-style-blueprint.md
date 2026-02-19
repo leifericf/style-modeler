@@ -98,6 +98,13 @@ When updating:
 
 Return output as exactly TWO fenced code blocks, in this order:
 
+If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write those two blocks to disk:
+
+- Write the Markdown block to `artefacts/writing-style-blueprint.md`
+- Write the YAML block to `config/sources.yml`
+
+Still output exactly the two fenced blocks (no extra prose).
+
 1) The FULL updated Markdown blueprint (a complete document), fenced as ```markdown.
 
 It should be suitable to save as:
