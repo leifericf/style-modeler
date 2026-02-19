@@ -187,6 +187,24 @@ The blueprint must:
 -   Prefer precision over verbosity
 -   Explicitly note uncertainty where patterns are weak
 
+## Privacy & PII Safety Requirements (Required)
+
+The blueprint and its evidence (and the user-facing `artefacts/corpus-metadata.md`) MUST NOT contain sensitive personal information about the author or other people. This includes (non-exhaustive):
+
+- Personal names of private individuals (including friends/family/colleagues/commenters), and direct-address name prefixes (e.g. "Name - ...")
+- Addresses, apartment/unit numbers, locations that narrow to a residence
+- Phone numbers
+- Email addresses
+- Usernames/handles, profile URLs, invite links tied to a person
+- Order numbers, account ids, or other unique identifiers
+
+Operational rules:
+
+- Prefer selecting evidence snippets that do not contain PII.
+- If a snippet is otherwise crucial but contains PII, redact it inside the quote using `[REDACTED]` (or omit the PII portion using `...`).
+- After redaction/omission, the remaining text MUST still be verbatim.
+- Do not include any unredacted PII anywhere in the blueprint (including headings, summaries, rules, and evidence).
+
 ## Pattern Block Format (Required)
 
 Inside each section (e.g. "Vocabulary & Word Choice"), you will state multiple concrete patterns. For EACH pattern you include (each pattern should be a `###` heading), you MUST include these three components, in this order:
@@ -210,6 +228,7 @@ For every non-trivial pattern, rule, or stylistic claim you state (including the
 
 - Include 3--5 short, relevant quotes/snippets from the corpus that directly support that specific claim.
 - Snippets may be partial (use `...` to indicate omitted text), but the quoted text itself must be verbatim.
+- Exception: you may redact sensitive personal information inside a quote using `[REDACTED]` (or omit the sensitive portion using `...`). Everything else must remain verbatim.
 - Do not paste full posts unless necessary; prefer the smallest snippet that proves the point.
 - If the corpus is too small to provide 3--5 examples for a claim, either:
   - Provide fewer examples and explicitly mark the claim as weak/uncertain, OR

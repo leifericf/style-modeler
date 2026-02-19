@@ -71,6 +71,25 @@ Writing Style Blueprint
 
 Sections must not drift in order or naming unless absolutely necessary.
 
+IMPORTANT: The blueprint must NOT contain a "Corpus Overview" section. Corpus-wide metadata must be written to `artefacts/corpus-metadata.md` (see "Corpus Metadata File").
+
+## Corpus Metadata File
+
+If you have filesystem access, you MUST update (overwrite) a corpus metadata snapshot at:
+
+- `artefacts/corpus-metadata.md`
+
+This file is user-facing and should be updated on every run. It MAY include run metadata (timestamps) and SHOULD include:
+
+- Run timestamp (ISO 8601 UTC)
+- Sources included (ids/platforms)
+- Platforms included
+- Time span (oldest/newest timestamps)
+- Volume overall and by platform/source (samples and approximate word-token counts)
+- Language breakdown (if multilingual): dominant language, per-language sample/word share, and whether separate blueprints were created
+- Preprocessing notes: deduping strategy, structured-export extraction approach, any decoding/normalization applied
+- Data limitations (e.g. blocked URLs)
+
 ### 4. Update the Separate Revision Log Artifact
 
 Maintain a separate revision log file at:
@@ -100,18 +119,54 @@ Do NOT include revision history, changelogs, timestamps, or other run metadata i
 -   Precision over verbosity.
 -   Analytical, not flattering.
 
+## Pattern Block Format (Required)
+
+Inside each section (e.g. "Vocabulary & Word Choice"), you will state multiple concrete patterns. For EACH pattern you include (each pattern should be a `###` heading), you MUST include these three components, in this order:
+
+1) **Summary paragraph (required)**
+   - A short paragraph (2--4 sentences) describing what the pattern is, when it appears, and any scope notes/uncertainty.
+
+2) **Rules list (required)**
+   - A bullet list of operational rules that belong to that pattern, structured into two labeled subsections:
+     - `Dos:` (up to 5 bullets) (or a clear language-appropriate equivalent, e.g. `Gjør:`)
+     - `Don'ts:` (up to 5 bullets) (or a clear language-appropriate equivalent, e.g. `Unngå:`)
+   - These must be deterministic enough that another system can follow them.
+
+3) **Evidence/examples (required)**
+   - A 3--5 item list of verbatim snippets/quotes supporting that specific pattern and its rules.
+   - Do NOT add source references (filenames, URLs, ids, or dates) to the evidence bullets.
+
+## Privacy & PII Safety Requirements (Required)
+
+The blueprint and its evidence (and the user-facing `artefacts/corpus-metadata.md`) MUST NOT contain sensitive personal information about the author or other people. This includes (non-exhaustive):
+
+- Personal names of private individuals (including friends/family/colleagues/commenters), and direct-address name prefixes (e.g. "Name - ...")
+- Addresses, apartment/unit numbers, locations that narrow to a residence
+- Phone numbers
+- Email addresses
+- Usernames/handles, profile URLs, invite links tied to a person
+- Order numbers, account ids, or other unique identifiers
+
+Operational rules:
+
+- Prefer selecting evidence snippets that do not contain PII.
+- If a snippet is otherwise crucial but contains PII, redact it inside the quote using `[REDACTED]` (or omit the PII portion using `...`).
+- After redaction/omission, the remaining text MUST still be verbatim.
+- Do not include any unredacted PII anywhere in the blueprint (including headings, summaries, rules, and evidence).
+
 ## Evidence Requirements (Verbatim Snippets)
 
 For every non-trivial pattern, rule, or stylistic claim you state or update (including rules in the mimicry section), you must provide supporting verbatim evidence:
 
 - Include 3--5 short, relevant quotes/snippets from the corpus that directly support that specific claim.
 - Snippets may be partial (use `...` to indicate omitted text), but the quoted text itself must be verbatim.
+- Exception: you may redact sensitive personal information inside a quote using `[REDACTED]` (or omit the sensitive portion using `...`). Everything else must remain verbatim.
 - Do not paste full posts unless necessary; prefer the smallest snippet that proves the point.
 - If the corpus is too small to provide 3--5 examples for a claim, either:
   - Provide fewer examples and explicitly mark the claim as weak/uncertain, OR
   - Remove the claim.
 - Never reuse the same snippet to justify many unrelated claims.
-- When possible, annotate each snippet with a minimal source reference (e.g., platform/source id or filename; include date if available).
+- Do NOT annotate snippets with source references (filenames, URLs, ids, or dates).
 
 ## Controlled Update Behavior
 
@@ -141,12 +196,14 @@ If you have filesystem access to this repository (e.g. you're running as a codin
   - Write the Markdown block to `artefacts/writing-style-blueprint.md`
   - Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
   - Write the YAML block to `config/sources.yml`
+  - Update (overwrite) `artefacts/corpus-metadata.md`
 
 - Multilingual corpus:
   - For each language `<lang>` (ISO 639-1 when possible; lowercase, e.g. `en`, `no`), write:
     - Blueprint: `artefacts/writing-style-blueprint_<lang>.md`
     - Revision log: `artefacts/writing-style-blueprint-revision-log_<lang>.md`
   - Write the YAML block to `config/sources.yml`
+  - Update (overwrite) `artefacts/corpus-metadata.md`
 
 In single-language mode: still output exactly the three fenced blocks (no extra prose).
 
