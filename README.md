@@ -54,7 +54,7 @@ It is a structured linguistic modeling system.
 
 ## Artifacts
 
-This repository contains four primary components:
+This repository contains five primary components:
 
 ### 1. Cross-Platform Style Blueprint Generator
 
@@ -95,6 +95,16 @@ It will:
 -   Ask you a sequence of short writing prompts (one at a time)
 -   Save your answers into `sources/`
 -   Update the blueprint using the existing update/generate prompts
+
+### 5. Source Manifest Wizard (Optional)
+
+If you want to add new URLs or local paths without hand-editing YAML, use:
+
+-   `prompts/sources-manifest-wizard.md`
+
+It will guide you to add sources and update `config/sources.yml` (creating it if missing, and validating/normalizing YAML formatting before writing).
+
+If the agent has network access, it can also sanity-check whether pasted URLs are reachable.
 
 ## Output
 
@@ -145,6 +155,12 @@ Note: `config/sources.yml` is ignored by git by default to avoid accidentally co
 
 1.  Put plain text files in `sources/` (for example, `sources/linkedin.txt`, `sources/blog.txt`).
 2.  Keep those files local. The `sources/` directory is ignored by git by default.
+
+### Step 0.55 (Optional): Add URLs / Paths to `config/sources.yml`
+
+If you want the agent to guide you through adding new URLs or local paths, run:
+
+-   `prompts/sources-manifest-wizard.md`
 
 ### Step 0.6 (Optional): Run the Interactive Corpus Builder
 
