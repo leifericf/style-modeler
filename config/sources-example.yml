@@ -5,8 +5,8 @@ sources:
   - id: local
     type: dir
     path: "sources/"
-    include_glob: "*.txt"
-    notes: "Drop plain text files into sources/"
+    include_glob: "*.{txt,md,json,xml,html}"
+    notes: "Drop writing samples/exports into sources/ (txt/md/json/xml/html)"
     recency_weight: 2
     last_imported_at: null
     most_recent_sample_at: null

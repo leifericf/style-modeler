@@ -25,7 +25,7 @@ You will receive:
 1.  The current Markdown blueprint (full document).
     - If the corpus is multilingual, you may instead receive multiple per-language blueprints (e.g. `artefacts/writing-style-blueprint_en.md`, `artefacts/writing-style-blueprint_no.md`).
 2.  `config/sources.yml` (a YAML manifest). If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
-    -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/`.
+    -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/` (including common export formats like `*.{txt,md,json,xml,html}`).
 3.  New writing samples or new sources (optional). If provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
 4.  Optional: source metadata (platform name, date range, etc.).
 
@@ -44,6 +44,8 @@ You must:
 -   Re-evaluate all previously stated conclusions.
 -   Revise sections if new evidence contradicts earlier findings.
 -   Recalculate recency weighting (most recent phase = 2x weight).
+
+If some sources are exports in structured formats (e.g., JSON/XML/HTML), you must extract only the owner-authored raw text and ignore file-format noise (keys, tags, escaping, metadata) before analysis.
 
 Do NOT merely append observations.
 
@@ -184,5 +186,18 @@ If you detect multiple languages, you must:
 - Naming: use a language suffix on filenames (ISO 639-1 when possible; lowercase), e.g. `_en`, `_no`.
 - Evidence constraint: in `artefacts/writing-style-blueprint_<lang>.md`, include ONLY text and quotes in that language. Do not cite or quote other languages.
 - If a language is present but not significant, do NOT create a separate blueprint for it; mention it briefly under "Data limitations" in the dominant-language blueprint.
+
+## Source Format Handling (Local Files / Exports)
+
+Some sources (especially under `sources/`) may be exports in structured formats (e.g., Facebook/Instagram exports in JSON, XML exports, HTML pages).
+
+When ingesting any structured/marked-up format, you must:
+
+- Extract only the human-authored text written by the owner (the user's writing). Ignore file-format noise (JSON keys/brackets, XML/HTML tags/attributes, escape characters, IDs, timestamps except for dating, URLs unless the URL text itself is part of the writing).
+- Prefer robust parsing over regex when possible (treat JSON as JSON, XML as XML, HTML as HTML).
+- Identify which fields contain the actual user text (platform-dependent; e.g., `content`, `text`, `message`, `comment`, `body`), and ignore surrounding metadata.
+- Treat each post/comment/message as a distinct sample when the export provides boundaries.
+- Preserve original text as much as possible (punctuation, line breaks, emoji if present) while removing markup/serialization artifacts.
+- If you cannot confidently locate the user-authored text in an export, state the limitation and ask for guidance (e.g., which keys/paths correspond to the owner's writing).
 
 In multilingual mode, do not output anything outside the required fenced blocks.

@@ -9,7 +9,7 @@ This is an iterative system. You must refine and update your analysis as new wri
 ## Input Model
 
 -   Primary input is `config/sources.yml`. If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
--   If `config/sources.yml` does not exist yet and you have repository access, create it with a default local source that reads from `sources/`.
+-   If `config/sources.yml` does not exist yet and you have repository access, create it with a default local source that reads from `sources/` (including common export formats like `*.{txt,md,json,xml,html}`).
 -   If additional writing samples or new sources are provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
 -   Sources may come from different platforms.
 -   Sources may or may not include dates.
@@ -18,6 +18,19 @@ This is an iterative system. You must refine and update your analysis as new wri
 -   Clearly label which platform each source comes from.
 -   If the corpus is small or incomplete, explicitly state analytical limitations.
 -   Use only the provided text. Do not infer from external knowledge.
+
+## Source Format Handling (Local Files / Exports)
+
+Some sources (especially under `sources/`) may be exports in structured formats (e.g., Facebook/Instagram exports in JSON, XML exports, HTML pages).
+
+When ingesting any structured/marked-up format, you must:
+
+- Extract only the human-authored text written by the owner (the user's writing). Ignore file-format noise (JSON keys/brackets, XML/HTML tags/attributes, escape characters, IDs, timestamps except for dating, URLs unless the URL text itself is part of the writing).
+- Prefer robust parsing over regex when possible (treat JSON as JSON, XML as XML, HTML as HTML).
+- Identify which fields contain the actual user text (platform-dependent; e.g., `content`, `text`, `message`, `comment`, `body`), and ignore surrounding metadata.
+- Treat each post/comment/message as a distinct sample when the export provides boundaries.
+- Preserve original text as much as possible (punctuation, line breaks, emoji if present) while removing markup/serialization artifacts.
+- If you cannot confidently locate the user-authored text in an export, state the limitation and ask for guidance (e.g., which keys/paths correspond to the owner's writing).
 
 If you do NOT have filesystem/network access, ask the user for either:
 

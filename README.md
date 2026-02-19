@@ -163,7 +163,7 @@ If you're running the prompts in a chat-only interface (no filesystem access), y
 
 ### Step 0.5: Add Local Text Files
 
-1.  Put plain text files in `sources/` (for example, `sources/linkedin.txt`, `sources/blog.txt`).
+1.  Put writing samples in `sources/` (for example, `sources/linkedin.txt`, `sources/blog.txt`). These can be plain text, or structured exports (e.g., JSON/XML/HTML) as long as they contain your original writing.
 2.  Keep those files local. The `sources/` directory is ignored by git by default.
 
 ### Step 0.6 (Optional): Run the Interactive Corpus Builder
