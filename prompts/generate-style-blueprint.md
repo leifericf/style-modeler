@@ -71,14 +71,15 @@ Create operational, deterministic rules another AI system can follow to convinci
 
 ## Output Requirements
 
-Produce output as exactly TWO fenced code blocks, in this order:
+Produce output as exactly THREE fenced code blocks, in this order:
 
-If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write those two blocks to disk:
+If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write those three blocks to disk:
 
 - Write the Markdown block to `artefacts/writing-style-blueprint.md`
+- Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
 - Write the YAML block to `config/sources.yml`
 
-Still output exactly the two fenced blocks (no extra prose).
+Still output exactly the three fenced blocks (no extra prose).
 
 1) A Markdown document (fenced as ```markdown) titled:
 
@@ -88,7 +89,25 @@ It should be suitable to save as:
 
 artefacts/writing-style-blueprint.md
 
-2) An updated YAML file (fenced as ```yaml) suitable to save as:
+IMPORTANT: The blueprint must contain ONLY blueprint information. Do NOT include revision history, changelogs, timestamps, or other run metadata in the blueprint.
+
+2) A revision log Markdown document (fenced as ```markdown) titled:
+
+# Writing Style Blueprint Revision Log
+
+It should be suitable to save as:
+
+artefacts/writing-style-blueprint-revision-log.md
+
+It must include an initial entry for this run (initial blueprint creation), with:
+
+- Run timestamp (ISO 8601 UTC)
+- Sources included (ids/platforms)
+- A concise summary of what was created
+
+If the revision log file already exists, preserve its contents and append a new entry.
+
+3) An updated YAML file (fenced as ```yaml) suitable to save as:
 
 config/sources.yml
 
@@ -225,4 +244,4 @@ When a new topic is provided:
 -   Do not exaggerate tone beyond observed range.
 -   Match length norms of the target platform.
 
-Do not output anything outside the two fenced blocks.
+Do not output anything outside the three fenced blocks.

@@ -68,20 +68,22 @@ Writing Style Blueprint
 
 Sections must not drift in order or naming unless absolutely necessary.
 
-### 4. Add / Update a Changelog Section
+### 4. Update the Separate Revision Log Artifact
 
-Append or update this section at the end:
+Maintain a separate revision log file at:
 
-## Revision Log
+`artefacts/writing-style-blueprint-revision-log.md`
 
-For each update, include:
+For each blueprint update, append a new entry with:
 
--   Date of update
--   Sources added
--   High-level summary of what changed
--   Whether mimicry rules were adjusted
+- Run timestamp (ISO 8601 UTC)
+- Sources added/changed (ids/platforms)
+- Concise summary of what changed
+- Whether mimicry rules were adjusted
 
-Keep this concise and analytical.
+Preserve the existing log contents; do not rewrite history except to fix obvious errors.
+
+Do NOT include revision history, changelogs, timestamps, or other run metadata inside the blueprint itself.
 
 ### 5. Preserve Constraints
 
@@ -102,14 +104,15 @@ When updating:
 
 ## Output
 
-Return output as exactly TWO fenced code blocks, in this order:
+Return output as exactly THREE fenced code blocks, in this order:
 
-If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write those two blocks to disk:
+If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write those three blocks to disk:
 
 - Write the Markdown block to `artefacts/writing-style-blueprint.md`
+- Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
 - Write the YAML block to `config/sources.yml`
 
-Still output exactly the two fenced blocks (no extra prose).
+Still output exactly the three fenced blocks (no extra prose).
 
 1) The FULL updated Markdown blueprint (a complete document), fenced as ```markdown.
 
@@ -117,7 +120,15 @@ It should be suitable to save as:
 
 artefacts/writing-style-blueprint.md
 
-2) An updated YAML file fenced as ```yaml, suitable to save as:
+IMPORTANT: The blueprint must contain ONLY blueprint information. Do NOT include revision history, changelogs, timestamps, or other run metadata in the blueprint.
+
+2) The FULL updated revision log document, fenced as ```markdown.
+
+It should be suitable to save as:
+
+artefacts/writing-style-blueprint-revision-log.md
+
+3) An updated YAML file fenced as ```yaml, suitable to save as:
 
 config/sources.yml
 
@@ -127,4 +138,4 @@ For each source in the YAML, update these fields when possible:
 -   `most_recent_sample_at`: newest sample timestamp present in that source (derived from sample metadata when available; otherwise `null`)
 -   `last_processed_sample_at`: newest sample timestamp actually included in the blueprint for that source (otherwise `null`)
 
-Do not output anything outside the two fenced blocks.
+Do not output anything outside the three fenced blocks.

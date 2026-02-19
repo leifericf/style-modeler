@@ -103,7 +103,10 @@ The blueprint includes:
 -   Evolution over time
 -   Style vector summary
 -   Mimicry blueprint
--   Revision log (for iterative updates)
+
+Revision history is stored separately in:
+
+-   `artefacts/writing-style-blueprint-revision-log.md`
 
 The result is a deterministic style model that can be reused for imitation.
 
@@ -150,6 +153,7 @@ If you're running the prompts in a chat-only interface (no filesystem access), y
 3.  If you're using an AI agent with repo access, it should write:
 
     -   `artefacts/writing-style-blueprint.md`
+    -   `artefacts/writing-style-blueprint-revision-log.md`
     -   `config/sources.yml`
 
     If it only prints the fenced blocks, ask it to save them to those paths.
@@ -161,8 +165,8 @@ When you have more writing (new LinkedIn posts, new platform, etc.):
 1.  Add the new material to disk/URLs referenced by `config/sources.yml`.
 2.  Run the **Writing Style Blueprint Update & Refinement Agent** prompt (`prompts/update-style-blueprint.md`).
 3.  If you mention new sources in the prompt (new file paths / URLs), the agent should add them to `config/sources.yml` automatically.
-4.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-blueprint.md` (and `config/sources.yml`) for you.
-5.  Review the Revision Log section for changes.
+4.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-blueprint.md`, `artefacts/writing-style-blueprint-revision-log.md`, and `config/sources.yml` for you.
+5.  Review `artefacts/writing-style-blueprint-revision-log.md` for what changed.
 
 ### Step 3: Generate Stylized Writing
 
