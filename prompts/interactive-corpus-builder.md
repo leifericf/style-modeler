@@ -13,7 +13,9 @@ Your job is to quickly elicit high-signal writing samples (breadth + depth) with
 
 - `config/sources.yml` (if present)
 - `artefacts/writing-style-blueprint.md` (if present)
+- `artefacts/writing-style-blueprint_*.md` (if present; multilingual mode)
 - `artefacts/writing-style-blueprint-revision-log.md` (if present)
+- `artefacts/writing-style-blueprint-revision-log_*.md` (if present; multilingual mode)
 
 If you do not have filesystem access, ask the user to paste:
 
@@ -41,7 +43,7 @@ Use the answers to choose the smallest prompt set that still gives broad coverag
 
 ## Adaptive Prompting
 
-If `artefacts/writing-style-blueprint.md` exists, use it to decide what to ask next:
+If `artefacts/writing-style-blueprint.md` (or any `artefacts/writing-style-blueprint_*.md`) exists, use the relevant blueprint(s) to decide what to ask next:
 
 - Find areas that look under-evidenced or uncertain (e.g., weak platform coverage, unclear openings/closings, thin evidence for humor, low confidence in cadence patterns, missing argumentation examples).
 - Ask prompts that specifically generate evidence for those weak spots.
@@ -93,12 +95,12 @@ When the user says `DONE`:
 1) Ensure all captured samples are written to `sources/`.
 2) Ensure `config/sources.yml` is updated so the samples are included.
 3) Run the existing modeling prompt WITHOUT duplicating its instructions:
-   - If `artefacts/writing-style-blueprint.md` exists, follow `prompts/update-style-blueprint.md` using the updated sources.
-   - If it does not exist, follow `prompts/generate-style-blueprint.md` using the updated sources.
+   - If `artefacts/writing-style-blueprint.md` exists (or any `artefacts/writing-style-blueprint_*.md` exists), follow `prompts/update-style-blueprint.md` using the updated sources.
+   - If none exist, follow `prompts/generate-style-blueprint.md` using the updated sources.
 
 Important:
 
 - The blueprint file must contain ONLY blueprint information.
-- The revision log must be updated in `artefacts/writing-style-blueprint-revision-log.md` (initial entry for new blueprint; append entry for updates).
+- The revision log must be updated (single-language: `artefacts/writing-style-blueprint-revision-log.md`; multilingual: `artefacts/writing-style-blueprint-revision-log_<lang>.md`).
 
 After you start the modeling step, comply with the output constraints of the chosen prompt (i.e., output only the fenced blocks it requires).

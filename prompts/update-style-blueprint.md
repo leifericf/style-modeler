@@ -23,6 +23,7 @@ This is an iterative refinement process.
 You will receive:
 
 1.  The current Markdown blueprint (full document).
+    - If the corpus is multilingual, you may instead receive multiple per-language blueprints (e.g. `artefacts/writing-style-blueprint_en.md`, `artefacts/writing-style-blueprint_no.md`).
 2.  `config/sources.yml` (a YAML manifest). If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
     -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/`.
 3.  New writing samples or new sources (optional). If provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
@@ -74,6 +75,10 @@ Maintain a separate revision log file at:
 
 `artefacts/writing-style-blueprint-revision-log.md`
 
+Multilingual mode: maintain one revision log per language at:
+
+`artefacts/writing-style-blueprint-revision-log_<lang>.md`
+
 For each blueprint update, append a new entry with:
 
 - Run timestamp (ISO 8601 UTC)
@@ -104,21 +109,43 @@ When updating:
 
 ## Output
 
-Return output as exactly THREE fenced code blocks, in this order:
+Return output as fenced code blocks.
 
-If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write those three blocks to disk:
+Default (single-language corpus): output exactly THREE fenced code blocks, in this order.
 
-- Write the Markdown block to `artefacts/writing-style-blueprint.md`
-- Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
-- Write the YAML block to `config/sources.yml`
+Multilingual corpus: if the corpus contains a significant amount of writing in 2+ distinct natural languages (as defined under "Multilingual Corpus Handling"), update/create a separate blueprint per language (because the author's style may differ by language). In multilingual mode, output `2 * N + 1` fenced blocks in this order:
 
-Still output exactly the three fenced blocks (no extra prose).
+1) Updated blueprint Markdown for language 1
+2) Updated revision log Markdown for language 1
+... repeat (1)-(2) for each detected language, ordered by corpus volume desc
+Final) One updated `config/sources.yml` YAML block
+
+If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write the emitted blocks to disk:
+
+- Single-language corpus:
+  - Write the Markdown block to `artefacts/writing-style-blueprint.md`
+  - Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
+  - Write the YAML block to `config/sources.yml`
+
+- Multilingual corpus:
+  - For each language `<lang>` (ISO 639-1 when possible; lowercase, e.g. `en`, `no`), write:
+    - Blueprint: `artefacts/writing-style-blueprint_<lang>.md`
+    - Revision log: `artefacts/writing-style-blueprint-revision-log_<lang>.md`
+  - Write the YAML block to `config/sources.yml`
+
+In single-language mode: still output exactly the three fenced blocks (no extra prose).
+
+In multilingual mode: output only the fenced blocks described above (no extra prose).
 
 1) The FULL updated Markdown blueprint (a complete document), fenced as ```markdown.
 
 It should be suitable to save as:
 
 artefacts/writing-style-blueprint.md
+
+Multilingual mode: produce one such blueprint per language, suitable to save as:
+
+artefacts/writing-style-blueprint_<lang>.md
 
 IMPORTANT: The blueprint must contain ONLY blueprint information. Do NOT include revision history, changelogs, timestamps, or other run metadata in the blueprint.
 
@@ -127,6 +154,10 @@ IMPORTANT: The blueprint must contain ONLY blueprint information. Do NOT include
 It should be suitable to save as:
 
 artefacts/writing-style-blueprint-revision-log.md
+
+Multilingual mode: produce one per language, suitable to save as:
+
+artefacts/writing-style-blueprint-revision-log_<lang>.md
 
 3) An updated YAML file fenced as ```yaml, suitable to save as:
 
@@ -138,4 +169,20 @@ For each source in the YAML, update these fields when possible:
 -   `most_recent_sample_at`: newest sample timestamp present in that source (derived from sample metadata when available; otherwise `null`)
 -   `last_processed_sample_at`: newest sample timestamp actually included in the blueprint for that source (otherwise `null`)
 
-Do not output anything outside the three fenced blocks.
+Do not output anything outside the required fenced blocks.
+
+## Multilingual Corpus Handling
+
+If you detect multiple languages, you must:
+
+- Partition the corpus by language. A per-language blueprint must be strictly monolingual (do not mix languages inside a single blueprint).
+- Use conservative language detection (high confidence); ignore tiny fragments (e.g., isolated sentences, short quotes, code, usernames).
+- Define "sample" as one discrete writing item (post/comment/email/message). If the raw data is in a single file without clear boundaries, estimate samples conservatively (e.g., split on blank-line blocks and obvious separators like dates/headers).
+- Treat a language as "significant" only if it meets BOTH (after deduplication):
+  - Share threshold: at least 10% of the usable corpus by words/tokens, AND
+  - Size threshold: at least 200 distinct samples OR at least 12,000 words of usable text.
+- Naming: use a language suffix on filenames (ISO 639-1 when possible; lowercase), e.g. `_en`, `_no`.
+- Evidence constraint: in `artefacts/writing-style-blueprint_<lang>.md`, include ONLY text and quotes in that language. Do not cite or quote other languages.
+- If a language is present but not significant, do NOT create a separate blueprint for it; mention it briefly under "Data limitations" in the dominant-language blueprint.
+
+In multilingual mode, do not output anything outside the required fenced blocks.

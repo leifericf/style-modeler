@@ -110,6 +110,8 @@ If the agent has network access, it can also sanity-check whether pasted URLs ar
 
 The system produces a structured Markdown document titled `Writing Style Blueprint`.
 
+If the corpus contains a significant amount of writing in multiple languages, the generator/update prompts should emit one strictly monolingual blueprint per language (e.g. `artefacts/writing-style-blueprint_en.md`, `artefacts/writing-style-blueprint_no.md`) so stylistic differences by language are captured separately. If other languages appear only in small amounts, the prompts should mention them under data limitations instead of creating separate blueprints.
+
 The blueprint includes:
 
 -   Vocabulary & word choice patterns
@@ -127,6 +129,8 @@ The blueprint includes:
 Revision history is stored separately in:
 
 -   `artefacts/writing-style-blueprint-revision-log.md`
+
+In multilingual mode, revision logs are also split per language (e.g. `artefacts/writing-style-blueprint-revision-log_en.md`).
 
 The result is a deterministic style model that can be reused for imitation.
 
