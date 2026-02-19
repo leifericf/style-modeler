@@ -101,12 +101,14 @@ If you have filesystem access to this repository (e.g. you're running as a codin
   - Write the Markdown block to `artefacts/writing-style-blueprint.md`
   - Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
   - Write the YAML block to `config/sources.yml`
+  - Additionally, write corpus metadata to `artefacts/corpus-metadata.md` (see "Corpus Metadata File" below). Do NOT include this metadata inside the blueprint.
 
 - Multilingual corpus:
   - For each language `<lang>` (ISO 639-1 when possible; lowercase, e.g. `en`, `no`), write:
     - Blueprint: `artefacts/writing-style-blueprint_<lang>.md`
     - Revision log: `artefacts/writing-style-blueprint-revision-log_<lang>.md`
   - Write the YAML block to `config/sources.yml`
+  - Additionally, write corpus metadata to `artefacts/corpus-metadata.md` (single file; covers all languages).
 
 In single-language mode: still output exactly the three fenced blocks (no extra prose).
 
@@ -125,6 +127,24 @@ Multilingual mode: produce one such blueprint per language, suitable to save as:
 artefacts/writing-style-blueprint_<lang>.md
 
 IMPORTANT: The blueprint must contain ONLY blueprint information. Do NOT include revision history, changelogs, timestamps, or other run metadata in the blueprint.
+IMPORTANT: Do NOT include a "Corpus Overview" section in the blueprint. Put corpus-wide metadata in `artefacts/corpus-metadata.md` instead.
+
+## Corpus Metadata File
+
+If you have filesystem access, you MUST write a corpus metadata snapshot to:
+
+- `artefacts/corpus-metadata.md`
+
+This file is user-facing and should be updated on every run (overwrite with the latest snapshot). It MAY include run metadata (timestamps) and SHOULD include:
+
+- Run timestamp (ISO 8601 UTC)
+- Sources included (ids/platforms)
+- Platforms included
+- Time span (oldest/newest timestamps)
+- Volume overall and by platform/source (samples and approximate word-token counts)
+- Language breakdown (if multilingual): dominant language, per-language sample/word share, and whether separate blueprints were created
+- Preprocessing notes: deduping strategy, structured-export extraction approach, any decoding/normalization applied
+- Data limitations (e.g. blocked URLs)
 
 2) A revision log Markdown document (fenced as ```markdown) titled:
 
@@ -215,14 +235,7 @@ If you detect multiple languages, you must:
 
 # Required Blueprint Structure
 
-## 1. Corpus Overview
-
--   Platforms included
--   Time span
--   Volume by platform
--   Data limitations
-
-## 2. Vocabulary & Word Choice
+## 1. Vocabulary & Word Choice
 
 -   Recurring terms
 -   Domain-specific terminology
@@ -231,7 +244,7 @@ If you detect multiple languages, you must:
 -   Lexical density estimates
 -   Platform variation (if any)
 
-## 3. Sentence Construction & Rhythm
+## 2. Sentence Construction & Rhythm
 
 -   Sentence length tendencies
 -   Short vs long balance
@@ -240,14 +253,14 @@ If you detect multiple languages, you must:
 -   Cadence patterns
 -   Paragraph density differences by platform
 
-## 4. Structural Patterns
+## 3. Structural Patterns
 
 -   Typical opening strategies
 -   Argument-building pattern (linear, layered, contrast-driven, etc.)
 -   Transition mechanisms
 -   Conclusion framing style
 
-## 5. Rhetorical Devices
+## 4. Rhetorical Devices
 
 -   Analogies
 -   Metaphors
@@ -256,7 +269,7 @@ If you detect multiple languages, you must:
 -   Repetition patterns
 -   Tension / resolution usage
 
-## 6. Argumentation Style
+## 5. Argumentation Style
 
 -   Deductive vs inductive tendencies
 -   Evidence types
@@ -264,7 +277,7 @@ If you detect multiple languages, you must:
 -   Counterargument handling
 -   Certainty calibration
 
-## 7. Emotional Tone & Character
+## 6. Emotional Tone & Character
 
 -   Emotional intensity (1--10 scale)
 -   Vulnerability vs detachment
@@ -272,21 +285,21 @@ If you detect multiple languages, you must:
 -   Humor presence
 -   Moral seriousness vs playfulness
 
-## 8. Values, Subtext & Worldview
+## 7. Values, Subtext & Worldview
 
 -   Frequently implied values
 -   Recurring philosophical themes
 -   Implicit worldview
 -   Status or identity positioning
 
-## 9. Cross-Platform Differences
+## 8. Cross-Platform Differences
 
 -   Tone shifts by platform
 -   Structural adaptation
 -   Compression vs expansion tendencies
 -   Consistent core identity across media
 
-## 10. Evolution Over Time
+## 9. Evolution Over Time
 
 -   Phase comparison
 -   Increased/decreased complexity
@@ -294,7 +307,7 @@ If you detect multiple languages, you must:
 -   Strategic repositioning (if detectable)
 -   Stability vs volatility of voice
 
-## 11. Style Vector Summary
+## 10. Style Vector Summary
 
 Provide a compact style fingerprint:
 
@@ -306,7 +319,7 @@ Provide a compact style fingerprint:
 -   Complexity (1--10)
 -   Platform adaptability (1--10)
 
-## 12. Mimicry Blueprint
+## 11. Mimicry Blueprint
 
 ### A. Step-by-Step Style Algorithm
 
