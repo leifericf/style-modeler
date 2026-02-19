@@ -1,0 +1,12 @@
+.DS_Store
+
+# Local outputs / intermediate artifacts
+artefacts/**
+!artefacts/.gitkeep
+
+# Local raw sources (may contain personal writing)
+sources/**
+!sources/.gitkeep
+
+# Local source manifest (may contain personal paths/URLs)
+config/sources.yml

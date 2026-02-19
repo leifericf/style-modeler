@@ -1,0 +1,38 @@
+version: 1
+owner: "Your Name"
+
+sources:
+  - id: local
+    type: dir
+    path: "sources/"
+    include_glob: "*.txt"
+    notes: "Drop plain text files into sources/"
+    recency_weight: 2
+    last_imported_at: null
+    most_recent_sample_at: null
+    last_processed_sample_at: null
+
+  - id: facebook
+    type: file
+    path: "/path/to/facebook/export/"
+    format: "json|html|txt"
+    notes: "Status updates only"
+    recency_weight: 1
+    last_imported_at: null
+    most_recent_sample_at: null
+    last_processed_sample_at: null
+
+  - id: twitter
+    type: url
+    url: "https://example.com/twitter-archive"
+    notes: "Tweets and threads"
+    recency_weight: 1
+    last_imported_at: null
+    most_recent_sample_at: null
+    last_processed_sample_at: null
+
+update_policy:
+  reprocess_entire_corpus: true
+  deduplicate_entries: true
+  recency_weight_latest_phase: 2
+  log_revisions: true
