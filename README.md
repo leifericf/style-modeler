@@ -54,7 +54,7 @@ It is a structured linguistic modeling system.
 
 ## Artifacts
 
-This repository contains five primary components:
+This repository contains six primary components:
 
 ### 1. Cross-Platform Style Blueprint Generator
 
@@ -105,6 +105,10 @@ If you want to add new URLs or local paths without hand-editing YAML, use:
 It will guide you to add sources and update `config/sources.yml` (creating it if missing, and validating/normalizing YAML formatting before writing).
 
 If the agent has network access, it can also sanity-check whether pasted URLs are reachable.
+
+### 6. Blueprint-Guided Authoring Agent (Optional)
+
+Use `prompts/blueprint-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your Writing Style Blueprint. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
 
 ## Output
 
@@ -210,6 +214,8 @@ After analysis:
 2.  Specify the target platform (optional).
 3.  Ask for controlled imitation.
 4.  The system generates a post following extracted rules.
+
+For an interactive, "brain-dump then polish" flow, run `prompts/blueprint-guided-authoring.md`.
 
 ## License
 See `LICENSE` (MIT).
