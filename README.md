@@ -137,14 +137,17 @@ Note: `config/sources.yml` is ignored by git by default to avoid accidentally co
 
 The prompts emit an updated `config/sources.yml` as part of their output (timestamps, newest-sample info). If you're using an AI agent with repo access, it should write that YAML directly to `config/sources.yml` each run.
 
+If you give the agent new source locations (file paths / URLs), it should also add them to `config/sources.yml`.
+
 If you're running the prompts in a chat-only interface (no filesystem access), you'll need to copy/paste the emitted YAML into `config/sources.yml` manually.
 
 ### Step 1: Generate Initial Blueprint
 
-1.  Gather writing samples (LinkedIn posts, tweets, blog posts, etc.).
-2.  Paste them into the **Cross-Platform Style Blueprint Generator** prompt (`prompts/generate-style-blueprint.md`).
-3.  Run the prompt.
-4.  If you're using an AI agent with repo access, it should write:
+1.  Put your writing where the agent can read it:
+    -   Local files: drop plain text into `sources/` (default), or point `config/sources.yml` at your own folders/files.
+    -   Online sources: add URLs in `config/sources.yml` (or tell the agent the URLs; it should add them).
+2.  Run the **Cross-Platform Style Blueprint Generator** prompt (`prompts/generate-style-blueprint.md`). The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
+3.  If you're using an AI agent with repo access, it should write:
 
     -   `artefacts/writing-style-blueprint.md`
     -   `config/sources.yml`
@@ -155,12 +158,11 @@ If you're running the prompts in a chat-only interface (no filesystem access), y
 
 When you have more writing (new LinkedIn posts, new platform, etc.):
 
-1.  Provide:
-    -   The current Markdown blueprint
-    -   The new writing samples
-2.  Use the **Writing Style Blueprint Update & Refinement Agent** prompt (`prompts/update-style-blueprint.md`).
-3.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-blueprint.md` (and `config/sources.yml`) for you.
-4.  Review the Revision Log section for changes.
+1.  Add the new material to disk/URLs referenced by `config/sources.yml`.
+2.  Run the **Writing Style Blueprint Update & Refinement Agent** prompt (`prompts/update-style-blueprint.md`).
+3.  If you mention new sources in the prompt (new file paths / URLs), the agent should add them to `config/sources.yml` automatically.
+4.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-blueprint.md` (and `config/sources.yml`) for you.
+5.  Review the Revision Log section for changes.
 
 ### Step 3: Generate Stylized Writing
 

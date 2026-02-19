@@ -23,9 +23,15 @@ This is an iterative refinement process.
 You will receive:
 
 1.  The current Markdown blueprint (full document).
-2.  New writing samples (raw text).
-3.  Optional: source metadata (platform name, date range, etc.).
-4.  Optional: `config/sources.yml` (a YAML manifest). By default it can reference repo-local text files in `sources/`.
+2.  `config/sources.yml` (a YAML manifest). If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
+    -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/`.
+3.  New writing samples or new sources (optional). If provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
+4.  Optional: source metadata (platform name, date range, etc.).
+
+If you do NOT have filesystem/network access, ask the user for either:
+
+- The full contents of `config/sources.yml` plus the referenced source text, OR
+- A pasted corpus grouped by platform.
 
 ## Core Responsibilities
 

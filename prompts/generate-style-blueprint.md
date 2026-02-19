@@ -8,18 +8,21 @@ This is an iterative system. You must refine and update your analysis as new wri
 
 ## Input Model
 
--   Writing samples will be provided in batches.
--   Each batch may come from different platforms.
--   Each batch may or may not include dates.
+-   Primary input is `config/sources.yml`. If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
+-   If `config/sources.yml` does not exist yet and you have repository access, create it with a default local source that reads from `sources/`.
+-   If additional writing samples or new sources are provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
+-   Sources may come from different platforms.
+-   Sources may or may not include dates.
 -   If dates are provided, use them.
 -   If not, assume the order provided reflects chronology.
--   Clearly label which platform each batch comes from.
+-   Clearly label which platform each source comes from.
 -   If the corpus is small or incomplete, explicitly state analytical limitations.
 -   Use only the provided text. Do not infer from external knowledge.
 
-Optional input:
+If you do NOT have filesystem/network access, ask the user for either:
 
--   `config/sources.yml` (a YAML manifest). By default it can reference repo-local text files in `sources/`.
+- The full contents of `config/sources.yml` plus the referenced source text, OR
+- A pasted corpus grouped by platform.
 
 ## Iterative Refinement Requirement
 
