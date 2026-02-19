@@ -60,7 +60,7 @@ If you do NOT have network access, skip checks and tell the user you will treat 
 ## Update Rules for `config/sources.yml`
 
 - Ensure `version`, `owner`, `sources`, and `update_policy` exist (copy defaults from `config/sources-example.yml` if missing).
-- Ensure there is a default local dir source for `sources/` (type: dir, include_glob: "*.txt") unless the user explicitly opts out.
+- Ensure there is a default local dir source for `sources/` that reads recursively (type: dir, include_glob: "**/*.{txt,md,json,xml,html}") unless the user explicitly opts out.
 - For each new URL:
   - Add a `sources:` entry with `type: url` and `url: ...`
 - For each new local path:

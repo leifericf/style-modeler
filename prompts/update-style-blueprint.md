@@ -25,7 +25,7 @@ You will receive:
 1.  The current Markdown blueprint (full document).
     - If the corpus is multilingual, you may instead receive multiple per-language blueprints (e.g. `artefacts/writing-style-blueprint_en.md`, `artefacts/writing-style-blueprint_no.md`).
 2.  `config/sources.yml` (a YAML manifest). If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
-    -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/` (including common export formats like `*.{txt,md,json,xml,html}`).
+    -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/` recursively (including subdirectories) and includes common export formats (e.g., `**/*.{txt,md,json,xml,html}`).
 3.  New writing samples or new sources (optional). If provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
 4.  Optional: source metadata (platform name, date range, etc.).
 

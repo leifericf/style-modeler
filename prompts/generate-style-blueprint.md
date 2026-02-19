@@ -9,7 +9,7 @@ This is an iterative system. You must refine and update your analysis as new wri
 ## Input Model
 
 -   Primary input is `config/sources.yml`. If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
--   If `config/sources.yml` does not exist yet and you have repository access, create it with a default local source that reads from `sources/` (including common export formats like `*.{txt,md,json,xml,html}`).
+-   If `config/sources.yml` does not exist yet and you have repository access, create it with a default local source that reads from `sources/` recursively (including subdirectories) and includes common export formats (e.g., `**/*.{txt,md,json,xml,html}`).
 -   If additional writing samples or new sources are provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
 -   Sources may come from different platforms.
 -   Sources may or may not include dates.
