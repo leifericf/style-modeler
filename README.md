@@ -144,23 +144,23 @@ The model improves over time.
 
 ### Step 0: Create Your Source Manifest
 
-1.  Ensure you have a `config/sources.yml`.
-    -   If you want to configure sources up front, copy `config/sources-example.yml` to `config/sources.yml`.
-    -   If you're using an AI agent with repo access, it can generate/update `config/sources.yml` on the first run.
+1.  Ensure you have a `config/sources.yml` (choose one):
+    -   (Recommended) Run `prompts/sources-manifest-wizard.md` to create/update `config/sources.yml`.
+    -   Or copy `config/sources-example.yml` to `config/sources.yml` and edit it manually.
 2.  (Optional) Add or remove sources. By default, `config/sources.yml` can read from the repo-local `sources/` folder.
 
 Note: `config/sources.yml` is ignored by git by default to avoid accidentally committing personal information.
+
+Note: The prompts emit an updated `config/sources.yml` as part of their output (timestamps, newest-sample info). If you're using an AI agent with repo access, it should write that YAML directly to `config/sources.yml` each run.
+
+If you give the agent new source locations (file paths / URLs), it should also add them to `config/sources.yml`.
+
+If you're running the prompts in a chat-only interface (no filesystem access), you'll need to copy/paste the emitted YAML into `config/sources.yml` manually.
 
 ### Step 0.5: Add Local Text Files
 
 1.  Put plain text files in `sources/` (for example, `sources/linkedin.txt`, `sources/blog.txt`).
 2.  Keep those files local. The `sources/` directory is ignored by git by default.
-
-### Step 0.55 (Optional): Add URLs / Paths to `config/sources.yml`
-
-If you want the agent to guide you through adding new URLs or local paths, run:
-
--   `prompts/sources-manifest-wizard.md`
 
 ### Step 0.6 (Optional): Run the Interactive Corpus Builder
 
@@ -174,19 +174,11 @@ The agent will elicit short samples, write them into `sources/`, and then genera
 -   `artefacts/writing-style-blueprint-revision-log.md`
 -   `config/sources.yml`
 
-### Step 0.75: Keep `config/sources.yml` Updated
-
-The prompts emit an updated `config/sources.yml` as part of their output (timestamps, newest-sample info). If you're using an AI agent with repo access, it should write that YAML directly to `config/sources.yml` each run.
-
-If you give the agent new source locations (file paths / URLs), it should also add them to `config/sources.yml`.
-
-If you're running the prompts in a chat-only interface (no filesystem access), you'll need to copy/paste the emitted YAML into `config/sources.yml` manually.
+This workflow can create/update the blueprint directly, so you can skip Step 1/2 if you use it.
 
 ### Step 1: Generate Initial Blueprint
 
-1.  Put your writing where the agent can read it:
-    -   Local files: drop plain text into `sources/` (default), or point `config/sources.yml` at your own folders/files.
-    -   Online sources: add URLs in `config/sources.yml` (or tell the agent the URLs; it should add them).
+1.  Ensure `config/sources.yml` points at your writing (local files and/or URLs).
 2.  Run the **Cross-Platform Style Blueprint Generator** prompt (`prompts/generate-style-blueprint.md`). The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
 3.  If you're using an AI agent with repo access, it should write:
 
