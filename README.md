@@ -54,7 +54,7 @@ It is a structured linguistic modeling system.
 
 ## Artifacts
 
-This repository contains three primary components:
+This repository contains four primary components:
 
 ### 1. Cross-Platform Style Blueprint Generator
 
@@ -85,6 +85,16 @@ A lightweight YAML file for tracking:
 -   Update policy
 
 Use this if your corpus becomes large or multi-source.
+
+### 4. Interactive Corpus Builder (Optional)
+
+If you don't have a large corpus yet, use the interactive prompt to generate a diverse set of short, high-signal writing samples quickly.
+
+It will:
+
+-   Ask you a sequence of short writing prompts (one at a time)
+-   Save your answers into `sources/`
+-   Update the blueprint using the existing update/generate prompts
 
 ## Output
 
@@ -135,6 +145,18 @@ Note: `config/sources.yml` is ignored by git by default to avoid accidentally co
 
 1.  Put plain text files in `sources/` (for example, `sources/linkedin.txt`, `sources/blog.txt`).
 2.  Keep those files local. The `sources/` directory is ignored by git by default.
+
+### Step 0.6 (Optional): Run the Interactive Corpus Builder
+
+If you don't have much writing yet (or you want to fill gaps), run:
+
+-   `prompts/interactive-corpus-builder.md`
+
+The agent will elicit short samples, write them into `sources/`, and then generate/update:
+
+-   `artefacts/writing-style-blueprint.md`
+-   `artefacts/writing-style-blueprint-revision-log.md`
+-   `config/sources.yml`
 
 ### Step 0.75: Keep `config/sources.yml` Updated
 
