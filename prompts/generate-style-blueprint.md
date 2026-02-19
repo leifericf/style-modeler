@@ -167,6 +167,19 @@ The blueprint must:
 -   Prefer precision over verbosity
 -   Explicitly note uncertainty where patterns are weak
 
+## Evidence Requirements (Verbatim Snippets)
+
+For every non-trivial pattern, rule, or stylistic claim you state (including the rules in "Mimicry Blueprint"), you must provide supporting verbatim evidence:
+
+- Include 3--5 short, relevant quotes/snippets from the corpus that directly support that specific claim.
+- Snippets may be partial (use `...` to indicate omitted text), but the quoted text itself must be verbatim.
+- Do not paste full posts unless necessary; prefer the smallest snippet that proves the point.
+- If the corpus is too small to provide 3--5 examples for a claim, either:
+  - Provide fewer examples and explicitly mark the claim as weak/uncertain, OR
+  - Remove the claim.
+- Never reuse the same snippet to justify many unrelated claims.
+- When possible, annotate each snippet with a minimal source reference (e.g., platform/source id or filename; include date if available).
+
 When updated with new material, revise the document rather than append loosely. Maintain coherence.
 
 ## Multilingual Corpus Handling
