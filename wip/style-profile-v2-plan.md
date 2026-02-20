@@ -30,11 +30,11 @@ Conventions for updating this plan:
 - [x] Define scales/controls (percentiles within corpus; low/med/high bins; optional 0-100 normalized controls).
 - [x] Define confidence + stability rules (sample size thresholds; mark unstable/unknown).
 - [x] Define evidence policy (PII-safe snippets; no source refs; minimal quotes; redaction rules).
-- [ ] Define segmentation axes the system may compute when metadata exists:
-- [ ] Language (always).
-- [ ] Source/platform (often).
-- [ ] Genre/register (optional).
-- [ ] Time slices (optional; requires timestamps).
+- [x] Define segmentation axes the system may compute when metadata exists:
+- [x] Language (always).
+- [x] Source/platform (often).
+- [x] Genre/register (optional).
+- [x] Time slices (optional; requires timestamps).
 
 Core dimension set (initial recommended v2 baseline):
 - [ ] Lexis / lexical richness (e.g., MTLD/TTR + lexical density proxy + salient n-grams).

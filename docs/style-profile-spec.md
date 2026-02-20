@@ -174,6 +174,44 @@ Operational rules:
 - Prefer partial snippets with `...` omissions over full-post quotes.
 - Evidence is for anchoring claims, not for reconstructing the corpus.
 
+## Segmentation Axes (Normative)
+
+v2 may compute metrics for segments when metadata exists or is inferable.
+
+### Language (always)
+
+- Always partition the corpus by language.
+- Per-language artifacts must be strictly monolingual.
+- Treat a language as *significant* only if it meets both:
+  - share >= 10% of usable tokens, AND
+  - size >= 200 samples OR >= 12000 tokens.
+
+### Source / platform (often)
+
+If sources have platform labels, compute per-platform segments. At minimum, store:
+- per-platform volume (samples/tokens)
+- key measure deltas vs the language overall
+
+If platform segmentation is too sparse (fails stability thresholds), mark it `unstable`.
+
+### Genre / register (optional)
+
+If genre/register metadata exists (explicit labels or strong inference), compute per-genre segments.
+
+If missing, do not invent genre labels; leave as `unknown`.
+
+### Time slices (optional; requires timestamps)
+
+If timestamps exist for a meaningful share of samples, compute time slices.
+
+Default slicing:
+- `early`, `middle`, `recent` by timestamp terciles within each language.
+
+Recency weighting (when producing "current" summaries):
+- weight `recent` slice 2x.
+
+If timestamps are absent or too sparse, time-slice segmentation must be `unknown`.
+
 ## Dimension Set (v2 Baseline)
 
 v2 models these core dimensions:
