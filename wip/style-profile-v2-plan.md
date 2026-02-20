@@ -55,11 +55,11 @@ Core dimension set (initial recommended v2 baseline):
 - [x] `artefacts/<lang>/examples.md`
 - [x] `artefacts/<lang>/generation_blocks.md`
 - [x] `artefacts/<lang>/diachronic.json` (only when timestamps exist)
-- [ ] `artefacts/global/` (only when multilingual is significant)
-- [ ] `artefacts/global/global_profile.md`
-- [ ] `artefacts/global/global_metrics.json`
-- [ ] `artefacts/global/global_examples.md`
-- [ ] `artefacts/global/cross_language_summary.md`
+- [x] `artefacts/global/` (only when multilingual is significant)
+- [x] `artefacts/global/global_profile.md`
+- [x] `artefacts/global/global_metrics.json`
+- [x] `artefacts/global/global_examples.md`
+- [x] `artefacts/global/cross_language_summary.md`
 
 - [ ] Decide revision history strategy (default recommendation):
 - [ ] Keep `artefacts/<lang>/revision-log.md` (or `artefacts/global/revision-log.md` when applicable).

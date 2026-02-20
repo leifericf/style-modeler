@@ -388,3 +388,38 @@ Only emit when timestamps exist at sufficient coverage. Must include:
 - slice definitions (e.g., early/middle/recent) and boundaries
 - per-slice counts
 - per-slice key measures and their stability
+
+### Global artifacts (multilingual only)
+
+Emit `artefacts/global/` only when 2+ languages are significant.
+
+#### `artefacts/global/global_profile.md`
+
+Human-readable cross-language priors. Must include:
+- `schema_version`
+- list of languages included
+- stable cross-language traits (high-level only)
+- explicit mapping notes: what differs by language and should not be treated as global
+
+#### `artefacts/global/global_metrics.json`
+
+Machine-consumable priors and shared targets. Must include:
+- `schema_version`: `2`
+- `generated_at`
+- `languages`: list
+- `priors`: high-level targets/ranges that are stable across languages
+
+Global priors must not conflict with per-language targets; per-language wins on conflict.
+
+#### `artefacts/global/global_examples.md`
+
+PII-safe cross-language anchor snippets (short) that demonstrate shared voice traits.
+
+If cross-language anchoring is not PII-safe, omit examples and record the limitation.
+
+#### `artefacts/global/cross_language_summary.md`
+
+Comparative report across languages. Must include:
+- which dimensions are stable across languages vs language-specific
+- notable adaptations (e.g., tone/formality shifts)
+- explicit cautions where metrics are not comparable cross-language
