@@ -51,6 +51,87 @@ v2 models these core dimensions:
 7) Rhetorical devices (lightweight detectors)
 8) Structure / discourse organization
 
+## Measures (By Dimension)
+
+Each measure should be stored in two forms when applicable:
+- `raw`: count or raw value
+- `rate`: normalized value (see Units)
+
+If a measure is not supported for a language, set it to `unknown` (do not guess).
+
+### 1) Lexis / lexical richness
+
+Recommended measures:
+- Volume: token count, sample count.
+- Diversity: type-token ratio (TTR) (report both overall and moving-window TTR), MTLD (optional).
+- Rarity: hapax legomena rate.
+- Lexical density proxy: content-token share (if POS tagging available); otherwise `unknown`.
+- Function words: top function-word distribution and stability across segments.
+- Salience: top n-grams (1--3) by within-corpus distinctiveness (e.g., TF-IDF by segment).
+
+### 2) Syntax & complexity
+
+Recommended measures:
+- Sentence length distribution (tokens and characters): mean/median/std + histogram bins.
+- Clause/stacking proxies: commas per sentence; conjunction/subordinator marker rates.
+- Parentheticals: parentheses/brackets rate; em-dash rate.
+- Passive-voice proxy (language-specific): if a reliable heuristic exists; otherwise `unknown`.
+
+### 3) Cohesion
+
+Recommended measures:
+- Discourse markers: inventory + rate (language-specific lexicons; record lexicon version).
+- Transition density: sentence-initial connector rate.
+- Reference proxies: pronoun rates; definite/indefinite marker proxies when feasible.
+- Paragraph linkage: average paragraph length; paragraph-initial marker distribution.
+
+### 4) Stance / modality (pragmatics proxies)
+
+Recommended measures:
+- Hedging rate: hedge marker inventory + rate.
+- Boosting/certainty rate: booster marker inventory + rate.
+- Modality rate: modal verb/particle proxies (language-specific).
+- Questions/directives: question-mark rate; interrogative sentence share; imperative proxy (optional).
+- Evaluatives: evaluative adjective/adverb proxies (optional).
+
+### 5) Perspective & audience design
+
+Recommended measures:
+- Pronoun ratios (I/we/you, language-appropriate equivalents).
+- Direct address: second-person share + vocative/address markers (optional).
+- Explanation density proxies: "because"/"so"/"i.e."/"e.g." marker rates (language-specific).
+- Instructional framing: "do/avoid" style directives (when present) and their rate.
+
+### 6) Register / tone
+
+Recommended measures (language-specific where needed):
+- Formality heuristic (optional): if method is implemented; otherwise `unknown`.
+- Contractions rate (where applicable).
+- Colloquial markers / slang markers rate (lexicon-based; optional).
+- Emoji/pictograph rate (optional; do not require).
+
+### 7) Rhetorical devices (lightweight detectors)
+
+Recommended measures:
+- Rhetorical question share (subset of questions; heuristic).
+- Contrast frames: "but/however"-class marker rate (language-specific list).
+- Enumeration/listing: list marker rate (e.g., lines starting with `-`, `*`, numbered lists) and in-sentence enumerators (", and", ";").
+- Parallel/if-then ladders: repeated conditional frame rate (heuristic; optional).
+- Analogy markers: "like/as if/imagine"-class marker rate (language-specific list; optional).
+
+### 8) Structure / discourse organization
+
+Recommended measures:
+- Openings: first-sentence move type distribution (greeting/question/claim/logistics) (heuristic).
+- Closings: invitation/CTA markers (questions, "let me know"-class phrases) (language-specific).
+- Paragraphing: paragraph count per sample; single-paragraph share.
+- Headings: heading marker share (Markdown-style `#` or platform conventions).
+
+For each dimension, the profile must also include:
+- a short human-readable summary of the most stable traits
+- `do`/`don't` style generation constraints derived from observed ranges
+- anchored examples (snippets) for each non-trivial claim
+
 ## Data Model (Conceptual)
 
 v2 artifacts are split by language. Each language profile contains:
