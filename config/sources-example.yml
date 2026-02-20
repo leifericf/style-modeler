@@ -7,6 +7,7 @@ sources:
     path: "sources/"
     include_glob: "*.{txt,md,json,xml,html}"
     platform: mixed
+    default_language: null
     notes: "Drop writing samples/exports into sources/ (txt/md/json/xml/html)"
     recency_weight: 2
     last_imported_at: null
@@ -18,6 +19,7 @@ sources:
     path: "/path/to/facebook/export/"
     format: "json|html|txt"
     platform: facebook
+    default_language: null
     notes: "Status updates only"
     recency_weight: 1
     last_imported_at: null
@@ -28,6 +30,7 @@ sources:
     type: url
     url: "https://example.com/twitter-archive"
     platform: twitter
+    default_language: null
     notes: "Tweets and threads"
     recency_weight: 1
     last_imported_at: null
