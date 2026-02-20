@@ -5,7 +5,7 @@ sources:
   - id: local
     type: dir
     path: "sources/"
-    include_glob: "*.{txt,md,json,xml,html}"
+    include_glob: "**/*.{txt,md,json,xml,html}"
     platform: mixed
     default_language: null
     genre: null

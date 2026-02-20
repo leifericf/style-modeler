@@ -34,12 +34,12 @@ Acceptance checks:
 
 ## 3) Align `include_glob` recursion behavior
 
-- [ ] Make `config/sources-example.yml` match the recursive intent in `prompts/sources-manifest-wizard.md` and `docs/style-profile-method.md`:
+- [x] Make `config/sources-example.yml` match the recursive intent in `prompts/sources-manifest-wizard.md` and `docs/style-profile-method.md`:
   - Change `include_glob` for the `sources/` dir source to `"**/*.{txt,md,json,xml,html}"`.
   - Alternatively (if you decide non-recursive is intended), update the wizard + method docs to match.
 
 Acceptance checks:
-- [ ] Wizard text, method doc, and `config/sources-example.yml` all agree on whether `sources/` ingestion is recursive.
+- [x] Wizard text, method doc, and `config/sources-example.yml` all agree on whether `sources/` ingestion is recursive.
 
 ## 4) Specify recency weighting semantics (avoid ambiguous behavior)
 
