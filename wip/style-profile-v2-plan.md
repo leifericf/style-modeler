@@ -118,9 +118,10 @@ Core dimension set (initial recommended v2 baseline):
 ## Phase 6 - Migration + Backward Compatibility
 
 - [ ] Add a migration prompt: `prompts/migrate-profile-v1-to-v2.md`:
-- [ ] Read v1 profile artifacts (if present).
-- [ ] Produce v2 artifacts with placeholders where recomputation is required.
-- [ ] Clearly mark fields as `unknown` if they cannot be derived.
+- [x] Add a migration prompt: `prompts/migrate-profile-v1-to-v2.md`:
+- [x] Read v1 profile artifacts (if present).
+- [x] Produce v2 artifacts with placeholders where recomputation is required.
+- [x] Clearly mark fields as `unknown` if they cannot be derived.
 
 - [ ] Add `schema_version` to `metrics.json` (and to global metrics).
 - [ ] Update `README.md` to describe v2 workflows + artifact layout.
