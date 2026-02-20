@@ -123,7 +123,7 @@ Core dimension set (initial recommended v2 baseline):
 - [x] Produce v2 artifacts with placeholders where recomputation is required.
 - [x] Clearly mark fields as `unknown` if they cannot be derived.
 
-- [ ] Add `schema_version` to `metrics.json` (and to global metrics).
+- [x] Add `schema_version` to `metrics.json` (and to global metrics).
 - [ ] Update `README.md` to describe v2 workflows + artifact layout.
 
 ## Phase 7 - Verification & Quality Gates

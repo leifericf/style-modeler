@@ -112,6 +112,7 @@ Operational rules:
 Follow the file contracts in `docs/style-profile-spec.md`.
 
 General rules:
+- All JSON artifacts must include `schema_version: 2`.
 - Per-language artifacts are strictly monolingual.
 - Emit `artefacts/global/` only when multilingual is significant.
 - Prefer overwriting per-run artifacts (summaries/examples/JSON) and appending revision logs.
