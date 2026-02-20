@@ -68,7 +68,7 @@ Core dimension set (initial recommended v2 baseline):
 ## Phase 3 - Update the Analysis Prompts (Generate + Update) Around the v2 Schema
 
 - [ ] Reduce prompt duplication by introducing a shared method spec:
-- [ ] Add `prompts/style-profile-method.md` (ingestion, preprocessing, measures, artifact writing rules).
+- [x] Add `prompts/style-profile-method.md` (ingestion, preprocessing, measures, artifact writing rules).
 - [ ] Refactor `prompts/generate-style-profile.md` to reference the method spec and emit v2 artifacts.
 - [ ] Refactor `prompts/update-style-profile.md` to reference the method spec and recompute metrics/distributions.
 
