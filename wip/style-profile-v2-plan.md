@@ -134,10 +134,10 @@ Core dimension set (initial recommended v2 baseline):
 - [x] PII policy adhered to (redaction/omission).
 - [x] Generation conformance self-check covers top targets and reports pass/fail.
 
-- [ ] Run a smoke test on a known corpus and verify:
-- [ ] Artifacts are created with expected paths.
-- [ ] Generation prompt loads and uses them.
-- [ ] Conformance report is meaningful.
+- [x] Run a smoke test on a known corpus and verify:
+- [x] Artifacts are created with expected paths.
+- [x] Generation prompt loads and uses them.
+- [x] Conformance report is meaningful.
 
 ## Phase 8 - Cleanup / Tidying
 
