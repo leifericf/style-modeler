@@ -100,6 +100,47 @@ When the system wants conformance-checkable targets, store them as ranges:
 
 Targets must be derived from stable portions of the corpus (e.g., interquartile range), not from a single sample.
 
+## Confidence and Stability (Normative)
+
+v2 must annotate measures and claims with stability.
+
+### Stability levels
+
+- `stable`: sufficient volume and coverage; measure is safe to use as a target.
+- `unstable`: computed but too little data or too biased; do not use as a hard target.
+- `unknown`: not computed or not supported for the language/format.
+
+### Minimum volume thresholds (baseline)
+
+These thresholds are defaults; the implementation may raise them for noisy sources.
+
+- Language profile (overall) is considered *stable enough to summarize* if it meets either:
+  - `sample_count >= 200`, OR
+  - `token_count >= 12000`.
+
+- Sentence-level measures (sentence length, question share) require:
+  - `sentence_count >= 200`.
+
+- Segment-level comparisons (platform/time) require per-segment:
+  - `sample_count >= 50` AND `token_count >= 3000`.
+
+If a measure fails its threshold, mark it `unstable` (not `unknown`) if it was computed.
+
+### Confidence reporting
+
+For each dimension, report:
+- `stability`: `stable|unstable|unknown`
+- `notes`: short reason (e.g., "few sentences", "no timestamps", "no language support")
+
+If an aggregate value is reported (e.g., mean sentence length), also report:
+- the count used (sentences/samples/tokens)
+- the within-corpus variability (e.g., stddev or IQR)
+
+### Conservative behavior
+
+- Do not turn a weak signal into a rule.
+- Prefer fewer, well-evidenced claims over broad coverage.
+
 ## Dimension Set (v2 Baseline)
 
 v2 models these core dimensions:
