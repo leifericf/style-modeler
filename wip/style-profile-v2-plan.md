@@ -94,10 +94,10 @@ Core dimension set (initial recommended v2 baseline):
 - [x] Optional `genre/register` hints.
 - [x] Timestamp extraction hints for structured exports (where relevant).
 
-- [ ] Update `prompts/sources-manifest-wizard.md` to request minimal useful metadata:
-- [ ] Platform.
-- [ ] Approx date range (if known).
-- [ ] Language (optional).
+- [x] Update `prompts/sources-manifest-wizard.md` to request minimal useful metadata:
+- [x] Platform.
+- [x] Approx date range (if known).
+- [x] Language (optional).
 
 ## Phase 5 - Redesign the "Use Profile to Write Text" Prompt(s)
 

@@ -33,6 +33,8 @@ Ask the user to paste new sources (one per line). Allow these forms:
 Then, for each new source, ask only the minimum metadata needed:
 
 - platform label (free text, e.g. "linkedin", "blog", "email")
+- approx date range (optional; free text, e.g. "2019-2022" or "unknown")
+- default language (optional; ISO 639-1 when possible, e.g. `en`, `no`)
 - optional notes (1 line)
 - optional recency_weight (default 1; suggest 2 for the most representative/current source)
 
@@ -75,6 +77,13 @@ If you do NOT have network access, skip checks and tell the user you will treat 
   - `most_recent_sample_at`: null (unless you can infer it reliably)
   - `last_processed_sample_at`: null (until the profile run actually uses it)
 
+Optional per-source fields you should store when provided:
+- `platform`
+- `default_language`
+- `date_range`
+- `genre` (optional)
+- `timestamp_hints` (optional; structured exports)
+
 ## YAML Formatting & Validation (do this right before writing)
 
 After the user says `DONE`, but BEFORE writing to disk:
@@ -85,6 +94,9 @@ After the user says `DONE`, but BEFORE writing to disk:
 - Use 2-space indentation (no tabs).
 - Keep list indentation consistent (e.g., `sources:` then `- id: ...`).
 - Keep key ordering stable within each source: `id`, `type`, (`path`/`url`), optional fields, then metadata fields.
+
+Recommended per-source key ordering:
+`id`, `type`, (`path`/`url`), `include_glob`/`format`, `platform`, `default_language`, `genre`, `date_range`, `timestamp_hints`, `notes`, `recency_weight`, `last_imported_at`, `most_recent_sample_at`, `last_processed_sample_at`.
 - Use `null` for unknown timestamps.
 - Keep `update_policy` present at top-level.
 
