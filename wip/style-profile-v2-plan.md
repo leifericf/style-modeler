@@ -81,10 +81,10 @@ Core dimension set (initial recommended v2 baseline):
 - [x] Mark measures as `unknown` or `unstable` rather than asserting.
 - [x] Enforce evidence anchoring (snippets per claim; avoid reusing the same snippet across unrelated claims).
 
-- [ ] Multilingual alignment:
-- [ ] Always split by language.
-- [ ] Create `artefacts/global/` only when 2+ languages are significant.
-- [ ] Keep per-language artifacts strictly monolingual.
+- [x] Multilingual alignment:
+- [x] Always split by language.
+- [x] Create `artefacts/global/` only when 2+ languages are significant.
+- [x] Keep per-language artifacts strictly monolingual.
 
 ## Phase 4 - Update Source Manifest Expectations (So We Can Do Better Science)
 

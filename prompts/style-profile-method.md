@@ -53,6 +53,13 @@ Language detection must be conservative:
 
 Treat a language as significant only under the thresholds defined in `docs/style-profile-spec.md`.
 
+## Multilingual Alignment (Required)
+
+- Always split analysis by language.
+- Create `artefacts/global/` only when 2+ languages are significant.
+- Keep each per-language artifact strictly monolingual (summaries, examples, generation blocks).
+- If a language is present but not significant, do not emit a per-language folder; record it under limitations.
+
 ## Measurement
 
 Compute measures and distributions per the canonical spec:
