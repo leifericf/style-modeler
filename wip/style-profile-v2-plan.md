@@ -102,18 +102,18 @@ Core dimension set (initial recommended v2 baseline):
 ## Phase 5 - Redesign the "Use Profile to Write Text" Prompt(s)
 
 - [ ] Split authoring workflows:
-- [ ] Create `prompts/profile-conditioned-drafting.md` (profile-conditioned NLG):
-- [ ] Load artifacts (global + language folder).
-- [ ] Collect generation-time parameters: language, genre, audience, purpose, length, stance dial, constraints.
-- [ ] Draft.
-- [ ] Run a conformance self-check against numeric targets and revise once.
+- [x] Create `prompts/profile-conditioned-drafting.md` (profile-conditioned NLG):
+- [x] Load artifacts (global + language folder).
+- [x] Collect generation-time parameters: language, genre, audience, purpose, length, stance dial, constraints.
+- [x] Draft.
+- [x] Run a conformance self-check against numeric targets and revise once.
 
 - [ ] Keep/adjust `prompts/profile-guided-authoring.md` as "brain-dump then polish" flow:
 - [ ] Load `generation_blocks.md` + a small set of examples.
 - [ ] Do not require full metrics unless doing conformance.
 
-- [ ] Add a compact "style card" assembly step (turn JSON targets into an instruction block).
-- [ ] Add nonfiction safety constraint: if user didn’t supply facts, avoid inventing specifics (independent of style).
+- [x] Add a compact "style card" assembly step (turn JSON targets into an instruction block).
+- [x] Add nonfiction safety constraint: if user didn’t supply facts, avoid inventing specifics (independent of style).
 
 ## Phase 6 - Migration + Backward Compatibility
 
