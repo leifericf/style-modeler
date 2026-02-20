@@ -210,6 +210,10 @@ Default slicing:
 Recency weighting (when producing "current" summaries):
 - weight `recent` slice 2x.
 
+Recency weighting must be explicit in outputs:
+- By default, numeric metrics/distributions describe the full unweighted language corpus.
+- If any "current" (recency-biased) summary or target is produced, it must be clearly labeled and the weighting method recorded in `artefacts/corpus-metadata.md`.
+
 If timestamps are absent or too sparse, time-slice segmentation must be `unknown`.
 
 ## Dimension Set (Schema Baseline)

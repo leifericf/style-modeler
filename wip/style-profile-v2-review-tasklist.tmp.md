@@ -43,19 +43,19 @@ Acceptance checks:
 
 ## 4) Specify recency weighting semantics (avoid ambiguous behavior)
 
-- [ ] Decide and document the policy for `recency_weight` and `update_policy.recency_weight_latest_phase`.
+- [x] Decide and document the policy for `recency_weight` and `update_policy.recency_weight_latest_phase`.
   - Recommended minimal policy (least disruptive):
     - Metrics/distributions remain unweighted (describe the full corpus).
     - Recency weighting influences only:
       - which snippets are preferred as evidence/anchors
       - what is emphasized in `profile_summary.md` / `generation_blocks.md`
       - optional “current voice” notes (clearly labeled as recency-biased)
-- [ ] Write the policy into `docs/style-profile-method.md`.
-- [ ] If needed, add a short clarification in `docs/style-profile-spec.md` about where weighting is allowed vs forbidden.
+- [x] Write the policy into `docs/style-profile-method.md`.
+- [x] If needed, add a short clarification in `docs/style-profile-spec.md` about where weighting is allowed vs forbidden.
 
 Acceptance checks:
-- [ ] `docs/style-profile-method.md` contains an explicit, testable statement of what is weighted and what is not.
-- [ ] The policy does not contradict stability/target rules (no targets derived from unstable slices).
+- [x] `docs/style-profile-method.md` contains an explicit, testable statement of what is weighted and what is not.
+- [x] The policy does not contradict stability/target rules (no targets derived from unstable slices).
 
 ## 5) Quick verification sweep (repo-level)
 

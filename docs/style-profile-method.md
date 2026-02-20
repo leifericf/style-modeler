@@ -32,6 +32,22 @@ If present, use optional per-source metadata from `config/sources.yml`:
 - `date_range`: optional human hint about the source's time span; do not treat as authoritative.
 - `timestamp_hints`: optional extraction hints for structured exports (keys/paths/notes) to help locate timestamps.
 
+## Recency Weighting (Policy)
+
+`config/sources.yml` may include:
+- per-source `recency_weight`
+- `update_policy.recency_weight_latest_phase`
+
+To keep artifacts interpretable and conformance checks meaningful, apply recency weighting conservatively:
+
+- Metrics and distributions are UNWEIGHTED by default.
+  - `artefacts/<lang>/metrics.json` and `artefacts/<lang>/distributions.json` describe the full usable corpus for that language.
+  - Conformance targets in `metrics.json` must be derived from stable, unweighted data unless you explicitly introduce a separate, clearly-labeled "current" target set.
+- Recency weights may influence qualitative outputs:
+  - Which snippets are preferred as evidence/anchors (still representative; avoid cherry-picking).
+  - Which stable traits are emphasized in `profile_summary.md` and `generation_blocks.md` (label as "current" if the emphasis is recency-biased).
+- If you apply any weighting, record it in `artefacts/corpus-metadata.md` (what was weighted, and how).
+
 ## Ingestion and Text Extraction
 
 ### Structured exports
