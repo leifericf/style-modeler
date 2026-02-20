@@ -24,13 +24,13 @@ Acceptance checks:
 
 ## 2) Fix README v1 remnants (Interactive Builder section)
 
-- [ ] Update `README.md` “Interactive Corpus Builder” section:
+- [x] Update `README.md` “Interactive Corpus Builder” section:
   - Remove the v1 output list (`artefacts/writing-style-profile.md`, `artefacts/writing-style-profile-revision-log.md`).
   - Replace with: writes interview data to `sources/`, updates `config/sources.yml`, then runs v2 generate/update prompts producing `artefacts/<lang>/...` and `artefacts/corpus-metadata.md`.
 
 Acceptance checks:
-- [ ] `README.md` contains no references to `artefacts/writing-style-profile` outputs (except in the migration section, if kept as legacy inputs).
-- [ ] README’s workflow sections are internally consistent with `docs/workflows.md`.
+- [x] `README.md` contains no references to `artefacts/writing-style-profile` outputs (except in the migration section, if kept as legacy inputs).
+- [x] README’s workflow sections are internally consistent with `docs/workflows.md`.
 
 ## 3) Align `include_glob` recursion behavior
 

@@ -184,8 +184,8 @@ If you don't have much writing yet (or you want to fill gaps), run:
 
 The agent will elicit short samples, write them into `sources/`, and then generate/update:
 
--   `artefacts/writing-style-profile.md`
--   `artefacts/writing-style-profile-revision-log.md`
+-   Style Profile artifacts under `artefacts/<lang>/` (one folder per significant language)
+-   `artefacts/corpus-metadata.md`
 -   `config/sources.yml`
 
 This workflow can create/update the profile directly, so you can skip Step 1/2 if you use it.
