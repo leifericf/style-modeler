@@ -89,7 +89,7 @@ Core dimension set (initial recommended v2 baseline):
 ## Phase 4 - Update Source Manifest Expectations (So We Can Do Better Science)
 
 - [ ] Extend `config/sources-example.yml` and corresponding prompt text to optionally support:
-- [ ] `platform` label (explicit).
+- [x] `platform` label (explicit).
 - [ ] `default_language` (if known).
 - [ ] Optional `genre/register` hints.
 - [ ] Timestamp extraction hints for structured exports (where relevant).

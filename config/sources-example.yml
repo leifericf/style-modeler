@@ -6,6 +6,7 @@ sources:
     type: dir
     path: "sources/"
     include_glob: "*.{txt,md,json,xml,html}"
+    platform: mixed
     notes: "Drop writing samples/exports into sources/ (txt/md/json/xml/html)"
     recency_weight: 2
     last_imported_at: null
@@ -16,6 +17,7 @@ sources:
     type: file
     path: "/path/to/facebook/export/"
     format: "json|html|txt"
+    platform: facebook
     notes: "Status updates only"
     recency_weight: 1
     last_imported_at: null
@@ -25,6 +27,7 @@ sources:
   - id: twitter
     type: url
     url: "https://example.com/twitter-archive"
+    platform: twitter
     notes: "Tweets and threads"
     recency_weight: 1
     last_imported_at: null

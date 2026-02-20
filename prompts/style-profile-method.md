@@ -25,6 +25,9 @@ If you have repository access:
 - Read `config/sources.yml` and ingest from referenced local files/dirs/URLs.
 - If `config/sources.yml` does not exist, create a minimal one that ingests `sources/` recursively.
 
+If present, use optional per-source metadata from `config/sources.yml`:
+- `platform`: used for per-platform segmentation and corpus metadata.
+
 ## Ingestion and Text Extraction
 
 ### Structured exports
