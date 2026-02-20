@@ -76,10 +76,10 @@ Core dimension set (initial recommended v2 baseline):
 - [x] Generate prompt emits one fenced block per artifact file (Markdown blocks for .md, JSON blocks for .json, YAML for `config/sources.yml` if still emitted).
 - [x] Update prompt emits updated artifacts + a change log entry (or run metadata).
 
-- [ ] Add explicit confidence + stability behavior:
-- [ ] Minimum sample thresholds per measure/dimension.
-- [ ] Mark measures as `unknown` or `unstable` rather than asserting.
-- [ ] Enforce evidence anchoring (snippets per claim; avoid reusing the same snippet across unrelated claims).
+- [x] Add explicit confidence + stability behavior:
+- [x] Minimum sample thresholds per measure/dimension.
+- [x] Mark measures as `unknown` or `unstable` rather than asserting.
+- [x] Enforce evidence anchoring (snippets per claim; avoid reusing the same snippet across unrelated claims).
 
 - [ ] Multilingual alignment:
 - [ ] Always split by language.

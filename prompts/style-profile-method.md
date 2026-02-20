@@ -63,11 +63,31 @@ Compute measures and distributions per the canonical spec:
 
 If a measure is unsupported or unreliable for the language/source format, mark it `unknown`.
 
+## Confidence and Stability (Required)
+
+You MUST apply the stability rules from `docs/style-profile-spec.md`.
+
+Minimum thresholds (baseline):
+- Language-level summary is only considered stable enough to summarize if either:
+  - `sample_count >= 200`, OR
+  - `token_count >= 12000`.
+- Sentence-level measures require `sentence_count >= 200`.
+- Segment-level comparisons (platform/time/genre) require per-segment:
+  - `sample_count >= 50` AND `token_count >= 3000`.
+
+Rules:
+- If a measure was computed but fails its threshold, mark it `unstable`.
+- If a measure is not computed or not supported, mark it `unknown`.
+- Do not create hard targets/ranges from `unstable` data.
+- Do not state a claim as a rule unless it is supported by stable measures and anchored examples.
+
 ## Evidence Anchoring
 
 Evidence is required for non-trivial claims.
 
 Operational rules:
+- For each non-trivial claim, include 3--5 evidence snippets.
+- Keep snippets short (prefer <= 240 characters after redaction/omission).
 - Prefer PII-free snippets.
 - If required, redact PII with `[REDACTED]` while keeping the remainder verbatim.
 - Do not include source references (ids/URLs/paths/dates) in evidence lists.
