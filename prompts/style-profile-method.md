@@ -77,6 +77,17 @@ Compute measures and distributions per the canonical spec:
 
 If a measure is unsupported or unreliable for the language/source format, mark it `unknown`.
 
+## Targets for Conformance (Required When Stable)
+
+If the language slice is `stable`, you MUST include a small set of numeric `targets` in `artefacts/<lang>/metrics.json` that a drafting workflow can check.
+
+Minimum target set (choose measures you can compute reliably):
+- sentence length (tokens per sentence): target range
+- question share (percent of sentences ending with `?`): target range
+- list usage (rate of lines starting with `-`/`*`/`1.`): target range
+
+If a target cannot be computed reliably, omit it and record the limitation.
+
 ## Confidence and Stability (Required)
 
 You MUST apply the stability rules from `docs/style-profile-spec.md`.
