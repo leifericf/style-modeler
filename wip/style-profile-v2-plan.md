@@ -24,7 +24,7 @@ Conventions for updating this plan:
 
 ## Phase 1 - Define a Scientific-but-Practical Profile Schema (v2)
 
-- [ ] Create `docs/style-profile-spec.md` as the canonical schema/spec:
+- [x] Create `docs/style-profile-spec.md` as the canonical schema/spec:
 - [ ] Define core dimensions and their measures.
 - [ ] Define measurement units (e.g., per 1k tokens, % sentences, chars/sentence, etc.).
 - [ ] Define scales/controls (percentiles within corpus; low/med/high bins; optional 0-100 normalized controls).
