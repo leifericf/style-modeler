@@ -54,15 +54,13 @@ It is a structured linguistic modeling system.
 
 ## Artifacts
 
-This repository contains six primary components:
+This repository contains primary components:
 
 ### 1. Cross-Platform Style Profile Generator
 
-**Purpose:** Creates the initial:
+**Purpose:** Creates the initial style profile artifacts from a corpus.
 
-> Writing Style Profile
-
-This is used when starting from scratch with a new corpus.
+Use: `prompts/generate-style-profile.md`
 
 ### 2. Writing Style Profile Update & Refinement Agent
 
@@ -74,6 +72,8 @@ This is used when starting from scratch with a new corpus.
 -   Previous conclusions must be revised
 
 This ensures the model remains coherent and current.
+
+Use: `prompts/update-style-profile.md`
 
 ### 3. Source Manifest Template (Optional)
 
@@ -108,35 +108,41 @@ If the agent has network access, it can also sanity-check whether pasted URLs ar
 
 ### 6. Profile-Guided Authoring Agent (Optional)
 
-Use `prompts/profile-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your Writing Style Profile. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
+Use `prompts/profile-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your style artifacts. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
+
+### 7. Profile-Conditioned Drafting Agent (Optional)
+
+Use `prompts/profile-conditioned-drafting.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
+
+### 8. Profile Migration Agent (Optional)
+
+If you have older, legacy profile files, use `prompts/migrate-profile-v1-to-v2.md` to migrate them into the current artifact layout. Migration preserves qualitative rules and evidence and marks anything requiring recomputation as `unknown`.
 
 ## Output
 
-The system produces a structured Markdown document titled `Writing Style Profile`.
+The system produces a set of artifacts under `artefacts/`.
 
-If the corpus contains a significant amount of writing in multiple languages, the generator/update prompts should emit one strictly monolingual profile per language (e.g. `artefacts/writing-style-profile_en.md`, `artefacts/writing-style-profile_no.md`) so stylistic differences by language are captured separately. If other languages appear only in small amounts, the prompts should mention them under data limitations instead of creating separate profiles.
+Per-language artifacts live in `artefacts/<lang>/` (e.g., `artefacts/en/`, `artefacts/no/`):
 
-The profile includes:
+- `artefacts/<lang>/profile_summary.md`
+- `artefacts/<lang>/examples.md`
+- `artefacts/<lang>/generation_blocks.md`
+- `artefacts/<lang>/metrics.json`
+- `artefacts/<lang>/distributions.json`
+- `artefacts/<lang>/revision-log.md`
+- `artefacts/<lang>/diachronic.json` (only when timestamps support it)
 
--   Vocabulary & word choice patterns
--   Sentence construction & rhythm
--   Structural patterns
--   Rhetorical devices
--   Argumentation style
--   Emotional tone & character
--   Values & subtext
--   Cross-platform differences
--   Evolution over time
--   Style vector summary
--   Mimicry profile
+If multiple languages are significant, a global layer may be emitted in `artefacts/global/`:
 
-Revision history is stored separately in:
+- `artefacts/global/global_profile.md`
+- `artefacts/global/global_examples.md`
+- `artefacts/global/global_metrics.json`
+- `artefacts/global/cross_language_summary.md`
+- `artefacts/global/revision-log.md`
 
--   `artefacts/writing-style-profile-revision-log.md`
+Corpus metadata is written to `artefacts/corpus-metadata.md`.
 
-In multilingual mode, revision logs are also split per language (e.g. `artefacts/writing-style-profile-revision-log_en.md`).
-
-The result is a deterministic style model that can be reused for imitation.
+Note: `artefacts/` is ignored by git by default (it may contain personal writing or derived snippets).
 
 ## Iterative Workflow
 
@@ -187,24 +193,22 @@ This workflow can create/update the profile directly, so you can skip Step 1/2 i
 ### Step 1: Generate Initial Profile
 
 1.  Ensure `config/sources.yml` points at your writing (local files and/or URLs).
-2.  Run the **Cross-Platform Style Profile Generator** prompt (`prompts/generate-style-profile.md`). The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
-3.  If you're using an AI agent with repo access, it should write:
+2.  Run `prompts/generate-style-profile.md`. The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
+3.  If you're using an AI agent with repo access, it should write the emitted blocks to:
 
-    -   `artefacts/writing-style-profile.md`
-    -   `artefacts/writing-style-profile-revision-log.md`
-    -   `config/sources.yml`
-
-    If it only prints the fenced blocks, ask it to save them to those paths.
+    - `artefacts/<lang>/...` (one folder per significant language)
+    - `artefacts/corpus-metadata.md`
+    - `config/sources.yml`
 
 ### Step 2: Add New Writing Samples
 
 When you have more writing (new LinkedIn posts, new platform, etc.):
 
 1.  Add the new material to disk/URLs referenced by `config/sources.yml`.
-2.  Run the **Writing Style Profile Update & Refinement Agent** prompt (`prompts/update-style-profile.md`).
+2.  Run `prompts/update-style-profile.md`.
 3.  If you mention new sources in the prompt (new file paths / URLs), the agent should add them to `config/sources.yml` automatically.
-4.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-profile.md`, `artefacts/writing-style-profile-revision-log.md`, and `config/sources.yml` for you.
-5.  Review `artefacts/writing-style-profile-revision-log.md` for what changed.
+4.  If you're using an AI agent with repo access, it should update `artefacts/<lang>/...`, append to `artefacts/<lang>/revision-log.md`, and update `config/sources.yml`.
+5.  Review `artefacts/<lang>/revision-log.md` for what changed.
 
 ### Step 3: Generate Stylized Writing
 
@@ -214,6 +218,8 @@ After analysis:
 2.  Specify the target platform (optional).
 3.  Ask for controlled imitation.
 4.  The system generates a post following extracted rules.
+
+For a direct "write in my style" flow with a conformance self-check, run `prompts/profile-conditioned-drafting.md`.
 
 For an interactive, "brain-dump then polish" flow, run `prompts/profile-guided-authoring.md`.
 
