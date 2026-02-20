@@ -37,14 +37,14 @@ Conventions for updating this plan:
 - [x] Time slices (optional; requires timestamps).
 
 Core dimension set (initial recommended v2 baseline):
-- [ ] Lexis / lexical richness (e.g., MTLD/TTR + lexical density proxy + salient n-grams).
-- [ ] Syntax & complexity (sentence length distribution + clause density proxies + passive/active proxy + punctuation complexity).
-- [ ] Cohesion (discourse marker inventory + rates + transition strategies + reference proxies).
-- [ ] Stance/modality/pragmatics proxies (hedges/boosters + modality + evaluatives + questions/directives).
-- [ ] Perspective & audience design (I/we/you ratios + direct address + explanation density proxies).
-- [ ] Register/tone (formality heuristic + contraction rate + colloquial markers + sentiment/emotion category proxies if feasible).
-- [ ] Rhetorical devices (light detectors + examples: rhetorical questions, contrast frames, repetition, parallel/listing).
-- [ ] Structure/discourse organization (opening/conclusion move types + paragraph/list usage distributions).
+- [x] Lexis / lexical richness (e.g., MTLD/TTR + lexical density proxy + salient n-grams).
+- [x] Syntax & complexity (sentence length distribution + clause density proxies + passive/active proxy + punctuation complexity).
+- [x] Cohesion (discourse marker inventory + rates + transition strategies + reference proxies).
+- [x] Stance/modality/pragmatics proxies (hedges/boosters + modality + evaluatives + questions/directives).
+- [x] Perspective & audience design (I/we/you ratios + direct address + explanation density proxies).
+- [x] Register/tone (formality heuristic + contraction rate + colloquial markers + sentiment/emotion category proxies if feasible).
+- [x] Rhetorical devices (light detectors + examples: rhetorical questions, contrast frames, repetition, parallel/listing).
+- [x] Structure/discourse organization (opening/conclusion move types + paragraph/list usage distributions).
 
 ## Phase 2 - Redesign Artifact Outputs + Directory Layout (Less Duplication)
 

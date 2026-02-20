@@ -225,6 +225,8 @@ v2 models these core dimensions:
 7) Rhetorical devices (lightweight detectors)
 8) Structure / discourse organization
 
+This list is the v2 baseline dimension set referenced in `wip/style-profile-v2-plan.md` Phase 1.
+
 ## Measures (By Dimension)
 
 Each measure should be stored in two forms when applicable:
