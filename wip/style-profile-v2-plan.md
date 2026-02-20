@@ -67,12 +67,12 @@ Core dimension set (initial recommended v2 baseline):
 
 ## Phase 3 - Update the Analysis Prompts (Generate + Update) Around the v2 Schema
 
-- [ ] Reduce prompt duplication by introducing a shared method spec:
+- [x] Reduce prompt duplication by introducing a shared method spec:
 - [x] Add `prompts/style-profile-method.md` (ingestion, preprocessing, measures, artifact writing rules).
 - [x] Refactor `prompts/generate-style-profile.md` to reference the method spec and emit v2 artifacts.
 - [x] Refactor `prompts/update-style-profile.md` to reference the method spec and recompute metrics/distributions.
 
-- [ ] Update output contracts:
+- [x] Update output contracts:
 - [x] Generate prompt emits one fenced block per artifact file (Markdown blocks for .md, JSON blocks for .json, YAML for `config/sources.yml` if still emitted).
 - [x] Update prompt emits updated artifacts + a change log entry (or run metadata).
 

@@ -115,3 +115,11 @@ If coverage is weak or segmented slices are unstable:
 - Say so explicitly.
 - Mark dimensions/measures as `unstable` or `unknown`.
 - Avoid turning weak signals into generation constraints.
+
+## Integration Note
+
+This method spec is designed to be referenced by:
+- `prompts/generate-style-profile.md`
+- `prompts/update-style-profile.md`
+
+If you cannot read repo files, ask the user to paste these specs (or provide their contents inline) before proceeding.
