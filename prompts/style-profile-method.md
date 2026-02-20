@@ -29,6 +29,8 @@ If present, use optional per-source metadata from `config/sources.yml`:
 - `platform`: used for per-platform segmentation and corpus metadata.
 - `default_language`: a hint for language partitioning; still run conservative detection and allow mixed-language sources.
 - `genre`: optional segmentation hint; do not invent if missing.
+- `date_range`: optional human hint about the source's time span; do not treat as authoritative.
+- `timestamp_hints`: optional extraction hints for structured exports (keys/paths/notes) to help locate timestamps.
 
 ## Ingestion and Text Extraction
 

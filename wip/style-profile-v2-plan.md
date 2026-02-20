@@ -92,7 +92,7 @@ Core dimension set (initial recommended v2 baseline):
 - [x] `platform` label (explicit).
 - [x] `default_language` (if known).
 - [x] Optional `genre/register` hints.
-- [ ] Timestamp extraction hints for structured exports (where relevant).
+- [x] Timestamp extraction hints for structured exports (where relevant).
 
 - [ ] Update `prompts/sources-manifest-wizard.md` to request minimal useful metadata:
 - [ ] Platform.
