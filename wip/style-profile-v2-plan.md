@@ -48,13 +48,13 @@ Core dimension set (initial recommended v2 baseline):
 
 ## Phase 2 - Redesign Artifact Outputs + Directory Layout (Less Duplication)
 
-- [ ] Define v2 artifact layout and exact file contracts (paths + required fields + formats):
-- [ ] `artefacts/<lang>/profile_summary.md`
-- [ ] `artefacts/<lang>/metrics.json`
-- [ ] `artefacts/<lang>/distributions.json`
-- [ ] `artefacts/<lang>/examples.md`
-- [ ] `artefacts/<lang>/generation_blocks.md`
-- [ ] `artefacts/<lang>/diachronic.json` (only when timestamps exist)
+- [x] Define v2 artifact layout and exact file contracts (paths + required fields + formats):
+- [x] `artefacts/<lang>/profile_summary.md`
+- [x] `artefacts/<lang>/metrics.json`
+- [x] `artefacts/<lang>/distributions.json`
+- [x] `artefacts/<lang>/examples.md`
+- [x] `artefacts/<lang>/generation_blocks.md`
+- [x] `artefacts/<lang>/diachronic.json` (only when timestamps exist)
 - [ ] `artefacts/global/` (only when multilingual is significant)
 - [ ] `artefacts/global/global_profile.md`
 - [ ] `artefacts/global/global_metrics.json`

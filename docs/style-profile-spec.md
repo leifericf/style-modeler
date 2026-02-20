@@ -316,3 +316,75 @@ v2 artifacts are split by language. Each language profile contains:
 - *Machine-consumable* metrics and distributions (JSON).
 
 Global artifacts exist only when multiple languages are significant, and store cross-language priors.
+
+## Artifact Layout and File Contracts (Normative)
+
+Artifact root: `artefacts/`.
+
+### Per-language artifacts
+
+Per-language artifacts live in `artefacts/<lang>/` where `<lang>` is ISO 639-1 lowercase when possible (e.g., `en`, `no`).
+
+Required files:
+
+#### `artefacts/<lang>/profile_summary.md`
+
+Human-readable summary for the language. Must include:
+- language id and `schema_version`
+- corpus/segment coverage notes (what is included/excluded)
+- per-dimension summary bullets, with stability annotations
+- a short "do/avoid" list derived from stable traits
+- limitations (unknown/unstable dimensions)
+
+#### `artefacts/<lang>/metrics.json`
+
+Machine-consumable metrics and targets. Must include at minimum:
+
+- `schema_version`: number (must be `2`)
+- `language`: string
+- `generated_at`: ISO 8601 UTC timestamp
+- `counts`: `{ sample_count, token_count, sentence_count }`
+- `dimensions`: object keyed by dimension id; each contains:
+  - `stability`: `stable|unstable|unknown`
+  - `notes`: short string
+  - `measures`: numeric fields with `{ raw, rate, unit, denom }` where applicable
+  - optional `targets`: target ranges used for conformance (see Scales and Controls)
+
+If a measure is `unknown`, omit `raw/rate` and store `{ "status": "unknown", "reason": "..." }`.
+
+#### `artefacts/<lang>/distributions.json`
+
+Machine-consumable distributions. Must include:
+- `schema_version`: `2`
+- `language`
+- `generated_at`
+- `counts` (same contract as metrics)
+- `distributions`: object of named distributions; each distribution includes:
+  - `unit`
+  - `bin_edges`
+  - `bin_counts`
+  - `notes` (optional)
+
+#### `artefacts/<lang>/examples.md`
+
+PII-safe evidence anchors and representative snippets. Must include:
+- sections per dimension
+- labeled snippets that demonstrate each non-trivial claim
+- no source references (no URLs/filenames/ids/dates)
+
+#### `artefacts/<lang>/generation_blocks.md`
+
+Reusable prompt blocks for generation. Must include:
+- a compact "style card" (derived from stable measures/targets)
+- do/avoid constraints as imperative rules
+- a small set of short "anchor" examples (PII-safe)
+- explicit instructions for conformance self-check behavior when numeric targets exist
+
+#### `artefacts/<lang>/diachronic.json` (optional)
+
+Only emit when timestamps exist at sufficient coverage. Must include:
+- `schema_version`: `2`
+- `language`
+- slice definitions (e.g., early/middle/recent) and boundaries
+- per-slice counts
+- per-slice key measures and their stability
