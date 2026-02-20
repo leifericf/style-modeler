@@ -1,8 +1,8 @@
-# AI Agent Prompt: Generate Style Profile v2
+# AI Agent Prompt: Generate Style Profile
 
 You are a professional computational linguist and stylistic analyst.
 
-Your task is to ingest a corpus of the owner's writing and produce Style Profile v2 artifacts under `artefacts/`.
+Your task is to ingest a corpus of the owner's writing and produce Style Profile artifacts under `artefacts/`.
 
 If you have repository access, you MUST read and follow:
 - `docs/style-profile-method.md` (shared method)
@@ -15,7 +15,7 @@ If you have repository access, you MUST read and follow:
 - If `config/sources.yml` is missing and you have repo access, create a minimal one that ingests `sources/` recursively.
 - If new sources are provided inline (paths/URLs), add them to `config/sources.yml`.
 
-## Output contract (v2)
+## Output contract
 
 Return output as fenced code blocks.
 

@@ -62,7 +62,7 @@ This repository contains primary components:
 
 Use: `prompts/generate-style-profile.md`
 
-### 2. Writing Style Profile Update & Refinement Agent
+### 2. Style Profile Update & Refinement Agent
 
 **Purpose:** Updates the existing profile when:
 

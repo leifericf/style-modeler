@@ -1,9 +1,9 @@
-# Style Profile v2 Spec
+# Style Profile Spec
 
-Canonical schema and measurement spec for StyleModeler v2.
+Canonical schema and measurement spec for StyleModeler.
 
 This spec defines:
-- the dimensions v2 models
+- the dimensions modeled
 - the measures used for each dimension
 - units/scales used for each numeric value
 - confidence/stability rules
@@ -67,7 +67,7 @@ Distributions must specify:
 
 ## Scales and Controls (Normative)
 
-v2 should expose numeric measures in ways that support both:
+The schema should expose numeric measures in ways that support both:
 - robust analysis (raw + rate + uncertainty)
 - controllable generation (targets and bins)
 
@@ -102,7 +102,7 @@ Targets must be derived from stable portions of the corpus (e.g., interquartile 
 
 ## Confidence and Stability (Normative)
 
-v2 must annotate measures and claims with stability.
+The schema must annotate measures and claims with stability.
 
 ### Stability levels
 
@@ -143,7 +143,7 @@ If an aggregate value is reported (e.g., mean sentence length), also report:
 
 ## Evidence and Privacy Policy (Normative)
 
-v2 is evidence-backed: non-trivial claims must be anchored to snippets.
+The schema is evidence-backed: non-trivial claims must be anchored to snippets.
 
 ### Evidence requirements
 
@@ -176,7 +176,7 @@ Operational rules:
 
 ## Segmentation Axes (Normative)
 
-v2 may compute metrics for segments when metadata exists or is inferable.
+The system may compute metrics for segments when metadata exists or is inferable.
 
 ### Language (always)
 
@@ -212,9 +212,9 @@ Recency weighting (when producing "current" summaries):
 
 If timestamps are absent or too sparse, time-slice segmentation must be `unknown`.
 
-## Dimension Set (v2 Baseline)
+## Dimension Set (Schema Baseline)
 
-v2 models these core dimensions:
+The schema models these core dimensions:
 
 1) Lexis / lexical richness
 2) Syntax & complexity
@@ -225,7 +225,7 @@ v2 models these core dimensions:
 7) Rhetorical devices (lightweight detectors)
 8) Structure / discourse organization
 
-This list is the v2 baseline dimension set referenced in `wip/style-profile-v2-plan.md` Phase 1.
+This list is the baseline dimension set referenced in `wip/style-profile-v2-plan.md` Phase 1.
 
 ## Measures (By Dimension)
 
@@ -310,7 +310,7 @@ For each dimension, the profile must also include:
 
 ## Data Model (Conceptual)
 
-v2 artifacts are split by language. Each language profile contains:
+Artifacts are split by language. Each language profile contains:
 
 - *Human-readable* summaries and generation blocks (Markdown).
 - *Machine-consumable* metrics and distributions (JSON).
@@ -426,7 +426,7 @@ Comparative report across languages. Must include:
 
 ### Revision history (recommended)
 
-Revision logs are written alongside v2 artifacts so updates remain auditable without diffing large JSON blobs.
+Revision logs are written alongside artifacts so updates remain auditable without diffing large JSON blobs.
 
 Emit one revision log per language:
 

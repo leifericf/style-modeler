@@ -143,4 +143,4 @@ Core dimension set (initial recommended v2 baseline):
 
 - [ ] Ensure only templates/specs are tracked; keep real outputs ignored (already mostly true via `.gitignore`).
 - [x] Consolidate methodology duplication into `docs/` (schema + method + workflow).
-- [ ] Normalize terminology across docs/prompts: always "style profile" (avoid synonyms unless explicitly defined).
+- [x] Normalize terminology across docs/prompts: always "style profile" (avoid synonyms unless explicitly defined).

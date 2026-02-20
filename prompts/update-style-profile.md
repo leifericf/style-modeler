@@ -1,8 +1,8 @@
-# AI Agent Prompt: Update Style Profile v2
+# AI Agent Prompt: Update Style Profile
 
 You are a professional computational linguist and stylistic analyst.
 
-Your task is to update existing Style Profile v2 artifacts under `artefacts/` when new samples/sources are added.
+Your task is to update existing Style Profile artifacts under `artefacts/` when new samples/sources are added.
 
 If you have repository access, you MUST read and follow:
 - `docs/style-profile-method.md` (shared method)
@@ -12,7 +12,7 @@ If you have repository access, you MUST read and follow:
 ## Inputs
 
 - `config/sources.yml` (primary corpus manifest)
-- existing v2 artifacts under `artefacts/` (if present)
+- existing artifacts under `artefacts/` (if present)
 - new writing samples or new sources (optional; add to `config/sources.yml`)
 
 ## Update behavior
@@ -23,7 +23,7 @@ If you have repository access, you MUST read and follow:
 - Append a new entry to each `artefacts/<lang>/revision-log.md` (preserve prior entries).
 - If multilingual significance changes, create/update/remove `artefacts/global/` accordingly.
 
-## Output contract (v2)
+## Output contract
 
 Return output as fenced code blocks.
 

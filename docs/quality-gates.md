@@ -22,16 +22,16 @@ It is intentionally:
 
 ## Analysis Quality Gates (Profile Artifacts)
 
-These gates apply to any v2 profile run that emits artifacts under `artefacts/`.
+These gates apply to any profile run that emits artifacts under `artefacts/`.
 
 ### A. Contract: expected files exist
 
-- For each significant language `<lang>`, the run emits the v2 artifact set for that language.
+- For each significant language `<lang>`, the run emits the full artifact set for that language.
 - If multilingual is significant, a global layer exists and is used only for cross-language priors.
 
 ### B. Coverage: core dimensions are handled
 
-For each core dimension in the v2 spec, the artifacts must contain either:
+For each core dimension in the schema, the artifacts must contain either:
 - measured values + interpretation + evidence anchors, OR
 - an explicit `unknown` / `unstable` marking with a reason (e.g., insufficient sample size).
 
@@ -65,7 +65,7 @@ For each core dimension in the v2 spec, the artifacts must contain either:
 
 ## Generation Quality Gates (Profile-Conditioned Drafting)
 
-These gates apply to any v2 drafting workflow that claims to be style-conditioned by v2 artifacts.
+These gates apply to any drafting workflow that claims to be style-conditioned by artifacts.
 
 ### A. Inputs are explicit
 
@@ -85,9 +85,9 @@ The drafting prompt/workflow collects or infers (and states) at minimum:
 
 ### C. Conformance self-check and one revision
 
-v2 is considered “done” when there is at least one generation workflow that:
+The system is considered “done” when there is at least one generation workflow that:
 
-1) Loads v2 artifacts (global + target language).
+1) Loads artifacts (global + target language).
 2) Drafts a response.
 3) Runs a measurable conformance self-check against declared numeric targets.
 4) Revises once if the check fails.
