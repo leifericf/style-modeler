@@ -18,7 +18,7 @@ Conventions for updating this plan:
 ## Phase 0 - Lock Decisions + Success Criteria
 
 - [x] Document v2 success criteria (analysis + generation) in a single place (recommended path: `docs/quality-gates.md`).
-- [ ] Confirm artifact root remains `artefacts/` (default: keep).
+- [x] Confirm artifact root remains `artefacts/` (default: keep).
 - [ ] Confirm output baseline remains Markdown + JSON (default: keep).
 - [ ] Define what "done" means for v2 (recommended): generation prompt loads v2 artifacts and performs a measurable conformance self-check.
 

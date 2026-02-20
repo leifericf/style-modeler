@@ -15,7 +15,7 @@ It is intentionally:
 
 ## Locked Decisions (Phase 0)
 
-TBD in Phase 0.
+- Artifact root directory: `artefacts/`.
 
 ## Analysis Quality Gates (Profile Artifacts)
 
