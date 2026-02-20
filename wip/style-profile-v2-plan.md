@@ -61,9 +61,9 @@ Core dimension set (initial recommended v2 baseline):
 - [x] `artefacts/global/global_examples.md`
 - [x] `artefacts/global/cross_language_summary.md`
 
-- [ ] Decide revision history strategy (default recommendation):
-- [ ] Keep `artefacts/<lang>/revision-log.md` (or `artefacts/global/revision-log.md` when applicable).
-- [ ] Log schema version + sources included + high-level metric shifts (no huge prose dumps).
+- [x] Decide revision history strategy (default recommendation):
+- [x] Keep `artefacts/<lang>/revision-log.md` (or `artefacts/global/revision-log.md` when applicable).
+- [x] Log schema version + sources included + high-level metric shifts (no huge prose dumps).
 
 ## Phase 3 - Update the Analysis Prompts (Generate + Update) Around the v2 Schema
 

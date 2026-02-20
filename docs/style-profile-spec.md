@@ -423,3 +423,26 @@ Comparative report across languages. Must include:
 - which dimensions are stable across languages vs language-specific
 - notable adaptations (e.g., tone/formality shifts)
 - explicit cautions where metrics are not comparable cross-language
+
+### Revision history (recommended)
+
+Revision logs are written alongside v2 artifacts so updates remain auditable without diffing large JSON blobs.
+
+Emit one revision log per language:
+
+#### `artefacts/<lang>/revision-log.md`
+
+Append-only log. Each entry must include:
+- `generated_at` (ISO 8601 UTC)
+- `schema_version`
+- sources included (ids/platform labels; no sensitive paths)
+- high-level changes since previous run (added/removed sources, key metric shifts)
+- notes about stability changes (e.g., a dimension moved from `unstable` to `stable`)
+
+If multilingual global artifacts exist, optionally also emit:
+
+#### `artefacts/global/revision-log.md`
+
+Append-only log capturing cross-language changes (languages included, global priors changes).
+
+Do not paste large diffs or full metric dumps into revision logs; keep them concise and comparative.
