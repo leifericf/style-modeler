@@ -17,7 +17,6 @@ This is designed to be scientific-but-practical:
 ## Versioning
 
 - `schema_version`: `2`
-- Backward compatibility: v1 artifacts are not required to map 1:1; fields may be `unknown` when not derivable.
 
 ## Definitions
 

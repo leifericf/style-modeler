@@ -114,10 +114,6 @@ Use `prompts/profile-guided-authoring.md` when you want to draft a new text from
 
 Use `prompts/profile-conditioned-drafting.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
 
-### 8. Profile Migration Agent (Optional)
-
-If you have older, legacy profile files, use `prompts/migrate-profile-v1-to-v2.md` to migrate them into the current artifact layout. Migration preserves qualitative rules and evidence and marks anything requiring recomputation as `unknown`.
-
 ## Output
 
 The system produces a set of artifacts under `artefacts/`.

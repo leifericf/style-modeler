@@ -32,11 +32,6 @@ This doc describes the intended workflows for analyzing an author's writing and 
 - Run `prompts/profile-guided-authoring.md`.
 - Use when you want to write rough notes first and then have them polished in your style.
 
-## 5) Migrate legacy artifacts
-
-- If you have older legacy profiles, run `prompts/migrate-profile-v1-to-v2.md`.
-- Migration preserves qualitative patterns and evidence and marks metrics as `unknown`.
-
 ## References
 
 - Schema and file contracts: `docs/style-profile-spec.md`
