@@ -91,7 +91,7 @@ Core dimension set (initial recommended v2 baseline):
 - [ ] Extend `config/sources-example.yml` and corresponding prompt text to optionally support:
 - [x] `platform` label (explicit).
 - [x] `default_language` (if known).
-- [ ] Optional `genre/register` hints.
+- [x] Optional `genre/register` hints.
 - [ ] Timestamp extraction hints for structured exports (where relevant).
 
 - [ ] Update `prompts/sources-manifest-wizard.md` to request minimal useful metadata:

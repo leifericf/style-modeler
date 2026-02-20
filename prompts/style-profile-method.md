@@ -28,6 +28,7 @@ If you have repository access:
 If present, use optional per-source metadata from `config/sources.yml`:
 - `platform`: used for per-platform segmentation and corpus metadata.
 - `default_language`: a hint for language partitioning; still run conservative detection and allow mixed-language sources.
+- `genre`: optional segmentation hint; do not invent if missing.
 
 ## Ingestion and Text Extraction
 
