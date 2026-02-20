@@ -141,6 +141,39 @@ If an aggregate value is reported (e.g., mean sentence length), also report:
 - Do not turn a weak signal into a rule.
 - Prefer fewer, well-evidenced claims over broad coverage.
 
+## Evidence and Privacy Policy (Normative)
+
+v2 is evidence-backed: non-trivial claims must be anchored to snippets.
+
+### Evidence requirements
+
+- Each non-trivial claim should have 3--5 evidence snippets.
+- Keep snippets short (prefer <= 240 characters after redaction/omission).
+- Do not include source references (filenames, URLs, ids, dates) in evidence bullets.
+- Do not reuse the same snippet to justify many unrelated claims.
+
+### Privacy & PII
+
+Artifacts must not contain unredacted PII.
+
+PII includes (non-exhaustive):
+- private-person names
+- direct contact info (email, phone)
+- addresses or residence-specific identifiers
+- usernames/handles/profile URLs
+- invite links and unique account/order ids
+
+Operational rules:
+- Prefer selecting non-PII snippets.
+- If a crucial snippet contains PII, redact inside the quote using `[REDACTED]`.
+- If redaction would destroy the evidentiary value, omit the snippet.
+- After redaction, the remaining text must be verbatim.
+
+### Minimal quoting
+
+- Prefer partial snippets with `...` omissions over full-post quotes.
+- Evidence is for anchoring claims, not for reconstructing the corpus.
+
 ## Dimension Set (v2 Baseline)
 
 v2 models these core dimensions:
