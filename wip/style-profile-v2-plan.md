@@ -27,7 +27,7 @@ Conventions for updating this plan:
 - [x] Create `docs/style-profile-spec.md` as the canonical schema/spec:
 - [x] Define core dimensions and their measures.
 - [x] Define measurement units (e.g., per 1k tokens, % sentences, chars/sentence, etc.).
-- [ ] Define scales/controls (percentiles within corpus; low/med/high bins; optional 0-100 normalized controls).
+- [x] Define scales/controls (percentiles within corpus; low/med/high bins; optional 0-100 normalized controls).
 - [ ] Define confidence + stability rules (sample size thresholds; mark unstable/unknown).
 - [ ] Define evidence policy (PII-safe snippets; no source refs; minimal quotes; redaction rules).
 - [ ] Define segmentation axes the system may compute when metadata exists:

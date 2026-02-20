@@ -65,6 +65,41 @@ Distributions must specify:
 - counts per bin
 - the unit of the binned value (e.g., `tokens_per_sentence`)
 
+## Scales and Controls (Normative)
+
+v2 should expose numeric measures in ways that support both:
+- robust analysis (raw + rate + uncertainty)
+- controllable generation (targets and bins)
+
+### Within-corpus percentiles
+
+When a measure is computed across segments (platforms, time slices), store a percentile rank for that segment within the language corpus:
+
+- `percentile_within_lang`: integer in `[0, 100]`.
+
+Percentiles are descriptive (not a claim about external populations).
+
+### Binned controls (low/med/high)
+
+For measures likely to be used as generation dials, define bins within the language corpus:
+
+- `bin_within_lang`: one of `low`, `mid`, `high`.
+
+Default binning rule:
+- `low`: < 33rd percentile
+- `mid`: 33rd--66th percentile
+- `high`: > 66th percentile
+
+If a measure is unstable, omit bins or set to `unknown`.
+
+### Targets
+
+When the system wants conformance-checkable targets, store them as ranges:
+
+- `target_range`: `{ "min": <number>, "max": <number>, "unit": <unit> }`
+
+Targets must be derived from stable portions of the corpus (e.g., interquartile range), not from a single sample.
+
 ## Dimension Set (v2 Baseline)
 
 v2 models these core dimensions:
