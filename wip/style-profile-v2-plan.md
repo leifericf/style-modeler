@@ -69,11 +69,11 @@ Core dimension set (initial recommended v2 baseline):
 
 - [ ] Reduce prompt duplication by introducing a shared method spec:
 - [x] Add `prompts/style-profile-method.md` (ingestion, preprocessing, measures, artifact writing rules).
-- [ ] Refactor `prompts/generate-style-profile.md` to reference the method spec and emit v2 artifacts.
+- [x] Refactor `prompts/generate-style-profile.md` to reference the method spec and emit v2 artifacts.
 - [ ] Refactor `prompts/update-style-profile.md` to reference the method spec and recompute metrics/distributions.
 
 - [ ] Update output contracts:
-- [ ] Generate prompt emits one fenced block per artifact file (Markdown blocks for .md, JSON blocks for .json, YAML for `config/sources.yml` if still emitted).
+- [x] Generate prompt emits one fenced block per artifact file (Markdown blocks for .md, JSON blocks for .json, YAML for `config/sources.yml` if still emitted).
 - [ ] Update prompt emits updated artifacts + a change log entry (or run metadata).
 
 - [ ] Add explicit confidence + stability behavior:
