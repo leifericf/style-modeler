@@ -59,8 +59,8 @@ Acceptance checks:
 
 ## 5) Quick verification sweep (repo-level)
 
-- [ ] Search for remaining legacy blueprint/v1 references:
+- [x] Search for remaining legacy blueprint/v1 references:
   - `writing-style-profile`
   - `style-blueprint`
-- [ ] Re-read `docs/quality-gates.md` and confirm no new contradictions were introduced.
-- [ ] Optional: update `docs/smoke-test.md` if any file path expectations change.
+- [x] Re-read `docs/quality-gates.md` and confirm no new contradictions were introduced.
+- [x] Optional: update `docs/smoke-test.md` if any file path expectations change.
