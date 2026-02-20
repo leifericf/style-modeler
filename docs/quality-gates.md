@@ -16,6 +16,9 @@ It is intentionally:
 ## Locked Decisions (Phase 0)
 
 - Artifact root directory: `artefacts/`.
+- Human-readable artifacts: Markdown (`.md`).
+- Machine-consumable artifacts: JSON (`.json`).
+- Source manifest: YAML (`config/sources.yml`).
 
 ## Analysis Quality Gates (Profile Artifacts)
 
