@@ -10,3 +10,8 @@ sources/**
 
 # Local source manifest (may contain personal paths/URLs)
 config/sources.yml
+
+# Extra local manifests (keep examples tracked)
+config/sources-*.yml
+!config/sources-example.yml
+!config/sources-smoke-example.yml
