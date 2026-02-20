@@ -12,10 +12,11 @@ Your job is to quickly elicit high-signal writing samples (breadth + depth) with
 ## Inputs You Should Read (if you have repo access)
 
 - `config/sources.yml` (if present)
-- `artefacts/writing-style-profile.md` (if present)
-- `artefacts/writing-style-profile_*.md` (if present; multilingual mode)
-- `artefacts/writing-style-profile-revision-log.md` (if present)
-- `artefacts/writing-style-profile-revision-log_*.md` (if present; multilingual mode)
+- `artefacts/corpus-metadata.md` (if present)
+- `artefacts/<lang>/profile_summary.md` (if present)
+- `artefacts/<lang>/examples.md` (optional; if present)
+- `artefacts/<lang>/generation_blocks.md` (if present)
+- `artefacts/<lang>/revision-log.md` (optional; if present)
 
 If you do not have filesystem access, ask the user to paste:
 
@@ -43,7 +44,7 @@ Use the answers to choose the smallest prompt set that still gives broad coverag
 
 ## Adaptive Prompting
 
-If `artefacts/writing-style-profile.md` (or any `artefacts/writing-style-profile_*.md`) exists, use the relevant profile(s) to decide what to ask next:
+If any current per-language artifacts exist under `artefacts/<lang>/` (especially `profile_summary.md` and `generation_blocks.md`), use them to decide what to ask next:
 
 - Find areas that look under-evidenced or uncertain (e.g., weak platform coverage, unclear openings/closings, thin evidence for humor, low confidence in cadence patterns, missing argumentation examples).
 - Ask prompts that specifically generate evidence for those weak spots.
@@ -95,12 +96,10 @@ When the user says `DONE`:
 1) Ensure all captured samples are written to `sources/`.
 2) Ensure `config/sources.yml` is updated so the samples are included.
 3) Run the existing modeling prompt WITHOUT duplicating its instructions:
-   - If `artefacts/writing-style-profile.md` exists (or any `artefacts/writing-style-profile_*.md` exists), follow `prompts/update-style-profile.md` using the updated sources.
-   - If none exist, follow `prompts/generate-style-profile.md` using the updated sources.
+   - If any per-language profile artifacts already exist under `artefacts/<lang>/` (e.g., `artefacts/en/metrics.json`), follow `prompts/update-style-profile.md` using the updated sources.
+   - If no current profile artifacts exist, follow `prompts/generate-style-profile.md` using the updated sources.
 
 Important:
 
-- The profile file must contain ONLY profile information.
-- The revision log must be updated (single-language: `artefacts/writing-style-profile-revision-log.md`; multilingual: `artefacts/writing-style-profile-revision-log_<lang>.md`).
-
-After you start the modeling step, comply with the output constraints of the chosen prompt (i.e., output only the fenced blocks it requires).
+- Store elicited samples verbatim under `sources/` and keep them gitignored.
+- After you start the modeling step, comply with the output constraints of the chosen prompt (i.e., output only the fenced blocks it requires).

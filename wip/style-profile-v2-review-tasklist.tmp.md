@@ -4,23 +4,23 @@ Scope: bring implementation fully in line with `wip/style-profile-v2-plan.md` an
 
 ## 1) Fix Interactive Corpus Builder (v1 -> v2)
 
-- [ ] Update `prompts/interactive-corpus-builder.md` to stop referencing legacy v1 artifacts:
+- [x] Update `prompts/interactive-corpus-builder.md` to stop referencing legacy v1 artifacts:
   - Remove/replace reads of `artefacts/writing-style-profile*.md` and `artefacts/writing-style-profile-revision-log*.md`.
   - Replace with v2-aware detection (examples):
     - Prefer checking for `artefacts/<lang>/profile_summary.md` and/or `artefacts/<lang>/metrics.json`.
     - Treat any missing profile as “no v2 artifacts yet”.
-- [ ] Update the “modeling step” instructions:
+- [x] Update the “modeling step” instructions:
   - If v2 artifacts exist: run `prompts/update-style-profile.md`.
   - Otherwise: run `prompts/generate-style-profile.md`.
-- [ ] Update revision-log guidance to v2 paths:
+- [x] Update revision-log guidance to v2 paths:
   - Per-language: `artefacts/<lang>/revision-log.md`.
   - Optional global: `artefacts/global/revision-log.md` when multilingual is significant.
-- [ ] Normalize terminology inside the prompt:
+- [x] Normalize terminology inside the prompt:
   - Use “style profile” consistently; avoid “writing-style-profile”.
 
 Acceptance checks:
-- [ ] `prompts/interactive-corpus-builder.md` contains no `writing-style-profile` strings.
-- [ ] The prompt’s end-state matches the v2 artifact layout described in `docs/style-profile-spec.md`.
+- [x] `prompts/interactive-corpus-builder.md` contains no `writing-style-profile` strings.
+- [x] The prompt’s end-state matches the v2 artifact layout described in `docs/style-profile-spec.md`.
 
 ## 2) Fix README v1 remnants (Interactive Builder section)
 
