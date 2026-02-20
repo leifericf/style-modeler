@@ -38,6 +38,33 @@ Minimum normalization for measurement:
 
 Structured exports (JSON/XML/HTML): extract only owner-authored text fields and ignore serialization noise.
 
+## Measurement Units (Normative)
+
+All numeric measures must declare units and should be stored in normalized form.
+
+### Standard units
+
+- Token-normalized rates: `per_1k_tokens`.
+- Sentence-normalized rates: `per_sentence`.
+- Sample-normalized rates: `per_sample`.
+- Percentages: `percent` in `[0, 100]`.
+- Ratios: `ratio` in `[0, 1]`.
+- Length: `tokens`, `chars`.
+
+### Required denominators
+
+If a rate is reported, the artifact must also report the denominator used for that segment:
+- `token_count`
+- `sentence_count`
+- `sample_count`
+
+### Distributions
+
+Distributions must specify:
+- bin edges (inclusive/exclusive rules)
+- counts per bin
+- the unit of the binned value (e.g., `tokens_per_sentence`)
+
 ## Dimension Set (v2 Baseline)
 
 v2 models these core dimensions:
