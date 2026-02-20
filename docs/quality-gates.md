@@ -1,6 +1,6 @@
-# v2 Quality Gates
+# Quality Gates
 
-This document defines the success criteria for Style Profile v2.
+This document defines the success criteria for the current style profile system.
 
 It is intentionally:
 - practical (measurable where possible)

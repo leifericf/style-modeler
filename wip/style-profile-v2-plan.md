@@ -127,12 +127,12 @@ Core dimension set (initial recommended v2 baseline):
 
 ## Phase 7 - Verification & Quality Gates
 
-- [ ] Create `docs/quality-gates.md` and define checks:
-- [ ] Coverage: each core dimension either has evidence or is marked uncertain.
-- [ ] Units/scales present for each numeric field.
-- [ ] Confidence annotations are present.
-- [ ] PII policy adhered to (redaction/omission).
-- [ ] Generation conformance self-check covers top targets and reports pass/fail.
+- [x] Create `docs/quality-gates.md` and define checks:
+- [x] Coverage: each core dimension either has evidence or is marked uncertain.
+- [x] Units/scales present for each numeric field.
+- [x] Confidence annotations are present.
+- [x] PII policy adhered to (redaction/omission).
+- [x] Generation conformance self-check covers top targets and reports pass/fail.
 
 - [ ] Run a smoke test on a known corpus and verify:
 - [ ] Artifacts are created with expected paths.
