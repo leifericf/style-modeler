@@ -150,74 +150,25 @@ Note: `artefacts/` is ignored by git by default (it may contain personal writing
 
 The model improves over time.
 
+## Documentation
+
+Canonical docs live in `docs/`.
+
+- Start here: `docs/workflows.md`
+- Schema + file contracts: `docs/style-profile-spec.md`
+- Shared method: `docs/style-profile-method.md`
+- Success criteria: `docs/quality-gates.md`
+- Manual end-to-end check: `docs/smoke-test.md`
+
 ## Quick Start
 
-### Step 0: Create Your Source Manifest
+1. Create `config/sources.yml` (recommended: run `prompts/sources-manifest-wizard.md`).
+2. Generate artifacts: run `prompts/generate-style-profile.md`.
+3. Draft with the profile: run `prompts/profile-conditioned-drafting.md` (or `prompts/profile-guided-authoring.md`).
 
-1.  Ensure you have a `config/sources.yml` (choose one):
-    -   (Recommended) Run `prompts/sources-manifest-wizard.md` to create/update `config/sources.yml`.
-    -   Or copy `config/sources-example.yml` to `config/sources.yml` and edit it manually.
-2.  (Optional) Add or remove sources. By default, `config/sources.yml` can read from the repo-local `sources/` folder.
+Notes: `config/sources.yml` and `sources/` are gitignored by default.
 
-Note: `config/sources.yml` is ignored by git by default to avoid accidentally committing personal information.
-
-Note: The prompts emit an updated `config/sources.yml` as part of their output (timestamps, newest-sample info). If you're using an AI agent with repo access, it should write that YAML directly to `config/sources.yml` each run.
-
-If you give the agent new source locations (file paths / URLs), it should also add them to `config/sources.yml`.
-
-If you're running the prompts in a chat-only interface (no filesystem access), you'll need to copy/paste the emitted YAML into `config/sources.yml` manually.
-
-### Step 0.5: Add Local Text Files
-
-1.  Put writing samples in `sources/` (for example, `sources/linkedin.txt`, `sources/blog.txt`). These can be plain text, or structured exports (e.g., JSON/XML/HTML) as long as they contain your original writing.
-2.  Keep those files local. The `sources/` directory is ignored by git by default.
-
-### Step 0.6 (Optional): Run the Interactive Corpus Builder
-
-If you don't have much writing yet (or you want to fill gaps), run:
-
--   `prompts/interactive-corpus-builder.md`
-
-The agent will elicit short samples, write them into `sources/`, and then generate/update:
-
--   Style Profile artifacts under `artefacts/<lang>/` (one folder per significant language)
--   `artefacts/corpus-metadata.md`
--   `config/sources.yml`
-
-This workflow can create/update the profile directly, so you can skip Step 1/2 if you use it.
-
-### Step 1: Generate Initial Profile
-
-1.  Ensure `config/sources.yml` points at your writing (local files and/or URLs).
-2.  Run `prompts/generate-style-profile.md`. The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
-3.  If you're using an AI agent with repo access, it should write the emitted blocks to:
-
-    - `artefacts/<lang>/...` (one folder per significant language)
-    - `artefacts/corpus-metadata.md`
-    - `config/sources.yml`
-
-### Step 2: Add New Writing Samples
-
-When you have more writing (new LinkedIn posts, new platform, etc.):
-
-1.  Add the new material to disk/URLs referenced by `config/sources.yml`.
-2.  Run `prompts/update-style-profile.md`.
-3.  If you mention new sources in the prompt (new file paths / URLs), the agent should add them to `config/sources.yml` automatically.
-4.  If you're using an AI agent with repo access, it should update `artefacts/<lang>/...`, append to `artefacts/<lang>/revision-log.md`, and update `config/sources.yml`.
-5.  Review `artefacts/<lang>/revision-log.md` for what changed.
-
-### Step 3: Generate Stylized Writing
-
-After analysis:
-
-1.  Provide a new topic.
-2.  Specify the target platform (optional).
-3.  Ask for controlled imitation.
-4.  The system generates a post following extracted rules.
-
-For a direct "write in my style" flow with a conformance self-check, run `prompts/profile-conditioned-drafting.md`.
-
-For an interactive, "brain-dump then polish" flow, run `prompts/profile-guided-authoring.md`.
+For the full setup/update/drafting flow, see `docs/workflows.md`.
 
 ## License
 See `LICENSE` (MIT).
