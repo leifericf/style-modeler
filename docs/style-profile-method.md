@@ -155,6 +155,5 @@ If coverage is weak or segmented slices are unstable:
 
 This method is referenced by:
 - `prompts/generate-style-profile.md`
-- `prompts/update-style-profile.md`
 
 If you cannot read repo files, ask the user to paste the required docs before proceeding.

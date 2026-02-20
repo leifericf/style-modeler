@@ -14,11 +14,11 @@ This doc describes the intended workflows for analyzing an author's writing and 
 - Run `prompts/generate-style-profile.md`.
 - The agent ingests sources and writes artifacts under `artefacts/`.
 
-## 3) Update a profile
+## 3) Re-generate after adding sources
 
 - Add new writing samples to sources referenced by `config/sources.yml`.
-- Run `prompts/update-style-profile.md`.
-- The agent reprocesses the whole corpus, overwrites artifacts, and appends revision logs.
+- Re-run `prompts/generate-style-profile.md`.
+- The agent reprocesses the whole corpus, overwrites artifacts, and appends revision logs (if present).
 
 ## 4) Draft new text (two options)
 

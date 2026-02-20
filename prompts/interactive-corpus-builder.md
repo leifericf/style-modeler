@@ -96,8 +96,7 @@ When the user says `DONE`:
 1) Ensure all captured samples are written to `sources/`.
 2) Ensure `config/sources.yml` is updated so the samples are included.
 3) Run the existing modeling prompt WITHOUT duplicating its instructions:
-   - If any per-language profile artifacts already exist under `artefacts/<lang>/` (e.g., `artefacts/en/metrics.json`), follow `prompts/update-style-profile.md` using the updated sources.
-   - If no current profile artifacts exist, follow `prompts/generate-style-profile.md` using the updated sources.
+   - Follow `prompts/generate-style-profile.md` using the updated sources.
 
 Important:
 
