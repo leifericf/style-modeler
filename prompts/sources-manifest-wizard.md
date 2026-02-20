@@ -12,7 +12,7 @@ Your job is to:
 2) Check accessibility when possible.
 3) Update `config/sources.yml` by adding/deduplicating source entries.
 
-Do NOT generate or update the style blueprint in this prompt.
+Do NOT generate or update the style profile in this prompt.
 
 ## Inputs (if you have repo access)
 
@@ -73,7 +73,7 @@ If you do NOT have network access, skip checks and tell the user you will treat 
 - Update per-source metadata:
   - `last_imported_at`: now (ISO 8601 UTC)
   - `most_recent_sample_at`: null (unless you can infer it reliably)
-  - `last_processed_sample_at`: null (until the blueprint run actually uses it)
+  - `last_processed_sample_at`: null (until the profile run actually uses it)
 
 ## YAML Formatting & Validation (do this right before writing)
 

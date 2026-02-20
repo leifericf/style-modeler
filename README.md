@@ -8,7 +8,7 @@ This project allows you to:
 
 -   Analyze your writing across LinkedIn, Facebook, Twitter/X, blogs, or any other text source
 -   Detect stylistic patterns, evolution, and cross-platform differences
--   Generate a structured, living Markdown style blueprint describing your writing
+-   Generate a structured, living Markdown style profile describing your writing
 -   Iteratively refine the model as new writing samples are added
 -   Produce high-fidelity stylistic imitations on new topics
 
@@ -56,17 +56,17 @@ It is a structured linguistic modeling system.
 
 This repository contains six primary components:
 
-### 1. Cross-Platform Style Blueprint Generator
+### 1. Cross-Platform Style Profile Generator
 
 **Purpose:** Creates the initial:
 
-> Writing Style Blueprint
+> Writing Style Profile
 
 This is used when starting from scratch with a new corpus.
 
-### 2. Writing Style Blueprint Update & Refinement Agent
+### 2. Writing Style Profile Update & Refinement Agent
 
-**Purpose:** Updates the existing blueprint when:
+**Purpose:** Updates the existing profile when:
 
 -   New writing samples are added
 -   A new platform is introduced
@@ -94,7 +94,7 @@ It will:
 
 -   Ask you a sequence of short writing prompts (one at a time)
 -   Save your answers into `sources/`
--   Update the blueprint using the existing update/generate prompts
+-   Update the profile using the existing update/generate prompts
 
 ### 5. Source Manifest Wizard (Optional)
 
@@ -106,17 +106,17 @@ It will guide you to add sources and update `config/sources.yml` (creating it if
 
 If the agent has network access, it can also sanity-check whether pasted URLs are reachable.
 
-### 6. Blueprint-Guided Authoring Agent (Optional)
+### 6. Profile-Guided Authoring Agent (Optional)
 
-Use `prompts/blueprint-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your Writing Style Blueprint. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
+Use `prompts/profile-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your Writing Style Profile. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
 
 ## Output
 
-The system produces a structured Markdown document titled `Writing Style Blueprint`.
+The system produces a structured Markdown document titled `Writing Style Profile`.
 
-If the corpus contains a significant amount of writing in multiple languages, the generator/update prompts should emit one strictly monolingual blueprint per language (e.g. `artefacts/writing-style-blueprint_en.md`, `artefacts/writing-style-blueprint_no.md`) so stylistic differences by language are captured separately. If other languages appear only in small amounts, the prompts should mention them under data limitations instead of creating separate blueprints.
+If the corpus contains a significant amount of writing in multiple languages, the generator/update prompts should emit one strictly monolingual profile per language (e.g. `artefacts/writing-style-profile_en.md`, `artefacts/writing-style-profile_no.md`) so stylistic differences by language are captured separately. If other languages appear only in small amounts, the prompts should mention them under data limitations instead of creating separate profiles.
 
-The blueprint includes:
+The profile includes:
 
 -   Vocabulary & word choice patterns
 -   Sentence construction & rhythm
@@ -128,22 +128,22 @@ The blueprint includes:
 -   Cross-platform differences
 -   Evolution over time
 -   Style vector summary
--   Mimicry blueprint
+-   Mimicry profile
 
 Revision history is stored separately in:
 
--   `artefacts/writing-style-blueprint-revision-log.md`
+-   `artefacts/writing-style-profile-revision-log.md`
 
-In multilingual mode, revision logs are also split per language (e.g. `artefacts/writing-style-blueprint-revision-log_en.md`).
+In multilingual mode, revision logs are also split per language (e.g. `artefacts/writing-style-profile-revision-log_en.md`).
 
 The result is a deterministic style model that can be reused for imitation.
 
 ## Iterative Workflow
 
 1.  Import corpus
-2.  Generate blueprint
+2.  Generate profile
 3.  Add new data
-4.  Update blueprint
+4.  Update profile
 5.  Repeat
 
 The model improves over time.
@@ -178,20 +178,20 @@ If you don't have much writing yet (or you want to fill gaps), run:
 
 The agent will elicit short samples, write them into `sources/`, and then generate/update:
 
--   `artefacts/writing-style-blueprint.md`
--   `artefacts/writing-style-blueprint-revision-log.md`
+-   `artefacts/writing-style-profile.md`
+-   `artefacts/writing-style-profile-revision-log.md`
 -   `config/sources.yml`
 
-This workflow can create/update the blueprint directly, so you can skip Step 1/2 if you use it.
+This workflow can create/update the profile directly, so you can skip Step 1/2 if you use it.
 
-### Step 1: Generate Initial Blueprint
+### Step 1: Generate Initial Profile
 
 1.  Ensure `config/sources.yml` points at your writing (local files and/or URLs).
-2.  Run the **Cross-Platform Style Blueprint Generator** prompt (`prompts/generate-style-blueprint.md`). The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
+2.  Run the **Cross-Platform Style Profile Generator** prompt (`prompts/generate-style-profile.md`). The agent should read `config/sources.yml` and ingest the corpus from disk/URLs.
 3.  If you're using an AI agent with repo access, it should write:
 
-    -   `artefacts/writing-style-blueprint.md`
-    -   `artefacts/writing-style-blueprint-revision-log.md`
+    -   `artefacts/writing-style-profile.md`
+    -   `artefacts/writing-style-profile-revision-log.md`
     -   `config/sources.yml`
 
     If it only prints the fenced blocks, ask it to save them to those paths.
@@ -201,10 +201,10 @@ This workflow can create/update the blueprint directly, so you can skip Step 1/2
 When you have more writing (new LinkedIn posts, new platform, etc.):
 
 1.  Add the new material to disk/URLs referenced by `config/sources.yml`.
-2.  Run the **Writing Style Blueprint Update & Refinement Agent** prompt (`prompts/update-style-blueprint.md`).
+2.  Run the **Writing Style Profile Update & Refinement Agent** prompt (`prompts/update-style-profile.md`).
 3.  If you mention new sources in the prompt (new file paths / URLs), the agent should add them to `config/sources.yml` automatically.
-4.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-blueprint.md`, `artefacts/writing-style-blueprint-revision-log.md`, and `config/sources.yml` for you.
-5.  Review `artefacts/writing-style-blueprint-revision-log.md` for what changed.
+4.  If you're using an AI agent with repo access, it should update `artefacts/writing-style-profile.md`, `artefacts/writing-style-profile-revision-log.md`, and `config/sources.yml` for you.
+5.  Review `artefacts/writing-style-profile-revision-log.md` for what changed.
 
 ### Step 3: Generate Stylized Writing
 
@@ -215,7 +215,7 @@ After analysis:
 3.  Ask for controlled imitation.
 4.  The system generates a post following extracted rules.
 
-For an interactive, "brain-dump then polish" flow, run `prompts/blueprint-guided-authoring.md`.
+For an interactive, "brain-dump then polish" flow, run `prompts/profile-guided-authoring.md`.
 
 ## License
 See `LICENSE` (MIT).

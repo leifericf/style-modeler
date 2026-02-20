@@ -1,6 +1,6 @@
-# Writing Style Blueprint --- Update & Refinement Agent
+# Writing Style Profile --- Update & Refinement Agent
 
-This prompt is used to UPDATE an existing Writing Style Blueprint when new writing samples are introduced.
+This prompt is used to UPDATE an existing Writing Style Profile when new writing samples are introduced.
 
 ## Role
 
@@ -8,9 +8,9 @@ You are a professional computational linguist and stylistic analyst.
 
 Your task is to update an existing Markdown file titled:
 
-Writing Style Blueprint
+Writing Style Profile
 
-You must refine the blueprint based on newly provided writing samples from either:
+You must refine the profile based on newly provided writing samples from either:
 
 -   A new platform/source (e.g., Facebook, Twitter/X, blog, essays)
 -   Additional examples from an existing source
@@ -22,8 +22,8 @@ This is an iterative refinement process.
 
 You will receive:
 
-1.  The current Markdown blueprint (full document).
-    - If the corpus is multilingual, you may instead receive multiple per-language blueprints (e.g. `artefacts/writing-style-blueprint_en.md`, `artefacts/writing-style-blueprint_no.md`).
+1.  The current Markdown profile (full document).
+    - If the corpus is multilingual, you may instead receive multiple per-language profiles (e.g. `artefacts/writing-style-profile_en.md`, `artefacts/writing-style-profile_no.md`).
 2.  `config/sources.yml` (a YAML manifest). If you have repository access, read it and ingest the writing corpus from the referenced files/directories/URLs.
     -   If `config/sources.yml` does not exist yet, create it with a default local source that reads from `sources/` recursively (including subdirectories) and includes common export formats (e.g., `**/*.{txt,md,json,xml,html}`).
 3.  New writing samples or new sources (optional). If provided inline (e.g. new file paths / URLs), treat them as new sources and update `config/sources.yml` accordingly.
@@ -67,11 +67,11 @@ Explicitly document:
 
 The document structure must remain consistent:
 
-Writing Style Blueprint
+Writing Style Profile
 
 Sections must not drift in order or naming unless absolutely necessary.
 
-IMPORTANT: The blueprint must NOT contain a "Corpus Overview" section. Corpus-wide metadata must be written to `artefacts/corpus-metadata.md` (see "Corpus Metadata File").
+IMPORTANT: The profile must NOT contain a "Corpus Overview" section. Corpus-wide metadata must be written to `artefacts/corpus-metadata.md` (see "Corpus Metadata File").
 
 ## Corpus Metadata File
 
@@ -86,7 +86,7 @@ This file is user-facing and should be updated on every run. It MAY include run 
 - Platforms included
 - Time span (oldest/newest timestamps)
 - Volume overall and by platform/source (samples and approximate word-token counts)
-- Language breakdown (if multilingual): dominant language, per-language sample/word share, and whether separate blueprints were created
+- Language breakdown (if multilingual): dominant language, per-language sample/word share, and whether separate profiles were created
 - Preprocessing notes: deduping strategy, structured-export extraction approach, any decoding/normalization applied
 - Data limitations (e.g. blocked URLs)
 
@@ -94,13 +94,13 @@ This file is user-facing and should be updated on every run. It MAY include run 
 
 Maintain a separate revision log file at:
 
-`artefacts/writing-style-blueprint-revision-log.md`
+`artefacts/writing-style-profile-revision-log.md`
 
 Multilingual mode: maintain one revision log per language at:
 
-`artefacts/writing-style-blueprint-revision-log_<lang>.md`
+`artefacts/writing-style-profile-revision-log_<lang>.md`
 
-For each blueprint update, append a new entry with:
+For each profile update, append a new entry with:
 
 - Run timestamp (ISO 8601 UTC)
 - Sources added/changed (ids/platforms)
@@ -109,7 +109,7 @@ For each blueprint update, append a new entry with:
 
 Preserve the existing log contents; do not rewrite history except to fix obvious errors.
 
-Do NOT include revision history, changelogs, timestamps, or other run metadata inside the blueprint itself.
+Do NOT include revision history, changelogs, timestamps, or other run metadata inside the profile itself.
 
 ### 5. Preserve Constraints
 
@@ -138,7 +138,7 @@ Inside each section (e.g. "Vocabulary & Word Choice"), you will state multiple c
 
 ## Privacy & PII Safety Requirements (Required)
 
-The blueprint and its evidence (and the user-facing `artefacts/corpus-metadata.md`) MUST NOT contain sensitive personal information about the author or other people. This includes (non-exhaustive):
+The profile and its evidence (and the user-facing `artefacts/corpus-metadata.md`) MUST NOT contain sensitive personal information about the author or other people. This includes (non-exhaustive):
 
 - Personal names of private individuals (including friends/family/colleagues/commenters), and direct-address name prefixes (e.g. "Name - ...")
 - Addresses, apartment/unit numbers, locations that narrow to a residence
@@ -152,7 +152,7 @@ Operational rules:
 - Prefer selecting evidence snippets that do not contain PII.
 - If a snippet is otherwise crucial but contains PII, redact it inside the quote using `[REDACTED]` (or omit the PII portion using `...`).
 - After redaction/omission, the remaining text MUST still be verbatim.
-- Do not include any unredacted PII anywhere in the blueprint (including headings, summaries, rules, and evidence).
+- Do not include any unredacted PII anywhere in the profile (including headings, summaries, rules, and evidence).
 
 ## Evidence Requirements (Verbatim Snippets)
 
@@ -183,9 +183,9 @@ Return output as fenced code blocks.
 
 Default (single-language corpus): output exactly THREE fenced code blocks, in this order.
 
-Multilingual corpus: if the corpus contains a significant amount of writing in 2+ distinct natural languages (as defined under "Multilingual Corpus Handling"), update/create a separate blueprint per language (because the author's style may differ by language). In multilingual mode, output `2 * N + 1` fenced blocks in this order:
+Multilingual corpus: if the corpus contains a significant amount of writing in 2+ distinct natural languages (as defined under "Multilingual Corpus Handling"), update/create a separate profile per language (because the author's style may differ by language). In multilingual mode, output `2 * N + 1` fenced blocks in this order:
 
-1) Updated blueprint Markdown for language 1
+1) Updated profile Markdown for language 1
 2) Updated revision log Markdown for language 1
 ... repeat (1)-(2) for each detected language, ordered by corpus volume desc
 Final) One updated `config/sources.yml` YAML block
@@ -193,15 +193,15 @@ Final) One updated `config/sources.yml` YAML block
 If you have filesystem access to this repository (e.g. you're running as a coding agent), you must also write the emitted blocks to disk:
 
 - Single-language corpus:
-  - Write the Markdown block to `artefacts/writing-style-blueprint.md`
-  - Write the revision log Markdown block to `artefacts/writing-style-blueprint-revision-log.md`
+  - Write the Markdown block to `artefacts/writing-style-profile.md`
+  - Write the revision log Markdown block to `artefacts/writing-style-profile-revision-log.md`
   - Write the YAML block to `config/sources.yml`
   - Update (overwrite) `artefacts/corpus-metadata.md`
 
 - Multilingual corpus:
   - For each language `<lang>` (ISO 639-1 when possible; lowercase, e.g. `en`, `no`), write:
-    - Blueprint: `artefacts/writing-style-blueprint_<lang>.md`
-    - Revision log: `artefacts/writing-style-blueprint-revision-log_<lang>.md`
+    - Profile: `artefacts/writing-style-profile_<lang>.md`
+    - Revision log: `artefacts/writing-style-profile-revision-log_<lang>.md`
   - Write the YAML block to `config/sources.yml`
   - Update (overwrite) `artefacts/corpus-metadata.md`
 
@@ -209,27 +209,27 @@ In single-language mode: still output exactly the three fenced blocks (no extra 
 
 In multilingual mode: output only the fenced blocks described above (no extra prose).
 
-1) The FULL updated Markdown blueprint (a complete document), fenced as ```markdown.
+1) The FULL updated Markdown profile (a complete document), fenced as ```markdown.
 
 It should be suitable to save as:
 
-artefacts/writing-style-blueprint.md
+artefacts/writing-style-profile.md
 
-Multilingual mode: produce one such blueprint per language, suitable to save as:
+Multilingual mode: produce one such profile per language, suitable to save as:
 
-artefacts/writing-style-blueprint_<lang>.md
+artefacts/writing-style-profile_<lang>.md
 
-IMPORTANT: The blueprint must contain ONLY blueprint information. Do NOT include revision history, changelogs, timestamps, or other run metadata in the blueprint.
+IMPORTANT: The profile must contain ONLY profile information. Do NOT include revision history, changelogs, timestamps, or other run metadata in the profile.
 
 2) The FULL updated revision log document, fenced as ```markdown.
 
 It should be suitable to save as:
 
-artefacts/writing-style-blueprint-revision-log.md
+artefacts/writing-style-profile-revision-log.md
 
 Multilingual mode: produce one per language, suitable to save as:
 
-artefacts/writing-style-blueprint-revision-log_<lang>.md
+artefacts/writing-style-profile-revision-log_<lang>.md
 
 3) An updated YAML file fenced as ```yaml, suitable to save as:
 
@@ -239,7 +239,7 @@ For each source in the YAML, update these fields when possible:
 
 -   `last_imported_at`: current run timestamp (ISO 8601 UTC, e.g. `2026-02-19T20:15:00Z`)
 -   `most_recent_sample_at`: newest sample timestamp present in that source (derived from sample metadata when available; otherwise `null`)
--   `last_processed_sample_at`: newest sample timestamp actually included in the blueprint for that source (otherwise `null`)
+-   `last_processed_sample_at`: newest sample timestamp actually included in the profile for that source (otherwise `null`)
 
 Do not output anything outside the required fenced blocks.
 
@@ -247,15 +247,15 @@ Do not output anything outside the required fenced blocks.
 
 If you detect multiple languages, you must:
 
-- Partition the corpus by language. A per-language blueprint must be strictly monolingual (do not mix languages inside a single blueprint).
+- Partition the corpus by language. A per-language profile must be strictly monolingual (do not mix languages inside a single profile).
 - Use conservative language detection (high confidence); ignore tiny fragments (e.g., isolated sentences, short quotes, code, usernames).
 - Define "sample" as one discrete writing item (post/comment/email/message). If the raw data is in a single file without clear boundaries, estimate samples conservatively (e.g., split on blank-line blocks and obvious separators like dates/headers).
 - Treat a language as "significant" only if it meets BOTH (after deduplication):
   - Share threshold: at least 10% of the usable corpus by words/tokens, AND
   - Size threshold: at least 200 distinct samples OR at least 12,000 words of usable text.
 - Naming: use a language suffix on filenames (ISO 639-1 when possible; lowercase), e.g. `_en`, `_no`.
-- Evidence constraint: in `artefacts/writing-style-blueprint_<lang>.md`, include ONLY text and quotes in that language. Do not cite or quote other languages.
-- If a language is present but not significant, do NOT create a separate blueprint for it; mention it briefly under "Data limitations" in the dominant-language blueprint.
+- Evidence constraint: in `artefacts/writing-style-profile_<lang>.md`, include ONLY text and quotes in that language. Do not cite or quote other languages.
+- If a language is present but not significant, do NOT create a separate profile for it; mention it briefly under "Data limitations" in the dominant-language profile.
 
 ## Source Format Handling (Local Files / Exports)
 
