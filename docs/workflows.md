@@ -32,9 +32,21 @@ This doc describes the intended workflows for analyzing an author's writing and 
 - Run `prompts/profile-guided-authoring.md`.
 - Use when you want to write rough notes first and then have them polished in your style.
 
+## 5) Package a profile for downstream consumers (optional)
+
+If you want to share a profile with a downstream human or AI agent, you can package it into a single distributable file.
+
+Two supported packaging formats:
+
+- A) Zip bundle (`.styleprofile.zip`): copy the zip into a project and run the included entrypoint prompt.
+- B) Inline bundle (`.inline.md`): copy/paste one single Markdown file into a prompt window (simplest).
+
+Use: `prompts/package-style-profile-bundle.md`
+
 ## References
 
 - Schema and file contracts: `docs/style-profile-spec.md`
+- Bundle packaging: `docs/style-profile-bundle-spec.md`
 - Shared method: `docs/style-profile-method.md`
 - Success criteria: `docs/quality-gates.md`
 - Manual smoke test: `docs/smoke-test.md`

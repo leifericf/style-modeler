@@ -99,3 +99,41 @@ Minimum conformance-report contract:
 - State whether a revision happened.
 
 The self-check must be conservative: if a metric cannot be computed reliably from the draft, mark it `unknown` rather than inventing a number.
+
+## Packaging Quality Gates (Downstream Distribution)
+
+These gates apply to any workflow that packages a profile for downstream consumers (humans and AI agents).
+
+### A. Single-file deliverable
+
+The packaging workflow emits EXACTLY ONE deliverable file in either format:
+
+- Zip bundle: `*.styleprofile.zip`, OR
+- Inline bundle: `*.inline.md`
+
+### B. Entrypoint included
+
+The deliverable includes an explicit entrypoint prompt that:
+
+- states required inputs (`lang`, `input_text`, format/options)
+- states artifact loading order
+- instructs the downstream agent to return ONLY the stylized output (unless asked otherwise)
+
+### C. Artifact completeness
+
+For each included language `<lang>`, the package includes at minimum:
+
+- `artefacts/<lang>/generation_blocks.md`
+- `artefacts/<lang>/metrics.json`
+- `artefacts/<lang>/profile_summary.md`
+
+### D. Copy/paste robustness (inline bundles)
+
+Inline bundles must embed artifacts verbatim and be machine-locatable via explicit file markers (e.g., `BEGIN_FILE`/`END_FILE`).
+
+### E. Privacy posture
+
+Packaging must not weaken privacy guarantees:
+
+- Do not include additional raw sources.
+- If including evidence snippets (`examples.md`), they remain calibration-only and must not be quoted back to end users.

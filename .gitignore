@@ -15,3 +15,7 @@ config/sources.yml
 config/sources-*.yml
 !config/sources-example.yml
 !config/sources-smoke-example.yml
+
+# Packaged profile bundles (may contain derived snippets)
+bundles/**
+!bundles/.gitkeep

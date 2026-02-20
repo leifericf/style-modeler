@@ -51,3 +51,23 @@ Accept criteria:
 - Conformance report lists targets used (with units) and observed values.
 - Report includes `pass`/`fail`/`unknown` per target.
 - If a key target fails, the agent revises once and reports that it revised.
+
+## Step 3: Package for downstream consumption (optional)
+
+Run `prompts/package-style-profile-bundle.md`.
+
+Recommended for the smoke test: choose the inline bundle option (single Markdown file).
+
+Accept criteria:
+
+- One new file is produced under `bundles/` with suffix `.inline.md`.
+- The file contains an embedded entrypoint prompt (`prompts/entrypoint-stylize.md`).
+- The file contains embedded artifacts for at least:
+  - `artefacts/en/generation_blocks.md`
+  - `artefacts/en/metrics.json`
+  - `artefacts/en/profile_summary.md`
+
+Optional checks (nice-to-have):
+
+- The inline bundle includes `manifest.json` metadata.
+- Embedded file markers use `<!-- BEGIN_FILE: ... -->` and `<!-- END_FILE: ... -->`.

@@ -114,6 +114,13 @@ Use `prompts/profile-guided-authoring.md` when you want to draft a new text from
 
 Use `prompts/profile-conditioned-drafting.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
 
+### 8. Profile Bundle Packager (Optional)
+
+Use `prompts/package-style-profile-bundle.md` when you want to distribute a profile to downstream consumers (humans or other AI agents) as either:
+
+- a single zip bundle (`.styleprofile.zip`) that includes artifacts + an entrypoint prompt, or
+- a single inline Markdown file (`.inline.md`) that can be copy/pasted into a prompt window.
+
 ## Output
 
 The system produces a set of artifacts under `artefacts/`.
@@ -156,6 +163,7 @@ Canonical docs live in `docs/`.
 
 - Start here: `docs/workflows.md`
 - Schema + file contracts: `docs/style-profile-spec.md`
+- Bundle packaging: `docs/style-profile-bundle-spec.md`
 - Shared method: `docs/style-profile-method.md`
 - Success criteria: `docs/quality-gates.md`
 - Manual end-to-end check: `docs/smoke-test.md`
@@ -165,6 +173,7 @@ Canonical docs live in `docs/`.
 1. Create `config/sources.yml` (recommended: run `prompts/sources-manifest-wizard.md`).
 2. Generate artifacts: run `prompts/generate-style-profile.md`.
 3. Draft with the profile: run `prompts/profile-conditioned-drafting.md` (or `prompts/profile-guided-authoring.md`).
+4. (Optional) Package the profile for sharing: run `prompts/package-style-profile-bundle.md`.
 
 Notes: `config/sources.yml` and `sources/` are gitignored by default.
 
