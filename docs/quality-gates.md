@@ -85,4 +85,17 @@ The drafting prompt/workflow collects or infers (and states) at minimum:
 
 ### C. Conformance self-check and one revision
 
-TBD in Phase 0.
+v2 is considered “done” when there is at least one generation workflow that:
+
+1) Loads v2 artifacts (global + target language).
+2) Drafts a response.
+3) Runs a measurable conformance self-check against declared numeric targets.
+4) Revises once if the check fails.
+
+Minimum conformance-report contract:
+- Report the targets used (including units).
+- Report observed values computed from the draft.
+- Mark each checked target as `pass` / `fail` / `unknown`.
+- State whether a revision happened.
+
+The self-check must be conservative: if a metric cannot be computed reliably from the draft, mark it `unknown` rather than inventing a number.

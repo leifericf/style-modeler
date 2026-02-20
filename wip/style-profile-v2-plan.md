@@ -20,7 +20,7 @@ Conventions for updating this plan:
 - [x] Document v2 success criteria (analysis + generation) in a single place (recommended path: `docs/quality-gates.md`).
 - [x] Confirm artifact root remains `artefacts/` (default: keep).
 - [x] Confirm output baseline remains Markdown + JSON (default: keep).
-- [ ] Define what "done" means for v2 (recommended): generation prompt loads v2 artifacts and performs a measurable conformance self-check.
+- [x] Define what "done" means for v2 (recommended): generation prompt loads v2 artifacts and performs a measurable conformance self-check.
 
 ## Phase 1 - Define a Scientific-but-Practical Profile Schema (v2)
 
