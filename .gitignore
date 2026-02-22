@@ -4,6 +4,12 @@
 artefacts/**
 !artefacts/.gitkeep
 
+# Example profile run checked into the repo (derived data only; no raw sources)
+!artefacts/trump-tweets/
+artefacts/trump-tweets/**
+!artefacts/trump-tweets/20260222_1215_trump-tweets/
+!artefacts/trump-tweets/20260222_1215_trump-tweets/**
+
 # Local raw sources (may contain personal writing)
 sources/**
 !sources/.gitkeep
@@ -14,3 +20,7 @@ config/**
 # Packaged profile bundles (may contain derived snippets)
 bundles/**
 !bundles/.gitkeep
+
+# Example bundles checked into the repo
+!bundles/styleprofile-trump-tweets-en-20260222.inline.md
+!bundles/styleprofile-trump-tweets-en-20260222.styleprofile.zip

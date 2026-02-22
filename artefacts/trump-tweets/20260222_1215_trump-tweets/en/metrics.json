@@ -1,0 +1,233 @@
+{
+  "counts": {
+    "sample_count": 44867,
+    "sentence_count": 124192,
+    "token_count": 912025
+  },
+  "dimensions": {
+    "cohesion": {
+      "measures": {
+        "discourse_marker_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 9.323209341849182,
+          "raw": 8503,
+          "unit": "per_1k_tokens"
+        },
+        "sentence_initial_connector_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 0.4747676872892739,
+          "raw": 433,
+          "unit": "per_1k_tokens"
+        }
+      },
+      "notes": "Discourse markers lexicon: however, therefore, meanwhile, also, because, so, but, then, now (simple presence-per-sample count).",
+      "stability": "stable"
+    },
+    "lexis": {
+      "measures": {
+        "hapax_legomena": {
+          "denom": "unique_types",
+          "raw": 32641,
+          "unit": "types"
+        },
+        "hapax_rate": {
+          "denom": "unique_types",
+          "raw": 0.652455,
+          "unit": "ratio"
+        },
+        "moving_window_ttr_mean": {
+          "denom": "200_token_window",
+          "raw": 0.703883,
+          "unit": "ratio"
+        },
+        "type_token_ratio": {
+          "denom": "token_count",
+          "raw": 0.054854,
+          "unit": "ratio"
+        }
+      },
+      "notes": "Word normalization lowercases and strips edge punctuation for lexical counts.",
+      "stability": "stable"
+    },
+    "perspective": {
+      "measures": {
+        "pronouns_i_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 19.35911844521806,
+          "raw": 17656,
+          "unit": "per_1k_tokens"
+        },
+        "pronouns_we_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 13.42616704585949,
+          "raw": 12245,
+          "unit": "per_1k_tokens"
+        },
+        "pronouns_you_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 17.292289136810943,
+          "raw": 15771,
+          "unit": "per_1k_tokens"
+        }
+      },
+      "notes": "Pronoun counts are token regexes on measurement text.",
+      "stability": "stable"
+    },
+    "register": {
+      "measures": {
+        "all_caps_word_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 12.8395603190702,
+          "raw": 11710,
+          "unit": "per_1k_tokens"
+        },
+        "contraction_tokens_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 8.727830925687343,
+          "raw": 7960,
+          "unit": "per_1k_tokens"
+        },
+        "emoji_chars_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 0.49779337189221784,
+          "raw": 454,
+          "unit": "per_1k_tokens"
+        }
+      },
+      "notes": "Contractions are tokens with apostrophes; emoji count is a rough Unicode-block heuristic.",
+      "stability": "stable"
+    },
+    "rhetoric": {
+      "measures": {
+        "contrast_frame_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 3.093116964995477,
+          "raw": 2821,
+          "unit": "per_1k_tokens"
+        },
+        "list_line_share_percent": {
+          "denom": "line_count",
+          "raw": 0.0222,
+          "unit": "percent"
+        }
+      },
+      "notes": "Contrast and listing measures are simple surface detectors.",
+      "stability": "stable"
+    },
+    "stance": {
+      "measures": {
+        "booster_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 7.770620322907815,
+          "raw": 7087,
+          "unit": "per_1k_tokens"
+        },
+        "hedge_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 1.5690359365148983,
+          "raw": 1431,
+          "unit": "per_1k_tokens"
+        },
+        "modal_tokens_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 17.681532852717854,
+          "raw": 16126,
+          "unit": "per_1k_tokens"
+        }
+      },
+      "notes": "Hedges/boosters/modals use lightweight English lexicons; treat as proxies (not full semantic parsing).",
+      "stability": "stable"
+    },
+    "structure": {
+      "measures": {
+        "closing_cta_samples_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 6.902223075025356,
+          "raw": 6295,
+          "unit": "per_1k_tokens"
+        },
+        "openings_percent": {
+          "denom": "sample_count",
+          "raw": {
+            "attention": 0.72,
+            "claim": 91.8,
+            "greeting": 3.14,
+            "question": 4.33
+          },
+          "unit": "percent"
+        }
+      },
+      "notes": "Opening types are heuristic based on first sentence; closing CTA uses simple phrase matches or terminal question.",
+      "stability": "stable"
+    },
+    "syntax": {
+      "measures": {
+        "commas_per_sentence": {
+          "denom": "sentence_count",
+          "raw": 0.3188,
+          "unit": "per_sentence"
+        },
+        "emdash_markers_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 2.9834708478386007,
+          "raw": 2721,
+          "unit": "per_1k_tokens"
+        },
+        "exclamation_share_percent": {
+          "denom": "sentence_count",
+          "raw": 22.372,
+          "unit": "percent"
+        },
+        "parenthetical_markers_per_1k_tokens": {
+          "denom": "token_count",
+          "rate": 6.121542720868397,
+          "raw": 5583,
+          "unit": "per_1k_tokens"
+        },
+        "question_share_percent": {
+          "denom": "sentence_count",
+          "raw": 2.982,
+          "unit": "percent"
+        },
+        "sentence_length_tokens_mean": {
+          "denom": "sentence_count",
+          "raw": 7.599,
+          "unit": "tokens_per_sentence"
+        },
+        "sentence_length_tokens_median": {
+          "denom": "sentence_count",
+          "raw": 6.0,
+          "unit": "tokens_per_sentence"
+        }
+      },
+      "notes": "Sentence splitting is heuristic on .!? boundaries; commas and parentheticals are character-count proxies.",
+      "stability": "stable",
+      "targets": {
+        "list_line_share_percent": {
+          "target_range": {
+            "max": 1.0,
+            "min": 0.0,
+            "unit": "percent"
+          }
+        },
+        "question_share_percent": {
+          "target_range": {
+            "max": 3.08,
+            "min": 2.89,
+            "unit": "percent"
+          }
+        },
+        "sentence_length_tokens_per_sentence": {
+          "target_range": {
+            "max": 11.0,
+            "min": 1.0,
+            "unit": "tokens_per_sentence"
+          }
+        }
+      }
+    }
+  },
+  "generated_at": "2026-02-22T12:15:06Z",
+  "language": "en",
+  "schema_version": 2
+}

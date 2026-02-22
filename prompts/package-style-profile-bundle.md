@@ -11,6 +11,8 @@ You will produce EXACTLY ONE of the following (ask which):
 - A) A zip bundle: `bundles/<profile_id>.styleprofile.zip`
 - B) A single inline bundle Markdown file: `bundles/<profile_id>.inline.md`
 
+Important: `<profile_id>` MUST include the `project_slug` so the output filename is self-identifying (e.g., `styleprofile-trump-tweets-en-20260222`).
+
 Default recommendation: B (inline) for easiest copy/paste consumption.
 
 ## Preflight checks (required)
@@ -60,8 +62,8 @@ If the user does not answer, proceed with: inline + all languages + include exam
 
 Choose:
 
-- `profile_id`: a short, filesystem-safe id. Default: `styleprofile-<default_lang>-<YYYYMMDD>`.
-- `profile_name`: default: `StyleModeler Profile (<default_lang>)`.
+- `profile_id`: a short, filesystem-safe id. MUST include `project_slug`. Default: `styleprofile-<project_slug>-<default_lang>-<YYYYMMDD>`.
+- `profile_name`: default: `StyleModeler Profile (<project_slug>, <default_lang>)`.
 - `default_language`: if multiple, pick the highest-volume language if known; otherwise first in sorted order.
 
 ## Generate entrypoint prompt(s)
