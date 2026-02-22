@@ -105,6 +105,49 @@ It will:
 
 Use `prompts/author-with-style-profile.md` when you want to draft a new text from messy notes while staying faithful to your style artefacts. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
 
+#### Example prompts + results
+
+Prompt:
+```text
+Platform: Twitter/X
+Audience: Trump supporters
+Outcome: Provoke people into action
+Constraints: No
+
+Raw notes:
+i want people to know how much i love to eat pizza and that there are no other good ice creams
+call out the democrats for hating pizza
+DONE
+```
+
+Result:
+```text
+I love eating pizza. LOVE IT!
+There are no other good ice creams. NONE!
+And the Democrats hate pizza. Sad!
+
+Don't just sit there. Speak up. Share this. FIGHT for what you love!!!
+MAKE PIZZA GREAT AGAIN!
+```
+
+Prompt:
+```text
+Generate three other tweets about:
+
+- the existence of aliens and why i love them so much
+- why epstein is my best friend in the whole world and the dems should just shut up
+- how much money i have and why i'm the best in the world
+```
+
+Result:
+```text
+- Maybe there are aliens. And I LOVE them!!! If they're watching, they know AMERICA is #1. Do you think they like PIZZA???
+
+- I have so much money. It's incredible! Nobody has ever seen anything like it. That's why I'm the BEST in the world!!!
+
+- The Epstein obsession is disgusting. The media never stops! Focus on REAL problems and WIN!!!
+```
+
 ### 5. Profile-Conditioned Drafting Agent (Optional)
 
 Use `prompts/draft-with-style-profile.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
