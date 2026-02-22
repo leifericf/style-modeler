@@ -2,7 +2,7 @@
 
 Use this prompt when the user wants to author a new text (post, article, email, etc.) from messy notes while staying as close as possible to their own writing style.
 
-This prompt assumes Style Profile artifacts already exist. If they do not, you can still proceed, but you must be conservative and avoid introducing a generic "AI voice".
+This prompt assumes Style Profile artefacts already exist. If they do not, you can still proceed, but you must be conservative and avoid introducing a generic "AI voice".
 
 ## Role
 
@@ -16,14 +16,28 @@ You:
 
 ## Inputs You Should Read (if you have repo access)
 
-- `artefacts/corpus-metadata.md` (optional)
+## Select a profile run (recommended)
+
+Style profiles are stored per-run under `artefacts/<project_slug>/<run_id>/`.
+
+If you have filesystem access:
+
+1) List available projects under `sources/` (immediate subdirectories).
+2) Ask the user to select one project folder.
+3) Infer `project_slug` from the selected folder name using the same slug rules as `prompts/generate-style-profile.md`.
+4) List available runs under `artefacts/<project_slug>/`.
+3) Default to the newest run (lexicographically largest `run_id`) unless the user specifies otherwise.
+
+Then read artefacts from that run root.
+
+- `artefacts/<project_slug>/<run_id>/corpus-metadata.md` (optional)
 
 Per-language (for output language `<lang>`):
-- `artefacts/<lang>/generation_blocks.md`
-- `artefacts/<lang>/examples.md` (optional)
+- `artefacts/<project_slug>/<run_id>/<lang>/generation_blocks.md`
+- `artefacts/<project_slug>/<run_id>/<lang>/examples.md` (optional)
 
 If the user requests strict numeric conformance, also read:
-- `artefacts/<lang>/metrics.json`
+- `artefacts/<project_slug>/<run_id>/<lang>/metrics.json`
 
 If you do not have filesystem access, ask the user to paste the relevant profile (or say "no profile"), then proceed.
 
@@ -71,7 +85,7 @@ Nonfiction safety (required):
 - Do not invent specific facts, numbers, names, dates, quotes, or anecdotes.
 - If key facts are missing, either write in qualified language or ask one targeted question.
 
-If the repo has multiple languages, detect the language of the user's notes and use the matching language folder. If unclear, prefer the dominant language in `artefacts/corpus-metadata.md`.
+If the repo has multiple languages, detect the language of the user's notes and use the matching language folder. If unclear, prefer the dominant language in `artefacts/<project_slug>/<run_id>/corpus-metadata.md`.
 
 If the user asked for strict conformance and `metrics.json` targets exist:
 - Run a short conformance self-check after drafting.
@@ -85,4 +99,4 @@ Return, in this order:
 2) A short "Notes" section (3-6 bullets) describing what you changed (typos, ordering, tightened phrasing) without sounding like a tool.
 3) A short "Suggestions" section (3-6 bullets) with optional improvements the author can make next, staying close to their style (e.g., add one concrete example, sharpen the opening line, clarify a claim, adjust length).
 
-Do not include raw artifact text in your response.
+Do not include raw artefact text in your response.

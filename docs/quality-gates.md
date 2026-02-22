@@ -15,23 +15,23 @@ It is intentionally:
 
 ## Locked Decisions (Phase 0)
 
-- Artifact root directory: `artefacts/`.
-- Human-readable artifacts: Markdown (`.md`).
-- Machine-consumable artifacts: JSON (`.json`).
-- Source manifest: YAML (`config/sources.yml`).
+- Artefact root directory: `artefacts/<project_slug>/<run_id>/`.
+- Human-readable artefacts: Markdown (`.md`).
+- Machine-consumable artefacts: JSON (`.json`).
+- Sources are local files under `sources/<project>/` (no URL ingestion).
 
-## Analysis Quality Gates (Profile Artifacts)
+## Analysis Quality Gates (Profile Artefacts)
 
-These gates apply to any profile run that emits artifacts under `artefacts/`.
+These gates apply to any profile run that emits artefacts under `artefacts/<project_slug>/<run_id>/`.
 
 ### A. Contract: expected files exist
 
-- For each significant language `<lang>`, the run emits the full artifact set for that language.
+- For each significant language `<lang>`, the run emits the full artefact set for that language.
 - If multilingual is significant, a global layer exists and is used only for cross-language priors.
 
 ### B. Coverage: core dimensions are handled
 
-For each core dimension in the schema, the artifacts must contain either:
+For each core dimension in the schema, the artefacts must contain either:
 - measured values + interpretation + evidence anchors, OR
 - an explicit `unknown` / `unstable` marking with a reason (e.g., insufficient sample size).
 
@@ -55,17 +55,17 @@ For each core dimension in the schema, the artifacts must contain either:
 
 ### F. Privacy & PII
 
-- Artifacts must not contain unredacted PII.
+- Artefacts must not contain unredacted PII.
 - If a crucial snippet contains PII, redact using `[REDACTED]` or omit with `...` while keeping the remainder verbatim.
 
 ### G. Language purity
 
-- Per-language artifacts are strictly monolingual.
+- Per-language artefacts are strictly monolingual.
 - Non-significant languages are handled as limitations rather than separate profiles.
 
 ## Generation Quality Gates (Profile-Conditioned Drafting)
 
-These gates apply to any drafting workflow that claims to be style-conditioned by artifacts.
+These gates apply to any drafting workflow that claims to be style-conditioned by artefacts.
 
 ### A. Inputs are explicit
 
@@ -87,7 +87,7 @@ The drafting prompt/workflow collects or infers (and states) at minimum:
 
 The system is considered “done” when there is at least one generation workflow that:
 
-1) Loads artifacts (global + target language).
+1) Loads artefacts (global + target language).
 2) Drafts a response.
 3) Runs a measurable conformance self-check against declared numeric targets.
 4) Revises once if the check fails.
@@ -116,10 +116,10 @@ The packaging workflow emits EXACTLY ONE deliverable file in either format:
 The deliverable includes an explicit entrypoint prompt that:
 
 - states required inputs (`lang`, `input_text`, format/options)
-- states artifact loading order
+- states artefact loading order
 - instructs the downstream agent to return ONLY the stylized output (unless asked otherwise)
 
-### C. Artifact completeness
+### C. Artefact completeness
 
 For each included language `<lang>`, the package includes at minimum:
 
@@ -129,7 +129,7 @@ For each included language `<lang>`, the package includes at minimum:
 
 ### D. Copy/paste robustness (inline bundles)
 
-Inline bundles must embed artifacts verbatim and be machine-locatable via explicit file markers (e.g., `BEGIN_FILE`/`END_FILE`).
+Inline bundles must embed artefacts verbatim and be machine-locatable via explicit file markers (e.g., `BEGIN_FILE`/`END_FILE`).
 
 ### E. Privacy posture
 

@@ -52,7 +52,7 @@ All numeric measures must declare units and should be stored in normalized form.
 
 ### Required denominators
 
-If a rate is reported, the artifact must also report the denominator used for that segment:
+If a rate is reported, the artefact must also report the denominator used for that segment:
 - `token_count`
 - `sentence_count`
 - `sample_count`
@@ -153,7 +153,7 @@ The schema is evidence-backed: non-trivial claims must be anchored to snippets.
 
 ### Privacy & PII
 
-Artifacts must not contain unredacted PII.
+Artefacts must not contain unredacted PII.
 
 PII includes (non-exhaustive):
 - private-person names
@@ -180,7 +180,7 @@ The system may compute metrics for segments when metadata exists or is inferable
 ### Language (always)
 
 - Always partition the corpus by language.
-- Per-language artifacts must be strictly monolingual.
+- Per-language artefacts must be strictly monolingual.
 - Treat a language as *significant* only if it meets both:
   - share >= 10% of usable tokens, AND
   - size >= 200 samples OR >= 12000 tokens.
@@ -211,7 +211,7 @@ Recency weighting (when producing "current" summaries):
 
 Recency weighting must be explicit in outputs:
 - By default, numeric metrics/distributions describe the full unweighted language corpus.
-- If any "current" (recency-biased) summary or target is produced, it must be clearly labeled and the weighting method recorded in `artefacts/corpus-metadata.md`.
+- If any "current" (recency-biased) summary or target is produced, it must be clearly labeled and the weighting method recorded in `artefacts/<project_slug>/<run_id>/corpus-metadata.md`.
 
 If timestamps are absent or too sparse, time-slice segmentation must be `unknown`.
 
@@ -313,24 +313,26 @@ For each dimension, the profile must also include:
 
 ## Data Model (Conceptual)
 
-Artifacts are split by language. Each language profile contains:
+Artefacts are split by language. Each language profile contains:
 
 - *Human-readable* summaries and generation blocks (Markdown).
 - *Machine-consumable* metrics and distributions (JSON).
 
-Global artifacts exist only when multiple languages are significant, and store cross-language priors.
+Global artefacts exist only when multiple languages are significant, and store cross-language priors.
 
-## Artifact Layout and File Contracts (Normative)
+## Artefact Layout and File Contracts (Normative)
 
-Artifact root: `artefacts/`.
+Artefacts are written per run.
 
-### Per-language artifacts
+Run root (for one profile generation run): `artefacts/<project_slug>/<run_id>/`.
 
-Per-language artifacts live in `artefacts/<lang>/` where `<lang>` is ISO 639-1 lowercase when possible (e.g., `en`, `no`).
+### Per-language artefacts
+
+Per-language artefacts live in `artefacts/<project_slug>/<run_id>/<lang>/` where `<lang>` is ISO 639-1 lowercase when possible (e.g., `en`, `no`).
 
 Required files:
 
-#### `artefacts/<lang>/profile_summary.md`
+#### `artefacts/<project_slug>/<run_id>/<lang>/profile_summary.md`
 
 Human-readable summary for the language. Must include:
 - language id and `schema_version`
@@ -339,7 +341,7 @@ Human-readable summary for the language. Must include:
 - a short "do/avoid" list derived from stable traits
 - limitations (unknown/unstable dimensions)
 
-#### `artefacts/<lang>/metrics.json`
+#### `artefacts/<project_slug>/<run_id>/<lang>/metrics.json`
 
 Machine-consumable metrics and targets. Must include at minimum:
 
@@ -355,7 +357,7 @@ Machine-consumable metrics and targets. Must include at minimum:
 
 If a measure is `unknown`, omit `raw/rate` and store `{ "status": "unknown", "reason": "..." }`.
 
-#### `artefacts/<lang>/distributions.json`
+#### `artefacts/<project_slug>/<run_id>/<lang>/distributions.json`
 
 Machine-consumable distributions. Must include:
 - `schema_version`: `2`
@@ -368,14 +370,14 @@ Machine-consumable distributions. Must include:
   - `bin_counts`
   - `notes` (optional)
 
-#### `artefacts/<lang>/examples.md`
+#### `artefacts/<project_slug>/<run_id>/<lang>/examples.md`
 
 PII-safe evidence anchors and representative snippets. Must include:
 - sections per dimension
 - labeled snippets that demonstrate each non-trivial claim
 - no source references (no URLs/filenames/ids/dates)
 
-#### `artefacts/<lang>/generation_blocks.md`
+#### `artefacts/<project_slug>/<run_id>/<lang>/generation_blocks.md`
 
 Reusable prompt blocks for generation. Must include:
 - a compact "style card" (derived from stable measures/targets)
@@ -383,7 +385,7 @@ Reusable prompt blocks for generation. Must include:
 - a small set of short "anchor" examples (PII-safe)
 - explicit instructions for conformance self-check behavior when numeric targets exist
 
-#### `artefacts/<lang>/diachronic.json` (optional)
+#### `artefacts/<project_slug>/<run_id>/<lang>/diachronic.json` (optional)
 
 Only emit when timestamps exist at sufficient coverage. Must include:
 - `schema_version`: `2`
@@ -392,11 +394,11 @@ Only emit when timestamps exist at sufficient coverage. Must include:
 - per-slice counts
 - per-slice key measures and their stability
 
-### Global artifacts (multilingual only)
+### Global artefacts (multilingual only)
 
-Emit `artefacts/global/` only when 2+ languages are significant.
+Emit `artefacts/<project_slug>/<run_id>/global/` only when 2+ languages are significant.
 
-#### `artefacts/global/global_profile.md`
+#### `artefacts/<project_slug>/<run_id>/global/global_profile.md`
 
 Human-readable cross-language priors. Must include:
 - `schema_version`
@@ -404,7 +406,7 @@ Human-readable cross-language priors. Must include:
 - stable cross-language traits (high-level only)
 - explicit mapping notes: what differs by language and should not be treated as global
 
-#### `artefacts/global/global_metrics.json`
+#### `artefacts/<project_slug>/<run_id>/global/global_metrics.json`
 
 Machine-consumable priors and shared targets. Must include:
 - `schema_version`: `2`
@@ -414,13 +416,13 @@ Machine-consumable priors and shared targets. Must include:
 
 Global priors must not conflict with per-language targets; per-language wins on conflict.
 
-#### `artefacts/global/global_examples.md`
+#### `artefacts/<project_slug>/<run_id>/global/global_examples.md`
 
 PII-safe cross-language anchor snippets (short) that demonstrate shared voice traits.
 
 If cross-language anchoring is not PII-safe, omit examples and record the limitation.
 
-#### `artefacts/global/cross_language_summary.md`
+#### `artefacts/<project_slug>/<run_id>/global/cross_language_summary.md`
 
 Comparative report across languages. Must include:
 - which dimensions are stable across languages vs language-specific
@@ -429,23 +431,23 @@ Comparative report across languages. Must include:
 
 ### Revision history (recommended)
 
-Revision logs are written alongside artifacts so updates remain auditable without diffing large JSON blobs.
+Revision logs are written alongside artefacts so runs remain auditable without diffing large JSON blobs.
 
 Emit one revision log per language:
 
-#### `artefacts/<lang>/revision-log.md`
+#### `artefacts/<project_slug>/<run_id>/<lang>/revision-log.md`
 
-Append-only log. Each entry must include:
+Each run should include a short revision log entry capturing what went into that run:
 - `generated_at` (ISO 8601 UTC)
 - `schema_version`
 - sources included (ids/platform labels; no sensitive paths)
-- high-level changes since previous run (added/removed sources, key metric shifts)
+- high-level notes (what was included, key stability notes)
 - notes about stability changes (e.g., a dimension moved from `unstable` to `stable`)
 
-If multilingual global artifacts exist, optionally also emit:
+If multilingual global artefacts exist, optionally also emit:
 
-#### `artefacts/global/revision-log.md`
+#### `artefacts/<project_slug>/<run_id>/global/revision-log.md`
 
-Append-only log capturing cross-language changes (languages included, global priors changes).
+Short log capturing cross-language notes for the run (languages included, global priors notes).
 
 Do not paste large diffs or full metric dumps into revision logs; keep them concise and comparative.

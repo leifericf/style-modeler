@@ -11,18 +11,30 @@ Your job is to quickly elicit high-signal writing samples (breadth + depth) with
 
 ## Inputs You Should Read (if you have repo access)
 
-- `config/sources.yml` (if present)
-- `artefacts/corpus-metadata.md` (if present)
-- `artefacts/<lang>/profile_summary.md` (if present)
-- `artefacts/<lang>/examples.md` (optional; if present)
-- `artefacts/<lang>/generation_blocks.md` (if present)
-- `artefacts/<lang>/revision-log.md` (optional; if present)
+- `sources/` (project folders)
+- `artefacts/` (prior runs, optional)
+
+If there are prior runs for the selected project, you MAY read the most recent run's artefacts (using the inferred `project_slug`):
+
+- `artefacts/<project_slug>/<run_id>/corpus-metadata.md` (if present)
+- `artefacts/<project_slug>/<run_id>/<lang>/profile_summary.md` (if present)
+- `artefacts/<project_slug>/<run_id>/<lang>/examples.md` (optional; if present)
+- `artefacts/<project_slug>/<run_id>/<lang>/generation_blocks.md` (if present)
+- `artefacts/<project_slug>/<run_id>/<lang>/revision-log.md` (optional; if present)
 
 If you do not have filesystem access, ask the user to paste:
 
 - The current profile (if any)
 - The current revision log (if any)
-- Their `config/sources.yml` (if any)
+- The project name and their raw sources (or a description of what is in `sources/<project>/`)
+
+## Project selection (do this first)
+
+If you have filesystem access:
+
+1) List immediate subdirectories of `sources/`.
+2) Ask the user to choose one project folder to write this session into.
+3) If none exist, instruct the user to create `sources/<project>/` and then continue.
 
 ## Session Constraints
 
@@ -44,7 +56,7 @@ Use the answers to choose the smallest prompt set that still gives broad coverag
 
 ## Adaptive Prompting
 
-If any current per-language artifacts exist under `artefacts/<lang>/` (especially `profile_summary.md` and `generation_blocks.md`), use them to decide what to ask next:
+If there are any prior runs under `artefacts/<project_slug>/`, you MAY use the most recent run's per-language artefacts (especially `profile_summary.md` and `generation_blocks.md`) to decide what to ask next.
 
 - Find areas that look under-evidenced or uncertain (e.g., weak platform coverage, unclear openings/closings, thin evidence for humor, low confidence in cadence patterns, missing argumentation examples).
 - Ask prompts that specifically generate evidence for those weak spots.
@@ -82,10 +94,10 @@ At the end, write a single plain-text file under `sources/` containing all recor
 
 Preferred path:
 
-- `sources/interactive-session.txt` (append-only), OR
-- `sources/interactive-session-YYYY-MM-DD.txt` (new file per session)
+- `sources/<project>/interactive-session.txt` (append-only), OR
+- `sources/<project>/interactive-session-YYYY-MM-DD.txt` (new file per session)
 
-If `config/sources.yml` does not already include `sources/` as an ingestable location, update it so these files are included.
+Do not modify any manifests/config; this workflow is sources-folder-only.
 
 ## Stop Condition
 
@@ -93,10 +105,9 @@ Continue until the user says `DONE` (or equivalent), or until you've collected e
 
 When the user says `DONE`:
 
-1) Ensure all captured samples are written to `sources/`.
-2) Ensure `config/sources.yml` is updated so the samples are included.
-3) Run the existing modeling prompt WITHOUT duplicating its instructions:
-   - Follow `prompts/generate-style-profile.md` using the updated sources.
+1) Ensure all captured samples are written under `sources/<project>/`.
+2) Run the existing modeling prompt WITHOUT duplicating its instructions:
+   - Follow `prompts/generate-style-profile.md` and select the same project folder.
 
 Important:
 

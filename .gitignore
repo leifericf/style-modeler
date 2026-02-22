@@ -1,6 +1,6 @@
 .DS_Store
 
-# Local outputs / intermediate artifacts
+# Local outputs / intermediate artefacts
 artefacts/**
 !artefacts/.gitkeep
 
@@ -8,13 +8,8 @@ artefacts/**
 sources/**
 !sources/.gitkeep
 
-# Local source manifest (may contain personal paths/URLs)
-config/sources.yml
-
-# Extra local manifests (keep examples tracked)
-config/sources-*.yml
-!config/sources-example.yml
-!config/sources-smoke-example.yml
+# Deprecated manifest/config (not used)
+config/**
 
 # Packaged profile bundles (may contain derived snippets)
 bundles/**

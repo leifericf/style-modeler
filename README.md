@@ -52,26 +52,26 @@ The system is designed to:
 This is not generic writing advice.
 It is a structured linguistic modeling system.
 
-## Artifacts
+## Artefacts
 
 This repository contains primary components:
 
 ### 1. Cross-Platform Style Profile Generator
 
-**Purpose:** Creates the initial style profile artifacts from a corpus.
+**Purpose:** Creates the initial style profile artefacts from a corpus.
 
 Use: `prompts/generate-style-profile.md`
 
-### 2. Source Manifest Template (Optional)
+### 2. Project Sources Folder (Required)
 
-A lightweight YAML file for tracking:
+Each profile is built from a single project folder under `sources/`:
 
--   Source platforms
--   File paths or URLs
--   Recency weighting
--   Regeneration policy
+- Create `sources/<project>/` and put all source material for that project inside it.
+- You may use subfolders (e.g., `sources/facebook/posts.json`, `sources/facebook/comments.json`).
 
-Use this if your corpus becomes large or multi-source.
+Each profile run writes to a new timestamped folder under `artefacts/` so previous runs are never overwritten:
+
+- `artefacts/<project_slug>/<run_id>/...`
 
 ### 3. Interactive Corpus Builder (Optional)
 
@@ -80,59 +80,49 @@ If you don't have a large corpus yet, use the interactive prompt to generate a d
 It will:
 
 -   Ask you a sequence of short writing prompts (one at a time)
--   Save your answers into `sources/`
+-   Save your answers into `sources/<project>/`
 -   Generate a style profile from the collected samples
 
-### 4. Source Manifest Wizard (Optional)
+### 4. Profile-Guided Authoring Agent (Optional)
 
-If you want to add new URLs or local paths without hand-editing YAML, use:
+Use `prompts/profile-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your style artefacts. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
 
--   `prompts/sources-manifest-wizard.md`
-
-It will guide you to add sources and update `config/sources.yml` (creating it if missing, and validating/normalizing YAML formatting before writing).
-
-If the agent has network access, it can also sanity-check whether pasted URLs are reachable.
-
-### 5. Profile-Guided Authoring Agent (Optional)
-
-Use `prompts/profile-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your style artifacts. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
-
-### 6. Profile-Conditioned Drafting Agent (Optional)
+### 5. Profile-Conditioned Drafting Agent (Optional)
 
 Use `prompts/profile-conditioned-drafting.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
 
-### 7. Profile Bundle Packager (Optional)
+### 6. Profile Bundle Packager (Optional)
 
 Use `prompts/package-style-profile-bundle.md` when you want to distribute a profile to downstream consumers (humans or other AI agents) as either:
 
-- a single zip bundle (`.styleprofile.zip`) that includes artifacts + an entrypoint prompt, or
+- a single zip bundle (`.styleprofile.zip`) that includes artefacts + an entrypoint prompt, or
 - a single inline Markdown file (`.inline.md`) that can be copy/pasted into a prompt window.
 
 ## Output
 
-The system produces a set of artifacts under `artefacts/`.
+The system produces a new, timestamped run folder under `artefacts/<project_slug>/<run_id>/` on every generation.
 
-Per-language artifacts live in `artefacts/<lang>/` (e.g., `artefacts/en/`, `artefacts/no/`):
+Per-language artefacts live in `artefacts/<project_slug>/<run_id>/<lang>/` (e.g., `artefacts/facebook/20260220_1215_facebook/en/`):
 
-- `artefacts/<lang>/profile_summary.md`
-- `artefacts/<lang>/examples.md`
-- `artefacts/<lang>/generation_blocks.md`
-- `artefacts/<lang>/metrics.json`
-- `artefacts/<lang>/distributions.json`
-- `artefacts/<lang>/revision-log.md`
-- `artefacts/<lang>/diachronic.json` (only when timestamps support it)
+- `profile_summary.md`
+- `examples.md`
+- `generation_blocks.md`
+- `metrics.json`
+- `distributions.json`
+- `revision-log.md`
+- `diachronic.json` (only when timestamps support it)
 
-If multiple languages are significant, a global layer may be emitted in `artefacts/global/`:
+If multiple languages are significant, a global layer may be emitted in `artefacts/<project_slug>/<run_id>/global/`:
 
-- `artefacts/global/global_profile.md`
-- `artefacts/global/global_examples.md`
-- `artefacts/global/global_metrics.json`
-- `artefacts/global/cross_language_summary.md`
-- `artefacts/global/revision-log.md`
+- `global_profile.md`
+- `global_examples.md`
+- `global_metrics.json`
+- `cross_language_summary.md`
+- `revision-log.md`
 
-Corpus metadata is written to `artefacts/corpus-metadata.md`.
+Corpus metadata is written to `artefacts/<project_slug>/<run_id>/corpus-metadata.md`.
 
-Note: `artefacts/` is ignored by git by default (it may contain personal writing or derived snippets).
+Note: `artefacts/` and `sources/` are ignored by git by default.
 
 ## Iterative Workflow
 
@@ -157,12 +147,10 @@ Canonical docs live in `docs/`.
 
 ## Quick Start
 
-1. Create `config/sources.yml` (recommended: run `prompts/sources-manifest-wizard.md`).
-2. Generate artifacts: run `prompts/generate-style-profile.md`.
+1. Create a project folder under `sources/` (e.g., `sources/facebook/`) and add your files.
+2. Generate a profile run: run `prompts/generate-style-profile.md` and select the project.
 3. Draft with the profile: run `prompts/profile-conditioned-drafting.md` (or `prompts/profile-guided-authoring.md`).
 4. (Optional) Package the profile for sharing: run `prompts/package-style-profile-bundle.md`.
-
-Notes: `config/sources.yml` and `sources/` are gitignored by default.
 
 For the full setup/regeneration/drafting flow, see `docs/workflows.md`.
 

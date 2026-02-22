@@ -4,7 +4,7 @@ This document defines how to package a StyleModeler profile into a single distri
 
 Two formats are supported:
 
-- A) Zip bundle: one archive containing the profile artifacts plus an entrypoint prompt.
+- A) Zip bundle: one archive containing the profile artefacts plus an entrypoint prompt.
 - B) Inline bundle: one single Markdown file that contains everything needed (copy/paste friendly).
 
 The inline bundle is the simplest for consumers; the zip bundle is best for tool integrations that can unzip and read files.
@@ -38,7 +38,7 @@ Use `.styleprofile.zip` (a regular zip archive; extension is convention).
 - `prompts/entrypoint-draft.md`
 - `README.md`
 
-### Required artifacts (recommended minimum)
+### Required artefacts (recommended minimum)
 
 Per language `<lang>`:
 
@@ -51,6 +51,8 @@ Optional (helpful when present):
 - `artefacts/<lang>/distributions.json`
 - `artefacts/<lang>/examples.md` (calibration only; never quote back)
 - `artefacts/corpus-metadata.md` (ingestion notes)
+
+Note: bundles normalize the artefact layout to `artefacts/<lang>/...` (no per-project/per-run folders inside the bundle).
 
 ### manifest.json contract (minimum)
 
@@ -65,7 +67,7 @@ Optional (helpful when present):
 - `default_language`: language id
 - `entrypoints`: object mapping logical names to bundle-relative paths
   - at minimum: `{ "stylize": "prompts/entrypoint-stylize.md" }`
-- `artifacts_by_language`: object keyed by language id with paths to the key artifacts
+- `artefacts_by_language`: object keyed by language id with paths to the key artefacts
 - `files`: array of file descriptors for integrity and selective loading
   - each descriptor: `{ "path": "...", "bytes": <int>, "sha256": "...", "media_type": "..." }`
 
@@ -89,7 +91,7 @@ The inline bundle is a single Markdown file containing:
 
 - A small `manifest` block (JSON; recommended)
 - The entrypoint prompt text
-- Embedded artifacts as distinct, parseable sections
+- Embedded artefacts as distinct, parseable sections
 
 Use explicit file markers so both humans and tools can find sections:
 
@@ -120,4 +122,4 @@ The entrypoint prompt inside the inline bundle MUST instruct the downstream agen
 
 ## Privacy guidance
 
-Even if the artifacts are intended to be PII-safe, bundles are still derived from personal/organizational writing. Treat bundles as potentially sensitive and avoid publishing them publicly.
+Even if the artefacts are intended to be PII-safe, bundles are still derived from personal/organizational writing. Treat bundles as potentially sensitive and avoid publishing them publicly.

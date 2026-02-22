@@ -1,36 +1,36 @@
 # Smoke Test
 
 This is a manual smoke test to validate the end-to-end workflow:
-- sources manifest -> profile artifacts -> profile-conditioned drafting -> conformance report
+- sources folder -> profile artefacts -> profile-conditioned drafting -> conformance report
 
 ## Setup
 
-1) Copy the tracked smoke config into your local manifest:
+1) Ensure `fixtures/smoke-corpus/en/samples.txt` exists (tracked in the repo).
 
-`cp config/sources-smoke-example.yml config/sources.yml`
+2) Create a smoke project under `sources/` and copy the fixture corpus into it:
 
-(`config/sources.yml` is gitignored.)
+`mkdir -p sources/smoke && cp fixtures/smoke-corpus/en/samples.txt sources/smoke/samples.txt`
 
-2) Ensure `fixtures/smoke-corpus/en/samples.txt` exists (tracked in the repo).
-
-## Step 1: Generate artifacts
+## Step 1: Generate artefacts
 
 Run `prompts/generate-style-profile.md` in an agent that has repo access.
 
+When prompted to select a project folder under `sources/`, choose `smoke`.
+
 Expected outputs (written to disk):
 
-- `artefacts/en/profile_summary.md`
-- `artefacts/en/examples.md`
-- `artefacts/en/generation_blocks.md`
-- `artefacts/en/metrics.json`
-- `artefacts/en/distributions.json`
-- `artefacts/en/revision-log.md`
-- `artefacts/corpus-metadata.md`
+- `artefacts/smoke/<run_id>/en/profile_summary.md`
+- `artefacts/smoke/<run_id>/en/examples.md`
+- `artefacts/smoke/<run_id>/en/generation_blocks.md`
+- `artefacts/smoke/<run_id>/en/metrics.json`
+- `artefacts/smoke/<run_id>/en/distributions.json`
+- `artefacts/smoke/<run_id>/en/revision-log.md`
+- `artefacts/smoke/<run_id>/corpus-metadata.md`
 
 Accept criteria:
 
 - Files exist at the expected paths.
-- `artefacts/en/metrics.json` contains `schema_version: 2` and non-null counts.
+- `artefacts/smoke/<run_id>/en/metrics.json` contains `schema_version: 2` and non-null counts.
 - At least a small set of numeric `targets` exist when the slice is stable.
 
 ## Step 2: Draft with conformance
@@ -62,10 +62,10 @@ Accept criteria:
 
 - One new file is produced under `bundles/` with suffix `.inline.md`.
 - The file contains an embedded entrypoint prompt (`prompts/entrypoint-stylize.md`).
-- The file contains embedded artifacts for at least:
-  - `artefacts/en/generation_blocks.md`
-  - `artefacts/en/metrics.json`
-  - `artefacts/en/profile_summary.md`
+- The file contains embedded artefacts for at least:
+  - `artefacts/smoke/<run_id>/en/generation_blocks.md`
+  - `artefacts/smoke/<run_id>/en/metrics.json`
+  - `artefacts/smoke/<run_id>/en/profile_summary.md`
 
 Optional checks (nice-to-have):
 

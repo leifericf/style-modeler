@@ -1,6 +1,6 @@
 # Style Profile Method
 
-This document defines the shared method used by the profile generator and updater.
+This document defines the shared method used by the profile generator.
 
 If you have repository access, you MUST read:
 - `docs/style-profile-spec.md` (canonical schema + file contracts)
@@ -19,34 +19,27 @@ Constraints:
 
 ## Inputs
 
-Primary input is `config/sources.yml`.
+Primary input is a single project folder under `sources/`:
 
-If you have repository access:
-- Read `config/sources.yml` and ingest from referenced local files/dirs/URLs.
-- If `config/sources.yml` does not exist, create a minimal one that ingests `sources/` recursively.
+- `sources/<project>/...`
 
-If present, use optional per-source metadata from `config/sources.yml`:
-- `platform`: used for per-platform segmentation and corpus metadata.
-- `default_language`: a hint for language partitioning; still run conservative detection and allow mixed-language sources.
-- `genre`: optional segmentation hint; do not invent if missing.
-- `date_range`: optional human hint about the source's time span; do not treat as authoritative.
-- `timestamp_hints`: optional extraction hints for structured exports (keys/paths/notes) to help locate timestamps.
+The generator writes to a per-run output folder:
+
+- `run_root = artefacts/<project_slug>/<run_id>/`
+
+Do not ingest URLs in this workflow.
 
 ## Recency Weighting (Policy)
 
-`config/sources.yml` may include:
-- per-source `recency_weight`
-- `update_policy.recency_weight_latest_phase`
-
-To keep artifacts interpretable and conformance checks meaningful, apply recency weighting conservatively:
+To keep artefacts interpretable and conformance checks meaningful, apply recency weighting conservatively:
 
 - Metrics and distributions are UNWEIGHTED by default.
-  - `artefacts/<lang>/metrics.json` and `artefacts/<lang>/distributions.json` describe the full usable corpus for that language.
+  - `<run_root>/<lang>/metrics.json` and `<run_root>/<lang>/distributions.json` describe the full usable corpus for that language.
   - Conformance targets in `metrics.json` must be derived from stable, unweighted data unless you explicitly introduce a separate, clearly-labeled "current" target set.
 - Recency weights may influence qualitative outputs:
   - Which snippets are preferred as evidence/anchors (still representative; avoid cherry-picking).
   - Which stable traits are emphasized in `profile_summary.md` and `generation_blocks.md` (label as "current" if the emphasis is recency-biased).
-- If you apply any weighting, record it in `artefacts/corpus-metadata.md` (what was weighted, and how).
+- If you apply any weighting, record it in `<run_root>/corpus-metadata.md` (what was weighted, and how).
 
 ## Ingestion and Text Extraction
 
@@ -79,8 +72,8 @@ Treat a language as significant only under the thresholds defined in `docs/style
 ## Multilingual Alignment (Required)
 
 - Always split analysis by language.
-- Create `artefacts/global/` only when 2+ languages are significant.
-- Keep each per-language artifact strictly monolingual (summaries, examples, generation blocks).
+- Create `<run_root>/global/` only when 2+ languages are significant.
+- Keep each per-language artefact strictly monolingual (summaries, examples, generation blocks).
 - If a language is present but not significant, do not emit a per-language folder; record it under limitations.
 
 ## Measurement
@@ -95,7 +88,7 @@ If a measure is unsupported or unreliable for the language/source format, mark i
 
 ## Targets for Conformance (Required When Stable)
 
-If the language slice is `stable`, you MUST include a small set of numeric `targets` in `artefacts/<lang>/metrics.json` that a drafting workflow can check.
+If the language slice is `stable`, you MUST include a small set of numeric `targets` in `<run_root>/<lang>/metrics.json` that a drafting workflow can check.
 
 Minimum target set (choose measures you can compute reliably):
 - sentence length (tokens per sentence): target range
@@ -134,15 +127,15 @@ Operational rules:
 - Do not include source references (ids/URLs/paths/dates) in evidence lists.
 - Do not reuse the same snippet to justify many unrelated claims.
 
-## Artifact Writing Rules
+## Artefact Writing Rules
 
 Follow the file contracts in `docs/style-profile-spec.md`.
 
 General rules:
-- All JSON artifacts must include `schema_version: 2`.
-- Per-language artifacts are strictly monolingual.
-- Emit `artefacts/global/` only when multilingual is significant.
-- Prefer overwriting per-run artifacts (summaries/examples/JSON) and appending revision logs.
+- All JSON artefacts must include `schema_version: 2`.
+- Per-language artefacts are strictly monolingual.
+- Emit `<run_root>/global/` only when multilingual is significant.
+- Prefer overwriting per-run artefacts (summaries/examples/JSON) and appending revision logs.
 
 ## Reporting Limitations
 
