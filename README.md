@@ -93,6 +93,8 @@ Use `prompts/author-with-style-profile.md` when you want to draft a new text fro
 
 Use `prompts/draft-with-style-profile.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
 
+Conformance checking follows: `prompts/check-style-profile-conformance.md`
+
 ### 6. Profile Bundle Packager (Optional)
 
 Use `prompts/package-style-profile-bundle.md` when you want to distribute a profile to downstream consumers (humans or other AI agents) as either:

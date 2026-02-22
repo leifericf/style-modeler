@@ -29,6 +29,8 @@ This doc describes the intended workflows for analyzing an author's writing and 
 - Run `prompts/draft-with-style-profile.md`.
 - Use when you want a direct draft in your style plus a conformance report.
 
+Implementation note: conformance checking follows `prompts/check-style-profile-conformance.md`.
+
 ### B. Brain-dump then polish
 
 - Run `prompts/author-with-style-profile.md`.

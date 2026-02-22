@@ -91,20 +91,14 @@ Draft the text to satisfy the user parameters while matching the style card.
 
 ## Conformance Self-Check (Required)
 
-After drafting, run a self-check against the numeric targets you actually used from `metrics.json`.
+Run the conformance check procedure from `prompts/check-style-profile-conformance.md` using:
 
-Minimum report:
-- Targets used (with units)
-- Observed values computed from the draft
-- `pass` / `fail` / `unknown` per checked target
-- Whether a revision happened
+- the drafted text
+- `lang`
+- the selected `project_slug` and `run_id`
+- `revise_on_fail: true` (revise at most once)
 
-Computation rules:
-- Compute only what you can compute reliably from the draft.
-- If you cannot compute a metric, mark it `unknown`.
-- Do not fabricate values.
-
-If one or more key targets fail, revise the draft once and re-run the check.
+Then include the resulting conformance report in your output.
 
 ## Output
 

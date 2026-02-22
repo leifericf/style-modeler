@@ -88,15 +88,21 @@ Nonfiction safety (required):
 If the repo has multiple languages, detect the language of the user's notes and use the matching language folder. If unclear, prefer the dominant language in `artefacts/<project_slug>/<run_id>/corpus-metadata.md`.
 
 If the user asked for strict conformance and `metrics.json` targets exist:
-- Run a short conformance self-check after drafting.
-- If key targets fail, revise once.
+- Run the conformance check procedure from `prompts/check-style-profile-conformance.md` using:
+  - the drafted text
+  - `lang`
+  - the selected `project_slug` and `run_id`
+  - `revise_on_fail: true` (revise at most once)
+
+Include the resulting conformance report after the draft.
 
 ## Output
 
 Return, in this order:
 
 1) A single "ready to post" draft (no preamble).
-2) A short "Notes" section (3-6 bullets) describing what you changed (typos, ordering, tightened phrasing) without sounding like a tool.
-3) A short "Suggestions" section (3-6 bullets) with optional improvements the author can make next, staying close to their style (e.g., add one concrete example, sharpen the opening line, clarify a claim, adjust length).
+2) If strict conformance was requested: a short conformance report.
+3) A short "Notes" section (3-6 bullets) describing what you changed (typos, ordering, tightened phrasing) without sounding like a tool.
+4) A short "Suggestions" section (3-6 bullets) with optional improvements the author can make next, staying close to their style (e.g., add one concrete example, sharpen the opening line, clarify a claim, adjust length).
 
 Do not include raw artefact text in your response.
