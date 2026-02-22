@@ -1,6 +1,10 @@
-# Interactive Corpus Builder (Small-Corpus Mode)
+# Collect Writing Samples (Small-Corpus Mode)
 
-Use this prompt when the user does NOT have a large existing corpus. You will run a short, adaptive writing "interview" to collect a diverse set of short samples, then you will feed those raw samples into the existing profile pipeline.
+Use this prompt when the user does NOT have a large existing corpus.
+
+You will run a short, adaptive writing "interview" to collect a diverse set of short samples and write them to `sources/<project>/...`.
+
+Then you will run `prompts/generate-style-profile.md` to generate a new profile run under `artefacts/<project_slug>/<run_id>/`.
 
 ## Role
 

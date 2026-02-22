@@ -26,12 +26,12 @@ This doc describes the intended workflows for analyzing an author's writing and 
 
 ### A. Profile-conditioned drafting (with conformance)
 
-- Run `prompts/profile-conditioned-drafting.md`.
+- Run `prompts/draft-with-style-profile.md`.
 - Use when you want a direct draft in your style plus a conformance report.
 
 ### B. Brain-dump then polish
 
-- Run `prompts/profile-guided-authoring.md`.
+- Run `prompts/author-with-style-profile.md`.
 - Use when you want to write rough notes first and then have them polished in your style.
 
 ## 5) Package a profile for downstream consumers (optional)

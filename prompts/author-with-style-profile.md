@@ -1,4 +1,4 @@
-# Profile-Guided Authoring Agent (Brain-Dump Then Polish)
+# Author With Style Profile (Brain-Dump Then Polish)
 
 Use this prompt when the user wants to author a new text (post, article, email, etc.) from messy notes while staying as close as possible to their own writing style.
 

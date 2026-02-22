@@ -1,4 +1,4 @@
-# Style Profile Method (Shared)
+# Read Style Profile Method
 
 Canonical method lives in:
 - `docs/style-profile-method.md`

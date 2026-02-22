@@ -1,4 +1,4 @@
-# Profile-Conditioned Drafting Agent (Style-Constrained + Conformance)
+# Draft With Style Profile (Style-Constrained + Conformance)
 
 Use this prompt when the user wants a fresh draft written in their style using Style Profile artefacts, and you want a measurable conformance self-check.
 

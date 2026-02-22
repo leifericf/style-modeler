@@ -77,6 +77,8 @@ Each profile run writes to a new timestamped folder under `artefacts/` so previo
 
 If you don't have a large corpus yet, use the interactive prompt to generate a diverse set of short, high-signal writing samples quickly.
 
+Use: `prompts/collect-writing-samples.md`
+
 It will:
 
 -   Ask you a sequence of short writing prompts (one at a time)
@@ -85,11 +87,11 @@ It will:
 
 ### 4. Profile-Guided Authoring Agent (Optional)
 
-Use `prompts/profile-guided-authoring.md` when you want to draft a new text from messy notes while staying faithful to your style artefacts. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
+Use `prompts/author-with-style-profile.md` when you want to draft a new text from messy notes while staying faithful to your style artefacts. You can brain-dump in any order until you say `DONE`, then the agent will clean up spelling/grammar and structure the piece in your style (and offer a few low-deviation improvement suggestions).
 
 ### 5. Profile-Conditioned Drafting Agent (Optional)
 
-Use `prompts/profile-conditioned-drafting.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
+Use `prompts/draft-with-style-profile.md` when you want a fresh draft written in your style with a measurable conformance self-check and a single revision pass.
 
 ### 6. Profile Bundle Packager (Optional)
 
@@ -148,7 +150,7 @@ Canonical docs live in `docs/`.
 
 1. Create a project folder under `sources/` (e.g., `sources/facebook/`) and add your files.
 2. Generate a profile run: run `prompts/generate-style-profile.md` and select the project.
-3. Draft with the profile: run `prompts/profile-conditioned-drafting.md` (or `prompts/profile-guided-authoring.md`).
+3. Draft with the profile: run `prompts/draft-with-style-profile.md` (or `prompts/author-with-style-profile.md`).
 4. (Optional) Package the profile for sharing: run `prompts/package-style-profile-bundle.md`.
 
 For the full setup/regeneration/drafting flow, see `docs/workflows.md`.
