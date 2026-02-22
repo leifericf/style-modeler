@@ -51,4 +51,3 @@ Use: `prompts/package-style-profile-bundle.md`
 - Bundle packaging: `docs/style-profile-bundle-spec.md`
 - Shared method: `docs/style-profile-method.md`
 - Success criteria: `docs/quality-gates.md`
-- Manual smoke test: `docs/smoke-test.md`

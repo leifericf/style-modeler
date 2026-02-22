@@ -143,7 +143,6 @@ Canonical docs live in `docs/`.
 - Bundle packaging: `docs/style-profile-bundle-spec.md`
 - Shared method: `docs/style-profile-method.md`
 - Success criteria: `docs/quality-gates.md`
-- Manual end-to-end check: `docs/smoke-test.md`
 
 ## Quick Start
 
