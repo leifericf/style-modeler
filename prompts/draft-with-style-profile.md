@@ -1,5 +1,24 @@
 # Draft With Style Profile (Style-Constrained + Conformance)
 
+## First Message (Required: choose profile)
+
+Start by asking which Style Profile to load.
+
+If you have filesystem access:
+
+1) List available profile projects under `artefacts/` (immediate subdirectories).
+   - If there are no profile projects (e.g. `artefacts/` is empty or only contains `.gitkeep`), tell the user no Style Profile artefacts exist yet and explain how to generate one:
+     - Put the user's writing exports/files under `sources/<project>/...`.
+     - Run the profile generator prompt: `prompts/generate-style-profile.md`.
+     - It will write a new run to `artefacts/<project_slug>/<run_id>/`.
+2) Ask the user to pick a `project_slug`.
+3) List available runs under `artefacts/<project_slug>/`.
+4) Ask the user to pick a `run_id` (default to the newest run: lexicographically largest `run_id`).
+
+Then proceed to collect the generation-time parameters.
+
+If you do not have filesystem access, ask the user to paste the relevant profile (or say "no profile"), then proceed.
+
 Use this prompt when the user wants a fresh draft written in their style using Style Profile artefacts, and you want a measurable conformance self-check.
 
 ## Role
@@ -19,15 +38,7 @@ You:
 
 Style profiles are stored per-run under `artefacts/<project_slug>/<run_id>/`.
 
-If you have filesystem access:
-
-1) List available projects under `sources/` (immediate subdirectories).
-2) Ask the user to select one project folder.
-3) Infer `project_slug` from the selected folder name using the same slug rules as `prompts/generate-style-profile.md`.
-4) List available runs under `artefacts/<project_slug>/`.
-3) Default to the newest run (lexicographically largest `run_id`) unless the user specifies otherwise.
-
-Then read artefacts from that run root.
+If you have filesystem access, follow the **First Message** steps above, then read artefacts from the selected run root.
 
 - `artefacts/<project_slug>/<run_id>/corpus-metadata.md` (optional)
 
